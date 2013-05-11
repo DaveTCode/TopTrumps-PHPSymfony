@@ -1,0 +1,60 @@
+json_decks:
+    path:  /json/deck
+    defaults: {_controller: TylerTopTrumpsBundle:JSONDeck:all }
+
+json_deck_create:
+    path:  /json/deck
+    defaults: {_controller: TylerTopTrumpsBundle:JSONDeck:create }
+    methods: [POST]
+
+json_deck:
+    path:  /json/deck/{id}
+    defaults: {_controller: TylerTopTrumpsBundle:JSONDeck:get }
+    requirements:
+        id: \d+
+    methods: [GET]
+
+json_deck_update:
+    path:  /json/deck/{id}
+    defaults: {_controller: TylerTopTrumpsBundle:JSONDeck:update }
+    requirements:
+        id: \d+
+    methods: [POST]
+
+json_deck_delete:
+    path:  /json/deck/{id}
+    defaults: {_controller: TylerTopTrumpsBundle:JSONDeck:remove }
+    requirements:
+        id: \d+
+    methods: [DELETE]
+
+json_card_view:
+    path:  /json/deck/{deckId}/card/{cardId}
+    defaults: {_controller: TylerTopTrumpsBundle:JSONCard:get }
+    requirements:
+        deckId: \d+
+        cardId: \d+
+    methods: [GET]
+
+json_card_delete:
+    path:  /json/deck/{deckId}/card/{cardId}
+    defaults: {_controller: TylerTopTrumpsBundle:JSONCard:remove }
+    requirements:
+        deckId: \d+
+        cardId: \d+
+    methods: [DELETE]
+
+json_card_update:
+    path:  /json/deck/{deckId}/card/{cardId}
+    defaults: {_controller: TylerTopTrumpsBundle:JSONCard:update }
+    requirements:
+        deckId: \d+
+        cardId: \d+
+    methods: [POST]
+
+json_card_create:
+    path:  /json/deck/{deckId}/card
+    defaults: {_controller: TylerTopTrumpsBundle:JSONCard:create }
+    requirements:
+        deckId: \d+
+    methods: [POST]

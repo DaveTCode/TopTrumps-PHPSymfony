@@ -1,0 +1,7 @@
+parameters:
+#    tyler_top_trumps.example.class: Tyler\TopTrumpsBundle\Example
+
+services:
+#    tyler_top_trumps.example:
+#        class: %tyler_top_trumps.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

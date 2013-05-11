@@ -1,0 +1,51 @@
+<?php
+
+namespace Tyler\TopTrumpsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="deck")
+ */
+class Deck
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    protected $name;
+
+    /**
+     * @ORM\Column(type="string", length=500)
+     */
+    protected $description;
+
+    /**
+     * @ORM\Column(type="blob")
+     */
+    protected $image;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Stat", mappedBy="deck")
+     */
+    protected $stats;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Card", mappedBy="deck")
+     */
+    protected $cards;
+
+    public function __construct()
+    {
+        $this->stats = new ArrayCollection();
+        $this->cards = new ArrayCollection();
+    }
+}

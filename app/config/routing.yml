@@ -1,0 +1,4 @@
+tyler_top_trumps:
+    resource: "@TylerTopTrumpsBundle/Resources/config/routing.yml"
+    prefix:   /
+
