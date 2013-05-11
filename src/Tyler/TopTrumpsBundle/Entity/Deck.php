@@ -29,7 +29,7 @@ class Deck
     protected $description;
 
     /**
-     * @ORM\Column(type="blob")
+     * @ORM\Column(type="blob", nullable=true)
      */
     protected $image;
 
