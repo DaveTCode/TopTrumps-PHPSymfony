@@ -1,0 +1,69 @@
+#button-container {
+    width: 250px;
+    margin: auto;
+}
+
+#save-button {
+    -moz-box-shadow:inset 0px 1px 0px 0px #caefab;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #caefab;
+    box-shadow:inset 0px 1px 0px 0px #caefab;
+    background-color:#77d42a;
+    border:1px solid #268a16;
+    color:#306108;
+    text-shadow:1px 1px 0px #aade7c;
+    display:inline-block;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    font-size:15px;
+    font-weight:bold;
+    padding:6px 24px;
+    text-decoration:none;
+    float: right;
+    margin-top: 2px;
+}#save-button:hover {
+    background-color:#5cb811;
+}#save-button:active {
+    position: relative;
+    top: 1px;
+}
+
+#card-container {
+    border: 2px solid #333333;
+    width: 250px;
+    height: 100%;
+    padding: 5px;
+    margin: auto;
+}
+
+#card-image-container {
+    border: 1px solid #333333;
+    width: 250px;
+    height: 250px;
+}#card-image-container:hover {
+    opacity:0.4;
+    filter:alpha(opacity=40); /* For IE8 and earlier */
+    cursor: hand; cursor: pointer;
+}
+
+#card-name-input, #card-description-input {
+    width: 250px;
+}
+
+#card-stat-container {
+    border: 1px solid #333333;
+    width: 250px;
+}
+
+.card-stat {
+    width: 250px;
+}
+
+.card-stat-text {
+    float: left;
+    width: 75px;
+}
+
+.card-stat-select {
+    width: 175px;
+}
