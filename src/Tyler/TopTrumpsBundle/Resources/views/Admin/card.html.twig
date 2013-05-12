@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
+        {% block stylesheets %}
         <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" type="text/css" href="main.css">
-        <link rel="stylesheet" type="text/css" href="card.css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/tylertoptrumps/css/main.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/tylertoptrumps/css/card.css') }}">
+        {% endblock %}
 
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-        <script type="text/javascript" src="jquery.watermark.min.js"></script>
+        <script type="text/javascript" src="{{ asset('bundles/tylertoptrumps/js/jquery.watermark.min.js') }}"></script>
 
         <script type="text/javascript">
             $(document).ready(function() {
@@ -53,7 +55,7 @@
         <div id="content">
             <div id="card-container">
                 <div id="card-image-container">
-                    <img src="no-card-image.png" alt="No Image Selected" height="250" width="250">
+                    <img src="{{ asset('bundles/tylertoptrumps/images/no-card-image.png') }}" alt="No Image Selected" height="250" width="250">
                 </div>
                 <div id="card-name-container">
                     <input type="text" id="card-name-input" title="Enter the cards name (max 50 chars)" value="" />

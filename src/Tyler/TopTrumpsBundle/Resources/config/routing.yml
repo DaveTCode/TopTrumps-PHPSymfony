@@ -59,3 +59,10 @@ json_card_create:
     requirements:
         deckId: \d+
     methods: [POST]
+
+template_card_create:
+    path: /admin/deck/{deckId}/card
+    defaults: {_controller: TylerTopTrumpsBundle:Card:create }
+    requirements:
+        deckId: \d+
+    methods: [GET]
