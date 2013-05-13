@@ -2,46 +2,18 @@
 
 namespace Tyler\TopTrumpsBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Tyler\TopTrumpsBundle\Entity\Card;
 
-class JSONCardController extends Controller 
+class JSONCardController extends AbstractDbController
 {
-    private function checkCardId($deckId, $cardId)
-    {
-        $card = $this->getDoctrine()->getRepository('Tyler\TopTrumpsBundle\Entity\Card')->find($cardId);
-
-        if (!$card)
-        {
-            throw $this->createNotFoundException('No card found for id '.$cardId);
-        }
-        if ($card->getDeck()->getId() != $deckId)
-        {
-            throw $this->createNotFoundException('Card '.$cardId.' is not part of deck '.$deckId);
-        }
-
-        return $card;
-    }
-
-    private function checkDeckId($deckId)
-    {
-        $deck = $this->getDoctrine()->getRepository('Tyler\TopTrumpsBundle\Entity\Deck')->find($deckId);
-
-        if (!$deck)
-        {
-            throw $this->createNotFoundException('No deck found for id '.$deckId);
-        }
-
-        return $deck;
-    }
-
     public function getAction($deckId, $cardId)
     {
         $card = $this->checkCardId($deckId, $cardId);
 
         $serializer = $this->container->get('serializer');
+
         return new Response($serializer->serialize($card, 'json'), 200);
     }
 
@@ -57,6 +29,7 @@ class JSONCardController extends Controller
         $em->flush();
 
         $serializer = $this->container->get('serializer');
+
         return new Response($serializer->serialize($card, 'json'), 200);
     }
 
@@ -69,6 +42,7 @@ class JSONCardController extends Controller
         $em->flush();
 
         $serializer = $this->container->get('serializer');
+
         return new Response($serializer->serialize($card, 'json'), 200);
     }
 
@@ -87,6 +61,7 @@ class JSONCardController extends Controller
         $em->flush();
 
         $serializer = $this->container->get('serializer');
+
         return new Response($serializer->serialize($card, 'json'), 200);
     }
 }

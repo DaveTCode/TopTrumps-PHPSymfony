@@ -19,11 +19,11 @@
                     /*
                      * Construct the post object.
                      */
-                     cardObject = {};
-                     cardObject['name'] = $('#card-name-input').val();
-                     cardObject['description'] = $('card-description-input').val();
+                    var cardObject = {};
+                    cardObject['name'] = $('#card-name-input').val();
+                    cardObject['description'] = $('card-description-input').val();
 
-                     validateCard(cardObject);
+                    validateCard(cardObject);
 
                     $.post('/app_dev.php/json/deck/{{ deck.id }}/card', cardObject, function(data) {
                         //DAT - What to do?
@@ -31,7 +31,7 @@
                 });
             });
 
-            function validateObject(cardObject) {
+            function validateCard(cardObject) {
                 if (!cardObject['name'] || cardObject['name'].length < 3 || cardObject['name'].length > 50) {
                     $('#card-name-input').addClass('error');
                 } else {

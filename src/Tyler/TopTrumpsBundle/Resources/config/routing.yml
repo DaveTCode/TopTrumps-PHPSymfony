@@ -60,9 +60,17 @@ json_card_create:
         deckId: \d+
     methods: [POST]
 
-template_card_create:
+template_card_create_display:
     path: /admin/deck/{deckId}/card
-    defaults: {_controller: TylerTopTrumpsBundle:Card:create }
+    defaults: {_controller: TylerTopTrumpsBundle:Deck:newCardDisplay }
     requirements:
         deckId: \d+
+    methods: [GET]
+
+template_card_edit_display:
+    path: /admin/deck/{deckId}/card/{cardId}
+    defaults: {_controller: TylerTopTrumpsBundle:Deck:editCardDisplay }
+    requirements:
+        deckId: \d+
+        cardId: \d+
     methods: [GET]

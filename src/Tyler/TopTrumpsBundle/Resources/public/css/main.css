@@ -1,5 +1,8 @@
 body {
     background-color: #AAAAAA;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5em;
 }
 
 body, input, textarea, select, a {
@@ -7,16 +10,23 @@ body, input, textarea, select, a {
 }
 
 #header {
-    width: 100%;
-    height: 40px;
-    background-color: 
+    height: 90px;
 }
 
 #content {
-    width: 800px;
+    width: 100%;
+    float: left;
+}
+
+#side-bar {
+    width: 200px;
     height: 100%;
-    background-color: white;
-    margin: auto;
+    float: left;
+    margin-left: -100%;
+}
+
+#main-content {
+    margin-left: 200px;
 }
 
 .clear {

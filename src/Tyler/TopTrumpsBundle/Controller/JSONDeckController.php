@@ -2,24 +2,12 @@
 
 namespace Tyler\TopTrumpsBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Tyler\TopTrumpsBundle\Entity\Deck;
 
-class JSONDeckController extends Controller
+class JSONDeckController extends AbstractDbController
 {
-    private function checkDeckId($deckId)
-    {
-        $deck = $this->getDoctrine()->getRepository('Tyler\TopTrumpsBundle\Entity\Deck')->find($deckId);
-        if (!$deck)
-        {
-            throw $this->createNotFoundException('No deck found for id '.$deckId);
-        }
-
-        return $deck;
-    }
-
     public function allAction()
     {
         $decks = $this->getDoctrine()->getRepository('Tyler\TopTrumpsBundle\Entity\Deck')->findAll();
@@ -41,6 +29,7 @@ class JSONDeckController extends Controller
         $em->flush();
 
         $serializer = $this->container->get('serializer');
+
         return new Response($serializer->serialize($deck, 'json'), 200);
     }
 
@@ -49,6 +38,7 @@ class JSONDeckController extends Controller
         $deck = $this->checkDeckId($deckId);
 
         $serializer = $this->container->get('serializer');
+
         return new Response($serializer->serialize($deck, 'json'), 200);
     }
 
@@ -61,6 +51,7 @@ class JSONDeckController extends Controller
         $em->flush();
 
         $serializer = $this->container->get('serializer');
+
         return new Response($serializer->serialize($deck, 'json'), 200);
     }
 
@@ -70,12 +61,13 @@ class JSONDeckController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $deck = $this->checkDeckId($deckId);
-        $deck->setName($request->request->name);
-        $deck->setDescription($request->request->description);
+        $deck->setName($request->request->get('name'));
+        $deck->setDescription($request->request->get('description'));
 
         $em->flush();
 
         $serializer = $this->container->get('serializer');
+
         return new Response($serializer->serialize($deck, 'json'), 200);
     }
 }
