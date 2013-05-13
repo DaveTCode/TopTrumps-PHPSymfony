@@ -4,13 +4,13 @@
 }
 
 #save-button {
-    -moz-box-shadow:inset 0px 1px 0px 0px #caefab;
-    -webkit-box-shadow:inset 0px 1px 0px 0px #caefab;
-    box-shadow:inset 0px 1px 0px 0px #caefab;
+    -moz-box-shadow:inset 0 1px 0 0 #caefab;
+    -webkit-box-shadow:inset 0 1px 0 0 #caefab;
+    box-shadow:inset 0 1px 0 0 #caefab;
     background-color:#77d42a;
     border:1px solid #268a16;
     color:#306108;
-    text-shadow:1px 1px 0px #aade7c;
+    text-shadow:1px 1px 0 #aade7c;
     display:inline-block;
     -moz-border-radius:6px;
     -webkit-border-radius:6px;

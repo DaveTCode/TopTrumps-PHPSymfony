@@ -10,18 +10,107 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
         <script type="text/javascript" src="{{ asset('bundles/tylertoptrumps/js/jquery.watermark.min.js') }}"></script>
 
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".card-list-element").click(function() {
+                    var cardId = $(this).attr('id');
+
+                    DeckEdit.selectCard(cardId);
+                });
+            });
+
+            var DeckEdit = {
+                deckId: {{ deck.id }},
+
+                selectCard: function(cardId) {
+                    $.get("/json/deck/" + DeckEdit.deckId + "/card/" + cardId, DeckEdit.loadCardData);
+                },
+
+                loadCardData: function(card) {
+                    $("card-name-input").val(card["name"]);
+                    $("card-description-input").val(card["description"]);
+
+                    for (var ii = 0; ii < card["statValues"].length; ii++) {
+                        var statValue = card["statValues"][ii];
+                        $("#stat-id-" + statValue["stat"]["id"]).find("select").val(statValue["value"]);
+                    }
+
+                    $("#save-button").click(function() {
+                        DeckEdit.submitCardData(card["id"]);
+                    });
+                },
+
+                submitCardData: function(cardId) {
+                    var card = {};
+
+                    card["name"] = $("card-name-input").val();
+                    card["description"] = $("card-description-input").val();
+                    card["statValues"] = [];
+
+                    $(".card-stat").each(function() {
+                        var statValue = {};
+                        statValue["statId"] = $(this).attr("id");
+                        statValue["value"] = $(this).find("select").val();
+
+                        card["statValues"].push(statValue);
+                    });
+
+                    if (cardId) {
+                        $.post("/json/deck/" + DeckEdit.deckId + "/card/" + cardId, card, DeckEdit.cardSubmitComplete);
+                    } else {
+                        $.post("/json/deck/" + DeckEdit.deckId + "/card", card, DeckEdit.cardSubmitComplete);
+                    }
+                },
+
+                cardSubmitComplete: function(response) {
+                    alert(response); // TODO - Sort something out here.
+                }
+            }
+        </script>
+
         <title>Deck edit</title>
     </head>
     <body>
         <div id="header">
-
+            <h1>{{ deck.name }}</h1>
         </div>
         <div id="content">
             <div id="sidebar">
-
+                <ul id="card-list">
+                    {% for card in deck.cards %}
+                        <li id="card-{{ card.id }}" class="card-list-element">{{ card.name }}</li>
+                    {% endfor %}
+                </ul>
             </div>
             <div id="main-content">
-
+                <div id="card-container">
+                    <div id="card-image-container">
+                        <img src="{{ asset('bundles/tylertoptrumps/images/no-card-image.png') }}" alt="No Image Selected" height="250" width="250">
+                    </div>
+                    <div id="card-name-container">
+                        <input type="text" id="card-name-input" title="Enter the cards name (max 50 chars)" value="" />
+                    </div>
+                    <div id="card-description-container">
+                        <textarea id="card-description-input" title="Enter the cards description (max 250 chars)"></textarea>
+                    </div>
+                    <div id="card-stat-container">
+                        {% for cardStat in deck.stats %}
+                            <div class="card-stat" id="stat-id-{{ cardStat.id }}">
+                                <span class="card-stat-text">{{ cardStat.name }}</span>
+                                <select class="card-stat-select">
+                                    {% for value in range(cardStat.min, cardStat.max) %}
+                                        <option value="{{ value }}">{{ value }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="clear"></div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div id="button-container">
+                    <a href="#" id="save-button" class="action-button">Save</a>
+                </div>
+                <div class="clear"></div>
             </div>
         </div>
         <div id="footer" class="clear">&nbsp;</div>

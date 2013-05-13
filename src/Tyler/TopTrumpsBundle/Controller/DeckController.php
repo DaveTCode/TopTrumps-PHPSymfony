@@ -17,7 +17,7 @@ class DeckController extends AbstractDbController
 
         return $this->render(
             'TylerTopTrumpsBundle:Admin:deck-edit.html.twig',
-            array('deck' => $deck)
+            array('deck' => $deck, 'card' => null)
         );
     }
 
