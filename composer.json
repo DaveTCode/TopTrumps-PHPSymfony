@@ -18,7 +18,8 @@
         "sensio/generator-bundle": "2.2.*",
         "jms/security-extra-bundle": "1.4.*",
         "jms/di-extra-bundle": "1.3.*",
-        "jms/serializer-bundle": "*"
+        "jms/serializer-bundle": "*",
+        "friendsofsymfony/jsrouting-bundle": "~1.1"
     },
     "scripts": {
         "post-install-cmd": [
