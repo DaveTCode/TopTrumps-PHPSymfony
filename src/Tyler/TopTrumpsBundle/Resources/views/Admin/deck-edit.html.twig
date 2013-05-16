@@ -7,6 +7,8 @@
             <link rel="stylesheet" type="text/css" href="{{ asset('bundles/tylertoptrumps/css/card.css') }}">
         {% endblock %}
 
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
         <script type="text/javascript" src="{{ asset('bundles/tylertoptrumps/js/jquery.watermark.min.js') }}"></script>
 
@@ -16,7 +18,7 @@
                 $('#card-description-input').watermark('Card description');
 
                 $(".card-list-element").click(function() {
-                    var cardId = $(this).attr('id');
+                    var cardId = $(this).attr('id').replace('card-', '');
 
                     DeckEdit.selectCard(cardId);
                 });
@@ -32,7 +34,8 @@
                 deckId: {{ deck.id }},
 
                 selectCard: function(cardId) {
-                    $.get("/json/deck/" + DeckEdit.deckId + "/card/" + cardId, DeckEdit.loadCardData);
+                    $.get(Routing.generate('json_card_view', {'deckId': DeckEdit.deckId, 'cardId': cardId}))
+                     .done(DeckEdit.loadCardData);
                 },
 
                 newCard: function() {
@@ -58,8 +61,8 @@
                 submitCardData: function(cardId) {
                     var card = {};
 
-                    card["name"] = $("card-name-input").val();
-                    card["description"] = $("card-description-input").val();
+                    card["name"] = $("#card-name-input").val();
+                    card["description"] = $("#card-description-input").val();
                     card["statValues"] = [];
 
                     $(".card-stat").each(function() {
@@ -70,12 +73,15 @@
                         card["statValues"].push(statValue);
                     });
 
+                    var url = null;
                     if (cardId) {
-                        var url = {{ path('json_card_update', {'deckId': deck.id, 'cardId': "$$cardId$$"}) }};
-                        $.post(url.replace('$$cardId$$', cardId), DeckEdit.cardSubmitComplete);
+                        url = Routing.generate('json_card_update', {'deckId': DeckEdit.deckId, 'cardId': cardId});
                     } else {
-                        $.post({{ path('json_card_create', {'deckId': deck.id}) }}, DeckEdit.cardSubmitComplete);
+                        url = '{{ path('json_card_create', {'deckId': deck.id}) }}';
                     }
+                    $.post(url, card)
+                     .done(DeckEdit.cardSubmitComplete)
+                     .error(function() { alert("Failed"); });
                 },
 
                 cardSubmitComplete: function(response) {

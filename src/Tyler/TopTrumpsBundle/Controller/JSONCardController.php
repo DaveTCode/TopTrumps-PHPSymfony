@@ -57,6 +57,8 @@ class JSONCardController extends AbstractDbController
         $card->setDescription($request->request->get('description'));
         $card->setDeck($deck);
 
+        $this->get('logger')->err($request);
+
         $em->persist($card);
         $em->flush();
 
