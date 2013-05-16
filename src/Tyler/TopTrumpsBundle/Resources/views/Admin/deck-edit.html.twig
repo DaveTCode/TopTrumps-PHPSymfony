@@ -11,9 +11,12 @@
         <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
         <script type="text/javascript" src="{{ asset('bundles/tylertoptrumps/js/jquery.watermark.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/tylertoptrumps/js/jquery.blockUI.js') }}"></script>
 
         <script type="text/javascript">
             $(document).ready(function() {
+                $(document).ajaxStop($.unblockUI);
+
                 $('#card-name-input').watermark('Card name');
                 $('#card-description-input').watermark('Card description');
 
@@ -34,6 +37,7 @@
                 deckId: {{ deck.id }},
 
                 selectCard: function(cardId) {
+                    $.blockUI({ message: 'Processing...'});
                     $.get(Routing.generate('json_card_view', {'deckId': DeckEdit.deckId, 'cardId': cardId}))
                      .done(DeckEdit.loadCardData);
                 },
@@ -45,8 +49,9 @@
                 },
 
                 loadCardData: function(card) {
-                    $("card-name-input").val(card["name"]);
-                    $("card-description-input").val(card["description"]);
+                    $("#card-name-input").val(card["name"]);
+                    $("#card-description-input").val(card["description"]);
+                    card["statValues"] = card["statValues"] ? card["statValues"] : [];
 
                     for (var ii = 0; ii < card["statValues"].length; ii++) {
                         var statValue = card["statValues"][ii];
@@ -79,6 +84,7 @@
                     } else {
                         url = '{{ path('json_card_create', {'deckId': deck.id}) }}';
                     }
+                    $.blockUI({ message: 'Processing...'});
                     $.post(url, card)
                      .done(DeckEdit.cardSubmitComplete)
                      .error(function() { alert("Failed"); });
@@ -136,5 +142,8 @@
             </div>
         </div>
         <div id="footer" class="clear">&nbsp;</div>
+        <div id="loading" class="hidden">
+            <img src="{{ asset('bundles/tylertoptrumps/images/loading.gif') }}" alt="Loading...">
+        </div>
     </body>
 </html>

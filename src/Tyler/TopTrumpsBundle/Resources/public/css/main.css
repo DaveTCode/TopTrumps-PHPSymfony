@@ -32,6 +32,17 @@ ul {
     margin-left: 200px;
 }
 
+#loading {
+    position: absolute;
+    right: -50px;
+    top: 50px;
+    z-index: 1000;
+}
+
 .clear {
     clear: both;
+}
+
+.hidden {
+    display: none;
 }

@@ -3,6 +3,9 @@
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 
+##
+# JSON routes: These are part of the json api and will be split into a separate file eventually.
+##
 json_decks:
     path:  /json/deck
     defaults: {_controller: TylerTopTrumpsBundle:JSONDeck:all, _format: json }
@@ -65,6 +68,9 @@ json_card_create:
         deckId: \d+
     methods: [POST]
 
+##
+# Template routes for the top trumps application.
+##
 template_card_create_display:
     path: /admin/deck/{deckId}/card
     defaults: {_controller: TylerTopTrumpsBundle:Deck:newCardDisplay }
