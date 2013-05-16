@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2b820fd2-6e23-4709-b999-435d5d67ce31" name="Default" comment="" />
+    <list default="true" id="2b820fd2-6e23-4709-b999-435d5d67ce31" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/AppKernel.php" afterPath="$PROJECT_DIR$/app/AppKernel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/card.css" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/card.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/dat.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/dat.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/main.css" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="TopTrumps-PHPSymfony.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368460458276" ignored="false" />
+    <file path="/Dummy.txt" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368629892194" ignored="false" />
     <file path="/a.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368455913582" ignored="false" />
     <file path="/card.html.twig" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368438348098" ignored="false" />
     <file path="/main.css" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368455734911" ignored="false" />
-    <file path="/deck-edit.html.twig" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368460391265" ignored="false" />
+    <file path="/deck-edit.html.twig" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368701006836" ignored="false" />
     <file path="/AbstractDeckController.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368456062274" ignored="false" />
     <file path="/JSONCardController.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368456168249" ignored="false" />
     <file path="/AbstractDbController.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368456439549" ignored="false" />
@@ -39,19 +48,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CardController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/CardController.php">
+      <file leaf-file-name="deck-edit.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="8" selection-start="290" selection-end="414" vertical-scroll-proportion="-8.5">
+            <state line="55" column="18" selection-start="2303" selection-end="2303" vertical-scroll-proportion="-2.8846154">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="deck-edit.html.twig" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig">
+      <file leaf-file-name="composer.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/composer.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="0" selection-start="2306" selection-end="2306" vertical-scroll-proportion="0.4530457">
+            <state line="21" column="32" selection-start="807" selection-end="807" vertical-scroll-proportion="-13.730769">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppKernel.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/AppKernel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="34" selection-start="870" selection-end="870" vertical-scroll-proportion="0.51619434">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DeckController.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/DeckController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="76" selection-start="690" selection-end="690" vertical-scroll-proportion="-15.692307">
               <folding />
             </state>
           </provider>
@@ -82,7 +109,6 @@
       <list>
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/card.html.twig" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/Card.php" />
-        <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/main.css" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/AbstractDeckController.php" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONCardController.php" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/CardController.php" />
@@ -91,7 +117,11 @@
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/DeckController.php" />
         <option value="$PROJECT_DIR$/app/SymfonyRequirements.php" />
+        <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/main.css" />
+        <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/card.css" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig" />
+        <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/app/AppKernel.php" />
       </list>
     </option>
   </component>
@@ -101,6 +131,28 @@
     <option name="y" value="-8" />
     <option name="width" value="1296" />
     <option name="height" value="1010" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>GeneralJavaScript</id>
+          </State>
+          <State>
+            <id>JavaScript</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>JSUnresolvedFunction</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -128,7 +180,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -363,18 +414,36 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TopTrumps-PHPSymfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TopTrumps-PHPSymfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="editor.preferences.tabs" />
+    <property name="options.lastSelected" value="JavaScript.Libraries" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/phpunit.xml.dist" />
     <property name="FullScreen" value="false" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+  </component>
+  <component name="RestClientSettings">
+    <option name="LAST_HOST" value="http://127.0.0.1:8011/" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -425,25 +494,26 @@
     <frame x="-8" y="-8" width="1296" height="1010" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35990623" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23954803" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32982457" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32982457" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23014587" sideWeight="0.60023445" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39976552" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2382496" sideWeight="0.6400938" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23954803" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32982457" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32982457" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39976552" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -510,116 +580,106 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/AbstractDbController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="21" selection-start="892" selection-end="892" vertical-scroll-proportion="0.5730337">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/.htaccess">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/DeckController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="50" selection-start="587" selection-end="587" vertical-scroll-proportion="0.40324596">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.WebIde60/system/extLibs/http_ajax.googleapis.com_ajax_libs_jquery_2.0.0_jquery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="21" selection-start="166" selection-end="166" vertical-scroll-proportion="0.12530713">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/card.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="0" selection-start="1031" selection-end="1031" vertical-scroll-proportion="0.40329218">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/SymfonyRequirements.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="151" column="54" selection-start="5646" selection-end="5646" vertical-scroll-proportion="-4.8590603">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/phpunit.xml.dist">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="1" selection-start="120" selection-end="120" vertical-scroll-proportion="0.10493827">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/DependencyInjection/Configuration.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="8" selection-start="610" selection-end="610" vertical-scroll-proportion="0.48769575">
-          <folding />
-        </state>
+        <state line="20" column="8" selection-start="610" selection-end="610" vertical-scroll-proportion="0.48769575" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/DependencyInjection/TylerTopTrumpsExtension.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="5" selection-start="613" selection-end="613" vertical-scroll-proportion="0.53913045">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/card.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="39" selection-start="687" selection-end="687" vertical-scroll-proportion="0.25888324">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/CardController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="8" selection-start="290" selection-end="414" vertical-scroll-proportion="-8.5">
-          <folding />
-        </state>
+        <state line="20" column="5" selection-start="613" selection-end="613" vertical-scroll-proportion="0.53913045" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/StatValue.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="7" selection-start="681" selection-end="681" vertical-scroll-proportion="0.70037454">
+        <state line="33" column="7" selection-start="681" selection-end="681" vertical-scroll-proportion="0.70037454" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/Card.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="35" selection-start="541" selection-end="541" vertical-scroll-proportion="-2.4169788" />
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavascriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/HTML5.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2037" column="19" selection-start="36092" selection-end="36092" vertical-scroll-proportion="0.33252722" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/config/routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="18" selection-start="2104" selection-end="2104" vertical-scroll-proportion="0.9346154">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="18" selection-start="335" selection-end="335" vertical-scroll-proportion="0.49334946">
+        <state line="20" column="5" selection-start="257" selection-end="257" vertical-scroll-proportion="0.37884617">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/Card.php">
+    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/card.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="35" selection-start="541" selection-end="541" vertical-scroll-proportion="-2.4169788">
+        <state line="33" column="17" selection-start="758" selection-end="758" vertical-scroll-proportion="0.7192308">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavascriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/HTML5.js">
+    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/card.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2037" column="19" selection-start="36092" selection-end="36092" vertical-scroll-proportion="0.33252722">
+        <state line="14" column="16" selection-start="731" selection-end="1451" vertical-scroll-proportion="0.34511435">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.WebIde60/system/extLibs/http_ajax.googleapis.com_ajax_libs_jquery_2.0.0_jquery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1870" column="100" selection-start="49598" selection-end="49599" vertical-scroll-proportion="0.33195022">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONDeckController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="5" selection-start="562" selection-end="562" vertical-scroll-proportion="0.65384614">
+          <folding>
+            <element signature="e#52#97#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/CardController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="8" selection-start="290" selection-end="414" vertical-scroll-proportion="0.4473684">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/DeckController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="76" selection-start="690" selection-end="690" vertical-scroll-proportion="-15.692307">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="0" selection-start="2306" selection-end="2306" vertical-scroll-proportion="0.4530457">
+        <state line="55" column="18" selection-start="2303" selection-end="2303" vertical-scroll-proportion="-2.8846154">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="32" selection-start="807" selection-end="807" vertical-scroll-proportion="-13.730769">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/AppKernel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="34" selection-start="870" selection-end="870" vertical-scroll-proportion="0.51619434">
           <folding />
         </state>
       </provider>

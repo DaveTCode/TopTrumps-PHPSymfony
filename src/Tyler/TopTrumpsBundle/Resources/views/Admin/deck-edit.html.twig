@@ -12,11 +12,20 @@
 
         <script type="text/javascript">
             $(document).ready(function() {
+                $('#card-name-input').watermark('Card name');
+                $('#card-description-input').watermark('Card description');
+
                 $(".card-list-element").click(function() {
                     var cardId = $(this).attr('id');
 
                     DeckEdit.selectCard(cardId);
                 });
+
+                {% if card != null %}
+                DeckEdit.selectCard({{ card.id }});
+                {% else %}
+                DeckEdit.newCard();
+                {% endif %}
             });
 
             var DeckEdit = {
@@ -24,6 +33,12 @@
 
                 selectCard: function(cardId) {
                     $.get("/json/deck/" + DeckEdit.deckId + "/card/" + cardId, DeckEdit.loadCardData);
+                },
+
+                newCard: function() {
+                    $("#save-button").click(function() {
+                        DeckEdit.submitCardData();
+                    });
                 },
 
                 loadCardData: function(card) {
@@ -56,9 +71,10 @@
                     });
 
                     if (cardId) {
-                        $.post("/json/deck/" + DeckEdit.deckId + "/card/" + cardId, card, DeckEdit.cardSubmitComplete);
+                        var url = {{ path('json_card_update', {'deckId': deck.id, 'cardId': "$$cardId$$"}) }};
+                        $.post(url.replace('$$cardId$$', cardId), DeckEdit.cardSubmitComplete);
                     } else {
-                        $.post("/json/deck/" + DeckEdit.deckId + "/card", card, DeckEdit.cardSubmitComplete);
+                        $.post({{ path('json_card_create', {'deckId': deck.id}) }}, DeckEdit.cardSubmitComplete);
                     }
                 },
 

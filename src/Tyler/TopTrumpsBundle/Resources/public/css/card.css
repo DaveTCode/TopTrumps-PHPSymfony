@@ -1,6 +1,5 @@
 #button-container {
     width: 250px;
-    margin: auto;
 }
 
 #save-button {
@@ -33,7 +32,6 @@
     width: 250px;
     height: 100%;
     padding: 5px;
-    margin: auto;
 }
 
 #card-image-container {
