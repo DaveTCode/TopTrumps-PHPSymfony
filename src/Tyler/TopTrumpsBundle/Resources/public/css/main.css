@@ -9,10 +9,6 @@ body, input, textarea, select, a {
     font-family: 'Roboto Slab', serif;
 }
 
-ul {
-    list-style-type: none;
-}
-
 #header {
     height: 90px;
 }
@@ -30,6 +26,7 @@ ul {
 
 #main-content {
     margin-left: 200px;
+    padding-left: 50px;
 }
 
 #loading {

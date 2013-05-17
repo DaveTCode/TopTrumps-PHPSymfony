@@ -1,0 +1,14 @@
+#card-list {
+    list-style-type: none;
+}
+
+.card-list-element {
+    margin-left: -20px;
+    padding-left: 20px;
+    background-color: #AA3333;
+    color: white;
+    cursor: hand; cursor: pointer;
+    margin-top: 10px;
+} .card-list-element:hover {
+    background-color: #CC5555;
+}

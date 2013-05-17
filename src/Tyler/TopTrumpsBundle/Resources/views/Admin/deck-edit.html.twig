@@ -4,6 +4,7 @@
         {% block stylesheets %}
             <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" type="text/css" href="{{ asset('bundles/tylertoptrumps/css/main.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('bundles/tylertoptrumps/css/sidebar.css') }}">
             <link rel="stylesheet" type="text/css" href="{{ asset('bundles/tylertoptrumps/css/card.css') }}">
         {% endblock %}
 
@@ -26,6 +27,16 @@
                     DeckEdit.selectCard(cardId);
                 });
 
+                $("#new-card-list-element").click(DeckEdit.newCard);
+
+                $("#card-image").click(function() {
+                    /*
+                     * An input element has to be visible with focus before the
+                     * click event will fire on it.
+                     */
+                    $("#card-image-input").show().focus().click().hide();
+                });
+
                 {% if card != null %}
                 DeckEdit.selectCard({{ card.id }});
                 {% else %}
@@ -43,9 +54,10 @@
                 },
 
                 newCard: function() {
-                    $("#save-button").click(function() {
-                        DeckEdit.submitCardData();
-                    });
+                    $("#card-name-input").val("");
+                    $("#card-description-input").val("");
+                    $("#card-image-input").val("");
+                    $("#save-button").click(DeckEdit.submitCardData);
                 },
 
                 loadCardData: function(card) {
@@ -90,8 +102,19 @@
                      .error(function() { alert("Failed"); });
                 },
 
-                cardSubmitComplete: function(response) {
-                    alert(response); // TODO - Sort something out here.
+                cardSubmitComplete: function(card) {
+                    /*
+                     * Replace the name of the card if it already exists in the
+                     * card list. Otherwise add the new card to the end of the
+                     * list.
+                     */
+                    var cardId = "card-" + card["id"];
+                    var existingCard = $("#" + cardId);
+                    if (existingCard.length) {
+                        existingCard.html(card["name"]);
+                    } else {
+                        $("#new-card-list-element").before("<li id='" + cardId + "' class='card-list-element'>" + card["name"] + "</li>");
+                    }
                 }
             }
         </script>
@@ -108,13 +131,15 @@
                     {% for card in deck.cards %}
                         <li id="card-{{ card.id }}" class="card-list-element">{{ card.name }}</li>
                     {% endfor %}
+                    <li id="new-card-list-element">New card</li>
                 </ul>
             </div>
             <div id="main-content">
                 <div id="card-container">
                     <div id="card-image-container">
-                        <img src="{{ asset('bundles/tylertoptrumps/images/no-card-image.png') }}" alt="No Image Selected" height="250" width="250">
+                        <img id="card-image" src="{{ asset('bundles/tylertoptrumps/images/no-card-image.png') }}" alt="No Image Selected" height="250" width="250">
                     </div>
+                    <input type="file" id="card-image-input" class="hidden" />
                     <div id="card-name-container">
                         <input type="text" id="card-name-input" title="Enter the cards name (max 50 chars)" value="" />
                     </div>
