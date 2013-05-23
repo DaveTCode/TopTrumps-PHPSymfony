@@ -2,13 +2,20 @@
     list-style-type: none;
 }
 
-.card-list-element {
+.card-list-element, #new-card-list-element {
     margin-left: -20px;
-    padding-left: 20px;
-    background-color: #AA3333;
-    color: white;
-    cursor: hand; cursor: pointer;
+    margin-right: 20px;
     margin-top: 10px;
-} .card-list-element:hover {
-    background-color: #CC5555;
+    padding: 2px 11px;
+    background-color: #F53D35;
+    color: #E0E0E0;
+    cursor: hand; cursor: pointer;
+} .card-list-element:hover, #new-card-list-element:hover {
+    background-color: #B12C49;
+    margin-right: 10px;
+}
+
+.selected-card-list-element {
+    margin-right: 10px;
+    background-color: #B12C49;
 }

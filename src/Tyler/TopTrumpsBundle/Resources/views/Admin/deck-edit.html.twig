@@ -21,7 +21,7 @@
                 $('#card-name-input').watermark('Card name');
                 $('#card-description-input').watermark('Card description');
 
-                $(".card-list-element").click(function() {
+                $('#card-list').on('click', '.card-list-element', function() {
                     var cardId = $(this).attr('id').replace('card-', '');
 
                     DeckEdit.selectCard(cardId);
@@ -54,40 +54,46 @@
                 },
 
                 newCard: function() {
+                    $(".card-list-element").removeClass("selected-card-list-element");
                     $("#card-name-input").val("");
                     $("#card-description-input").val("");
                     $("#card-image-input").val("");
-                    $("#save-button").click(DeckEdit.submitCardData);
+                    $("#save-button").off("click").on("click", function() {
+                        DeckEdit.submitCardData();
+                    });
                 },
 
                 loadCardData: function(card) {
-                    $("#card-name-input").val(card["name"]);
-                    $("#card-description-input").val(card["description"]);
-                    card["statValues"] = card["statValues"] ? card["statValues"] : [];
+                    $("#card-name-input").val(card.name);
+                    $("#card-description-input").val(card.description);
+                    card.stat_values = card.stat_values ? card.stat_values : [];
 
-                    for (var ii = 0; ii < card["statValues"].length; ii++) {
-                        var statValue = card["statValues"][ii];
-                        $("#stat-id-" + statValue["stat"]["id"]).find("select").val(statValue["value"]);
+                    for (var ii = 0; ii < card.stat_values.length; ii++) {
+                        var statValue = card.stat_values[ii];
+                        $("#stat-id-" + statValue.stat.id).find("select").val(statValue.value);
                     }
 
-                    $("#save-button").click(function() {
-                        DeckEdit.submitCardData(card["id"]);
+                    $(".card-list-element").removeClass("selected-card-list-element");
+                    $("#card-" + card.id).addClass("selected-card-list-element");
+
+                    $("#save-button").off("click").on("click", function() {
+                        DeckEdit.submitCardData(card.id);
                     });
                 },
 
                 submitCardData: function(cardId) {
                     var card = {};
 
-                    card["name"] = $("#card-name-input").val();
-                    card["description"] = $("#card-description-input").val();
-                    card["statValues"] = [];
+                    card.name = $("#card-name-input").val();
+                    card.description = $("#card-description-input").val();
+                    card.stat_values = [];
 
                     $(".card-stat").each(function() {
                         var statValue = {};
-                        statValue["statId"] = $(this).attr("id");
-                        statValue["value"] = $(this).find("select").val();
+                        statValue.statId = $(this).attr("id");
+                        statValue.value = $(this).find("select").val();
 
-                        card["statValues"].push(statValue);
+                        card.stat_values.push(statValue);
                     });
 
                     var url = null;
@@ -108,12 +114,12 @@
                      * card list. Otherwise add the new card to the end of the
                      * list.
                      */
-                    var cardId = "card-" + card["id"];
+                    var cardId = "card-" + card.id;
                     var existingCard = $("#" + cardId);
                     if (existingCard.length) {
-                        existingCard.html(card["name"]);
+                        existingCard.html(card.name);
                     } else {
-                        $("#new-card-list-element").before("<li id='" + cardId + "' class='card-list-element'>" + card["name"] + "</li>");
+                        $("#new-card-list-element").before("<li id='" + cardId + "' class='card-list-element'>" + card.name + "</li>");
                     }
                 }
             }
@@ -156,7 +162,6 @@
                                     {% endfor %}
                                 </select>
                             </div>
-                            <div class="clear"></div>
                         {% endfor %}
                     </div>
                 </div>
