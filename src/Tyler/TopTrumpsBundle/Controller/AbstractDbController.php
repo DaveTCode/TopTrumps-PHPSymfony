@@ -53,4 +53,30 @@ abstract class AbstractDbController extends Controller
 
         return $deck;
     }
+
+    /**
+     * USed to abstract away retrieving a stat from the database or throwing a
+     * not found exception (404).
+     *
+     * Also checks that the stat is part of the deck suggested.
+     *
+     * @param int $deckId - The stat must be part of this deck.
+     * @param int $statId - The stat id to find.
+     * @return \Tyler\TopTrumpsBundle\Entity\Stat
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    protected function checkStatId($deckId, $statId)
+    {
+        $stat = $this->getDoctrine()->getRepository('Tyler\TopTrumpsBundle\Entity\Stat')->find($statId);
+
+        if (!$stat) {
+            throw $this->createNotFoundException('No stat found for id ' . $statId);
+        }
+
+        if ($stat->getDeck()->getId() != $deckId) {
+            throw $this->createNotFoundException('Stat ' . $statId . ' is not part of deck ' . $deckId);
+        }
+
+        return $stat;
+    }
 }

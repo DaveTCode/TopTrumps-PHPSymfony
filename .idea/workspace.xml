@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b820fd2-6e23-4709-b999-435d5d67ce31" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/SymfonyRequirements.php" afterPath="$PROJECT_DIR$/app/SymfonyRequirements.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/TopTrumps-PHPSymfony.iml" afterPath="$PROJECT_DIR$/.idea/TopTrumps-PHPSymfony.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/card.css" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/card.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/check.php" afterPath="$PROJECT_DIR$/app/check.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/config.php" afterPath="$PROJECT_DIR$/web/config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/AbstractDbController.php" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/AbstractDbController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONCardController.php" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONCardController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/main.css" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/sidebar.css" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/sidebar.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TopTrumps-PHPSymfony.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -20,10 +12,10 @@
     <file path="/a.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368455913582" ignored="false" />
     <file path="/card.html.twig" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368438348098" ignored="false" />
     <file path="/main.css" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369350997221" ignored="false" />
-    <file path="/deck-edit.html.twig" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369352287958" ignored="false" />
+    <file path="/deck-edit.html.twig" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369353897339" ignored="false" />
     <file path="/AbstractDeckController.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368456062274" ignored="false" />
-    <file path="/JSONCardController.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368456168249" ignored="false" />
-    <file path="/AbstractDbController.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368456439549" ignored="false" />
+    <file path="/JSONCardController.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369353596827" ignored="false" />
+    <file path="/AbstractDbController.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369352997230" ignored="false" />
     <file path="/CardController.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368456277714" ignored="false" />
     <file path="/JSONDeckController.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368456337192" ignored="false" />
     <file path="/DeckController.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368458361841" ignored="false" />
@@ -84,7 +76,7 @@
       <file leaf-file-name="deck-edit.html.twig" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="88" column="36" selection-start="4084" selection-end="4095" vertical-scroll-proportion="-23.538462">
+            <state line="94" column="36" selection-start="4419" selection-end="4419" vertical-scroll-proportion="-21.576923">
               <folding />
             </state>
           </provider>
@@ -93,7 +85,7 @@
       <file leaf-file-name="JSONCardController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONCardController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="53" selection-start="1142" selection-end="1142" vertical-scroll-proportion="0.38406536">
+            <state line="66" column="14" selection-start="2038" selection-end="2038" vertical-scroll-proportion="0.5730337">
               <folding />
             </state>
           </provider>
@@ -126,18 +118,18 @@
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/AbstractDeckController.php" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/CardController.php" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONDeckController.php" />
-        <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/AbstractDbController.php" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/DeckController.php" />
         <option value="$PROJECT_DIR$/app/SymfonyRequirements.php" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/app/AppKernel.php" />
-        <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONCardController.php" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/sidebar.css" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/card.css" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/main.css" />
+        <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/AbstractDbController.php" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig" />
+        <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONCardController.php" />
       </list>
     </option>
   </component>
@@ -396,6 +388,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Entity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TopTrumps-PHPSymfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TopTrumpsWebServer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tyler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TopTrumpsBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -552,24 +570,9 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/DeckController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="53" selection-start="1061" selection-end="1061" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavascriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/HTML5.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2037" column="19" selection-start="36092" selection-end="36092" vertical-scroll-proportion="0.33252722" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/card.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="16" selection-start="731" selection-end="1451" vertical-scroll-proportion="0.34511435" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/CardController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="8" selection-start="290" selection-end="414" vertical-scroll-proportion="0.4473684" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/AppKernel.php">
@@ -580,11 +583,6 @@
     <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="32" selection-start="807" selection-end="807" vertical-scroll-proportion="0.44458282" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONDeckController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="8" selection-start="611" selection-end="672" vertical-scroll-proportion="-12.423077" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/config/routing.yml">
@@ -600,11 +598,6 @@
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/Card.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="35" selection-start="541" selection-end="541" vertical-scroll-proportion="-2.3237858" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/DeckController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="53" selection-start="1061" selection-end="1061" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/main.css">
@@ -628,16 +621,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/StatValue.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="5" vertical-scroll-proportion="-0.7814096">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="36" selection-start="4084" selection-end="4095" vertical-scroll-proportion="-23.538462">
+        <state line="94" column="36" selection-start="4419" selection-end="4419" vertical-scroll-proportion="-21.576923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONDeckController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="5" selection-start="520" selection-end="520" vertical-scroll-proportion="0.2431052">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/DeckController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="53" selection-start="1061" selection-end="1061" vertical-scroll-proportion="0.5730337">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/CardController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="44" selection-start="280" selection-end="280" vertical-scroll-proportion="0.19101124">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/AbstractDbController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="78" selection-start="1271" selection-end="1271" vertical-scroll-proportion="0.659857">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONCardController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="53" selection-start="1142" selection-end="1142" vertical-scroll-proportion="0.38406536">
+        <state line="66" column="14" selection-start="2038" selection-end="2038" vertical-scroll-proportion="0.5730337">
           <folding />
         </state>
       </provider>

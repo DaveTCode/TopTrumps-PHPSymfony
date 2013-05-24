@@ -58,6 +58,7 @@
                     $("#card-name-input").val("");
                     $("#card-description-input").val("");
                     $("#card-image-input").val("");
+                    $(".card-stat-select").val($(".card-stat-select option:first").val());
                     $("#save-button").off("click").on("click", function() {
                         DeckEdit.submitCardData();
                     });
@@ -68,6 +69,7 @@
                     $("#card-description-input").val(card.description);
                     card.stat_values = card.stat_values ? card.stat_values : [];
 
+                    $(".card-stat-select").val($(".card-stat-select option:first").val());
                     for (var ii = 0; ii < card.stat_values.length; ii++) {
                         var statValue = card.stat_values[ii];
                         $("#stat-id-" + statValue.stat.id).find("select").val(statValue.value);
@@ -90,7 +92,7 @@
 
                     $(".card-stat").each(function() {
                         var statValue = {};
-                        statValue.statId = $(this).attr("id");
+                        statValue.id = $(this).attr("id").replace("stat-id-", "");
                         statValue.value = $(this).find("select").val();
 
                         card.stat_values.push(statValue);

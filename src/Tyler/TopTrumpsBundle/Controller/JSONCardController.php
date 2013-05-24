@@ -5,6 +5,7 @@ namespace Tyler\TopTrumpsBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Tyler\TopTrumpsBundle\Entity\Card;
+use Tyler\TopTrumpsBundle\Entity\StatValue;
 
 class JSONCardController extends AbstractDbController
 {
@@ -57,7 +58,23 @@ class JSONCardController extends AbstractDbController
         $card->setDescription($request->request->get('description'));
         $card->setDeck($deck);
 
-        $this->get('logger')->err($request);
+        foreach ($request->request->get('stat_values') as $statValueJson) {
+            $stat = $this->checkStatId($deckId, $statValueJson->get("id"));
+            $statValue = new StatValue();
+            $statValue->setCard($card);
+            $statValue->setStat($stat);
+
+            /*
+             * Note that the value is capped when it is entered into the stat value
+             * although that will be enforced by the database at some point.
+             *
+             * TODO : Enforce in database.
+             */
+            $value = $statValueJson->get("value");
+            $statValue->setValue(min(max($stat->getMin(), $value), $stat->getMax()));
+
+            $card->addStatValue($statValue);
+        }
 
         $em->persist($card);
         $em->flush();
