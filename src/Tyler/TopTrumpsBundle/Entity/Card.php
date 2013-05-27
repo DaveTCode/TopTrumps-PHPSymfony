@@ -35,7 +35,7 @@ class Card
 
     /**
      * @ORM\ManyToOne(targetEntity="Deck", inversedBy="cards")
-     * @ORM\JoinColumn(name="deck_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="deck_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $deck;
 

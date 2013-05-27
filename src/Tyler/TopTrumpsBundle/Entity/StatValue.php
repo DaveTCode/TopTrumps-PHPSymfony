@@ -24,13 +24,13 @@ class StatValue
 
     /**
      * @ORM\ManyToOne(targetEntity="Card", inversedBy="statValues")
-     * @ORM\JoinColumn(name="card_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="card_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $card;
 
     /**
      * @ORM\ManyToOne(targetEntity="Stat", inversedBy="statValues")
-     * @ORM\JoinColumn(name="stat_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="stat_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $stat;
 
