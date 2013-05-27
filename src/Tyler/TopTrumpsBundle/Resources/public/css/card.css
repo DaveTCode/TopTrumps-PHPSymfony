@@ -18,6 +18,26 @@
     top: 1px;
 }
 
+#delete-button {
+    background-color: #FFC873;
+    border: 1px solid #FFB440;
+    color: #A66400;
+    display: inline-block;
+    padding: 6px 24px;
+    text-decoration: none;
+    margin-top: 2px;
+}#delete-button:hover {
+    background-color: #FF9A00;
+}#delete-button:active {
+    position: relative;
+    top: 1px;
+}#delete-button.disabled {
+    background-color: #636363;
+    border: 1px solid #333333;
+    color: black;
+    cursor: default;
+}
+
 #card-container {
     border: 2px solid #333333;
     width: 250px;
