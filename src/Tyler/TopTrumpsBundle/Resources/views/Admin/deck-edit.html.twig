@@ -62,6 +62,7 @@
                     $("#save-button").off("click").on("click", function() {
                         DeckEdit.submitCardData();
                     });
+                    $("#delete-button").off("click").addClass("disabled");
                 },
 
                 loadCardData: function(card) {
@@ -81,6 +82,9 @@
                     $("#save-button").off("click").on("click", function() {
                         DeckEdit.submitCardData(card.id);
                     });
+                    $("#delete-button").off("click").on("click", function() {
+                        DeckEdit.deleteCard(card.id);
+                    }).removeClass("disabled");
                 },
 
                 submitCardData: function(cardId) {
@@ -104,10 +108,23 @@
                     } else {
                         url = '{{ path('json_card_create', {'deckId': deck.id}) }}';
                     }
-                    $.blockUI({ message: 'Processing...'});
+                    $.blockUI({ message: 'Processing...' });
                     $.post(url, card)
                      .done(DeckEdit.cardSubmitComplete)
                      .error(function() { alert("Failed"); });
+                },
+
+                deleteCard: function(cardId) {
+                    var url = Routing.generate('json_card_delete', { 'deckId': DeckEdit.deckId, 'cardId': cardId });
+
+                    $.blockUI({ message: 'Processing...' });
+                    $.ajax({ "url": url, "method": "DELETE" })
+                     .done(function(card) { DeckEdit.deleteCardComplete(cardId, card) } )
+                     .error(function() { alert("Failed"); });
+                },
+
+                deleteCardComplete: function(cardId, card) {
+                    $('#card-' + cardId).remove();
                 },
 
                 cardSubmitComplete: function(card) {
@@ -168,6 +185,7 @@
                     </div>
                 </div>
                 <div id="button-container">
+                    <a href="#" id="delete-button" class="action-button">Delete</a>
                     <a href="#" id="save-button" class="action-button">Save</a>
                 </div>
                 <div class="clear"></div>
