@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b820fd2-6e23-4709-b999-435d5d67ce31" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/Card.php" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/Card.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/Stat.php" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/Stat.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/StatValue.php" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/StatValue.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig" />
     </list>
     <ignored path="TopTrumps-PHPSymfony.iws" />
@@ -13,7 +10,7 @@
     <file path="/a.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368455913582" ignored="false" />
     <file path="/card.html.twig" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368438348098" ignored="false" />
     <file path="/main.css" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369350997221" ignored="false" />
-    <file path="/deck-edit.html.twig" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369653203300" ignored="false" />
+    <file path="/deck-edit.html.twig" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369653679239" ignored="false" />
     <file path="/AbstractDeckController.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368456062274" ignored="false" />
     <file path="/JSONCardController.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369651351745" ignored="false" />
     <file path="/AbstractDbController.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369352997230" ignored="false" />
@@ -74,19 +71,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="deck-edit.html.twig" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="deck-edit.html.twig" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="125" column="52" selection-start="5948" selection-end="5948" vertical-scroll-proportion="-25.153847">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JSONCardController.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONCardController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="52" selection-start="2653" selection-end="2653" vertical-scroll-proportion="0.6264074">
+            <state line="69" column="18" selection-start="3239" selection-end="3239" vertical-scroll-proportion="0.32139203">
               <folding />
             </state>
           </provider>
@@ -127,10 +115,10 @@
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/main.css" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/AbstractDbController.php" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONCardController.php" />
-        <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/StatValue.php" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/Stat.php" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/Card.php" />
+        <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig" />
       </list>
     </option>
   </component>
@@ -641,13 +629,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="52" selection-start="5948" selection-end="5948" vertical-scroll-proportion="-25.153847">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/StatValue.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="84" selection-start="520" selection-end="520" vertical-scroll-proportion="0.40020472">
@@ -678,7 +659,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONCardController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="52" selection-start="2653" selection-end="2653" vertical-scroll-proportion="0.6264074">
+        <state line="63" column="49" selection-start="2245" selection-end="2245" vertical-scroll-proportion="0.41760492">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="18" selection-start="3239" selection-end="3239" vertical-scroll-proportion="0.32139203">
           <folding />
         </state>
       </provider>

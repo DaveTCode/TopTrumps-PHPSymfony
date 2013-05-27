@@ -55,14 +55,18 @@
 
                 newCard: function() {
                     $(".card-list-element").removeClass("selected-card-list-element");
-                    $("#card-name-input").val("");
-                    $("#card-description-input").val("");
-                    $("#card-image-input").val("");
+                    DeckEdit.clearCard();
                     $(".card-stat-select").val($(".card-stat-select option:first").val());
                     $("#save-button").off("click").on("click", function() {
                         DeckEdit.submitCardData();
                     });
                     $("#delete-button").off("click").addClass("disabled");
+                },
+
+                clearCard: function() {
+                    $("#card-name-input").val("");
+                    $("#card-description-input").val("");
+                    $("#card-image-input").val("");
                 },
 
                 loadCardData: function(card) {
@@ -139,6 +143,7 @@
                         existingCard.html(card.name);
                     } else {
                         $("#new-card-list-element").before("<li id='" + cardId + "' class='card-list-element'>" + card.name + "</li>");
+                        DeckEdit.selectCard(card.id);
                     }
                 }
             }
