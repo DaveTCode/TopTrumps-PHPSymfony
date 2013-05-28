@@ -43,7 +43,7 @@ class JSONCardController extends AbstractDbController
         $card->setName($request->request->get('name'));
         $card->setDescription($request->request->get('description'));
         $card->setImage($request->request->get('image'));
-        $this->get('logger')->err(implode($request->request->all()));
+        $this->get('logger')->err(strlen($request->request->get('image')));
 
         /*
          * Iterate over the existing stat values and update the values. Note

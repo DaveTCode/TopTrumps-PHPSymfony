@@ -38,7 +38,7 @@
                     $("#card-image-input").show().focus().click().hide();
                 });
 
-                $("#save-button").on("click", function() {
+                $("#card-form").submit(function() {
                     /*
                      * The url depends on whether we are creating or updating a
                      * card.
@@ -70,6 +70,12 @@
                         dataType: 'json',
                         success: DeckEdit.cardSubmitComplete
                     });
+
+                    return false;
+                });
+
+                $("#save-button").on("click", function() {
+                    $("#card-form").submit();
                 });
 
                 {% if card != null %}
@@ -177,7 +183,7 @@
                         <div id="card-image-container">
                             <img id="card-image" src="{{ asset('bundles/tylertoptrumps/images/no-card-image.png') }}" alt="No Image Selected" height="250" width="250">
                         </div>
-                        <input type="file" id="card-image-input" name="card-image" class="" />
+                        <input type="file" id="card-image-input" name="image" class="" />
                         <div id="card-name-container">
                             <input type="text" id="card-name-input" name="name" title="Enter the cards name (max 50 chars)" value="" />
                         </div>
