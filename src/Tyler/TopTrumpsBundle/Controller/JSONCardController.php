@@ -42,6 +42,8 @@ class JSONCardController extends AbstractDbController
         $card = $this->checkCardId($deckId, $cardId);
         $card->setName($request->request->get('name'));
         $card->setDescription($request->request->get('description'));
+        $card->setImage($request->request->get('image'));
+        $this->get('logger')->err(implode($request->request->all()));
 
         /*
          * Iterate over the existing stat values and update the values. Note
@@ -105,24 +107,27 @@ class JSONCardController extends AbstractDbController
         $card->setName($request->request->get('name'));
         $card->setDescription($request->request->get('description'));
         $card->setDeck($deck);
+        $card->setImage($request->request->get('image'));
 
-        foreach ($request->request->get('stat_values') as $statValueArray) {
-            $stat = $this->checkStatId($deckId, $statValueArray["id"]);
-            $statValue = new StatValue();
-            $statValue->setCard($card);
-            $statValue->setStat($stat);
+        if ($request->request->get('stat_values')) {
+            foreach ($request->request->get('stat_values') as $statValueArray) {
+                $stat = $this->checkStatId($deckId, $statValueArray["id"]);
+                $statValue = new StatValue();
+                $statValue->setCard($card);
+                $statValue->setStat($stat);
 
-            /*
-             * Note that the value is capped when it is entered into the stat value
-             * although that will be enforced by the database at some point.
-             *
-             * TODO : Enforce in database.
-             */
-            $value = $statValueArray["value"];
-            $statValue->setValue(min(max($stat->getMin(), $value), $stat->getMax()));
-            $em->persist($statValue);
+                /*
+                 * Note that the value is capped when it is entered into the stat value
+                 * although that will be enforced by the database at some point.
+                 *
+                 * TODO : Enforce in database.
+                 */
+                $value = $statValueArray["value"];
+                $statValue->setValue(min(max($stat->getMin(), $value), $stat->getMax()));
+                $em->persist($statValue);
 
-            $card->addStatValue($statValue);
+                $card->addStatValue($statValue);
+            }
         }
 
         $em->persist($card);

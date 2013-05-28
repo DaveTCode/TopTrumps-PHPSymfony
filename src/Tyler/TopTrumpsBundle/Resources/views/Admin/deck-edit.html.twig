@@ -64,12 +64,12 @@
                     /*
                      * Construct the ajax form and submit it.
                      */
-                    $("#card-form").ajaxForm( {
+                    $("#card-form").ajaxSubmit( {
                         url: url,
-                        data: card.stat_values,
+                        data: card,
                         dataType: 'json',
                         success: DeckEdit.cardSubmitComplete
-                    }).submit();
+                    });
                 });
 
                 {% if card != null %}
@@ -125,33 +125,6 @@
                     }).removeClass("disabled");
                 },
 
-                submitCardData: function(cardId) {
-                    var card = {};
-
-                    card.name = $("#card-name-input").val();
-                    card.description = $("#card-description-input").val();
-                    card.stat_values = [];
-
-                    $(".card-stat").each(function() {
-                        var statValue = {};
-                        statValue.id = $(this).attr("id").replace("stat-id-", "");
-                        statValue.value = $(this).find("select").val();
-
-                        card.stat_values.push(statValue);
-                    });
-
-                    var url = null;
-                    if (cardId) {
-                        url = Routing.generate('json_card_update', {'deckId': DeckEdit.deckId, 'cardId': cardId});
-                    } else {
-                        url = '{{ path('json_card_create', {'deckId': deck.id}) }}';
-                    }
-                    $.blockUI({ message: 'Processing...' });
-                    $.post(url, card)
-                     .done(DeckEdit.cardSubmitComplete)
-                     .error(function() { alert("Failed"); });
-                },
-
                 deleteCard: function() {
                     var url = Routing.generate('json_card_delete', { 'deckId': DeckEdit.deckId, 'cardId': DeckEdit.cardId });
 
@@ -200,11 +173,11 @@
             </div>
             <div id="main-content">
                 <div id="card-container">
-                    <form id="card-form" method="post">
+                    <form id="card-form" method="post" enctype="multipart/form-data">
                         <div id="card-image-container">
                             <img id="card-image" src="{{ asset('bundles/tylertoptrumps/images/no-card-image.png') }}" alt="No Image Selected" height="250" width="250">
                         </div>
-                        <input type="file" id="card-image-input" name="card-image" class="hidden" />
+                        <input type="file" id="card-image-input" name="card-image" class="" />
                         <div id="card-name-container">
                             <input type="text" id="card-name-input" name="name" title="Enter the cards name (max 50 chars)" value="" />
                         </div>
