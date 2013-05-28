@@ -70,6 +70,7 @@
                 },
 
                 loadCardData: function(card) {
+                    $("#card-image").attr("src", Routing.generate('json_card_image', { 'deckId': DeckEdit.deckId, 'cardId': card.id }));
                     $("#card-name-input").val(card.name);
                     $("#card-description-input").val(card.description);
                     card.stat_values = card.stat_values ? card.stat_values : [];

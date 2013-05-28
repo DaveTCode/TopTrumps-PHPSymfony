@@ -132,4 +132,28 @@ class JSONCardController extends AbstractDbController
 
         return new Response($serializer->serialize($card, 'json'), 200);
     }
+
+    /**
+     * The image for the card can be retrieved separately from the main card
+     * data by using this action function.
+     *
+     * @param int $deckId - The card must be part of this deck.
+     * @param int $cardId - The card whose image we want.
+     */
+    public function getCardImageAction($deckId, $cardId)
+    {
+        $card = $this->checkCardId($deckId, $cardId);
+
+        $response = new Response();
+        $response->headers->set('Content-Type', 'image/png');
+        if (is_null($card->getImage()) || "" === $card->getImage()) {
+            $fp = fopen(__DIR__."\\..\\Resources\\public\\images\\no-card-image.png", "rb");
+            $response->setContent(stream_get_contents($fp));
+            fclose($fp);
+        } else {
+            $response->setContent($card->getImage());
+        }
+
+        $response->send();
+    }
 }
