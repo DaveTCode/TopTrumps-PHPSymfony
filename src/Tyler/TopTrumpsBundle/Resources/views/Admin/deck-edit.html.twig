@@ -119,7 +119,7 @@
                             DeckEdit.cardImageBytes = event.target.result;
                         };
                     })(image);
-                    reader.readAsBinaryString(image);
+                    reader.readAsDataURL(image);
                 },
 
                 submitCard: function() {
@@ -127,6 +127,7 @@
                     card.name = $("#card-name-input").val();
                     card.description = $("#card-description-input").val();
                     card.image = DeckEdit.cardImageBytes;
+                    card.image_type = DeckEdit.cardImageType;
                     card.stat_values = [];
 
                     $(".card-stat").each(function() {
@@ -150,7 +151,7 @@
 
                     $.post(url, card)
                      .done(DeckEdit.cardSubmitComplete)
-                     .error(alert("Failed"));
+                     .error(function() { alert("Failed"); });
                 },
 
                 cardSubmitComplete: function(card) {

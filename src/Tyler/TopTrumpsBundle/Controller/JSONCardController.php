@@ -42,8 +42,7 @@ class JSONCardController extends AbstractDbController
         $card = $this->checkCardId($deckId, $cardId);
         $card->setName($request->request->get('name'));
         $card->setDescription($request->request->get('description'));
-        $card->setImage($request->request->get('image'));
-        $this->get('logger')->err(strlen($request->request->get('image')));
+        $card->setImageFromURI($request->request->get('image'));
 
         /*
          * Iterate over the existing stat values and update the values. Note
@@ -107,7 +106,7 @@ class JSONCardController extends AbstractDbController
         $card->setName($request->request->get('name'));
         $card->setDescription($request->request->get('description'));
         $card->setDeck($deck);
-        $card->setImage($request->request->get('image'));
+        $card->setImageFromURI($request->request->get('image'));
 
         if ($request->request->get('stat_values')) {
             foreach ($request->request->get('stat_values') as $statValueArray) {

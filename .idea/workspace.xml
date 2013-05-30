@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2b820fd2-6e23-4709-b999-435d5d67ce31" name="Default" comment="Wrote most of the jquery front end load/submit code. 0 testing so far, this is just off the cuff writing.&#10;&#10;Also committed the project files for PHPStorm since I like it enough to keep using it.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/AbstractDbController.php" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/AbstractDbController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/DeckController.php" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/DeckController.php" />
+    <list default="true" id="2b820fd2-6e23-4709-b999-435d5d67ce31" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/Card.php" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/Card.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONCardController.php" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONCardController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/dat.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/dat.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/config/routing.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TopTrumps-PHPSymfony.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369838216348" ignored="false" />
+    <file path="/Dummy.txt" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369918114592" ignored="false" />
     <file path="/a.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368455913582" ignored="false" />
     <file path="/card.html.twig" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368438348098" ignored="false" />
     <file path="/main.css" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369350997221" ignored="false" />
-    <file path="/deck-edit.html.twig" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369909361612" ignored="false" />
+    <file path="/deck-edit.html.twig" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369920093477" ignored="false" />
     <file path="/AbstractDeckController.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368456062274" ignored="false" />
-    <file path="/JSONCardController.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369908713380" ignored="false" />
+    <file path="/JSONCardController.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369918405943" ignored="false" />
     <file path="/AbstractDbController.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369839353836" ignored="false" />
     <file path="/CardController.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368456277714" ignored="false" />
     <file path="/JSONDeckController.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368456337192" ignored="false" />
@@ -28,6 +26,7 @@
     <file path="/sidebar.css" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369350923628" ignored="false" />
     <file path="/card.css" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369653940207" ignored="false" />
     <file path="/test.html.twig" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369841427231" ignored="false" />
+    <file path="/Card.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369919916745" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,8 +53,19 @@
       <file leaf-file-name="JSONCardController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONCardController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="163" column="24" selection-start="5870" selection-end="5870" vertical-scroll-proportion="-25.0">
+            <state line="165" column="0" selection-start="5818" selection-end="5818" vertical-scroll-proportion="-74.03846">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Card.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/Card.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="133" column="70" selection-start="2457" selection-end="2457" vertical-scroll-proportion="-11.769231">
+              <folding>
+                <element signature="e#48#80#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -63,7 +73,7 @@
       <file leaf-file-name="deck-edit.html.twig" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="128" column="57" selection-start="6061" selection-end="6061" vertical-scroll-proportion="0.3329114">
+            <state line="168" column="43" selection-start="7867" selection-end="7877" vertical-scroll-proportion="2.4101267">
               <folding />
             </state>
           </provider>
@@ -72,7 +82,7 @@
       <file leaf-file-name="JSONDeckController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONDeckController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="8" selection-start="603" selection-end="673" vertical-scroll-proportion="-11.692307">
+            <state line="21" column="8" selection-start="603" selection-end="673" vertical-scroll-proportion="-0.65384614">
               <folding />
             </state>
           </provider>
@@ -108,7 +118,6 @@
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/main.css" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/StatValue.php" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/Stat.php" />
-        <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/Card.php" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/card.css" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/AbstractDbController.php" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/test.html" />
@@ -116,6 +125,7 @@
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/test.html.twig" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONCardController.php" />
+        <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/Card.php" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig" />
       </list>
     </option>
@@ -382,8 +392,8 @@
     <property name="options.lastSelected" value="JavaScript.Libraries" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/phpunit.xml.dist" />
     <property name="FullScreen" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RestClientSettings">
     <option name="LAST_HOST" value="http://127.0.0.1:8011/" />
@@ -398,7 +408,7 @@
     </configuration>
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local" singleton="true">
       <JSDebuggerConfigurationSettings>
-        <option name="engineId" />
+        <option name="engineId" value="embedded" />
         <option name="fileUrl" />
       </JSDebuggerConfigurationSettings>
       <method />
@@ -437,7 +447,11 @@
       <created>1368460474209</created>
       <updated>1368460474209</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Moving to use HTML5 file readers to load the images and send them as byte strings to the backend. Haven't quite figured out the encoding portion of that yet.&#10; &#10; The byte string definitely ends up in the database though.">
+      <created>1369910079694</created>
+      <updated>1369910079694</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -446,11 +460,10 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32982457" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23987034" sideWeight="0.67017543" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2439222" sideWeight="0.67017543" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23906706" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -459,6 +472,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32982457" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32982457" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35990623" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -508,7 +522,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Wrote most of the jquery front end load/submit code. 0 testing so far, this is just off the cuff writing.&#10;&#10;Also committed the project files for PHPStorm since I like it enough to keep using it." />
+    <option name="LAST_COMMIT_MESSAGE" value="Moving to use HTML5 file readers to load the images and send them as byte strings to the backend. Haven't quite figured out the encoding portion of that yet.&#10; &#10; The byte string definitely ends up in the database though." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -525,6 +539,7 @@
     <confirmMoveToFailedCommit value="1" />
     <MESSAGE value="Started writing correct controller for displaying templates of the deck edit screen.&#10;&#10;Abstracted out the check for deck and card ids.&#10;&#10;Removed some default files from the template project.&#10; &#10; Changing main.css to fluid two column layout" />
     <MESSAGE value="Wrote most of the jquery front end load/submit code. 0 testing so far, this is just off the cuff writing.&#10;&#10;Also committed the project files for PHPStorm since I like it enough to keep using it." />
+    <MESSAGE value="Moving to use HTML5 file readers to load the images and send them as byte strings to the backend. Haven't quite figured out the encoding portion of that yet.&#10; &#10; The byte string definitely ends up in the database though." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -572,49 +587,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/AbstractDbController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="9" selection-start="774" selection-end="870" vertical-scroll-proportion="0.5292653">
-          <folding />
-        </state>
+        <state line="25" column="9" selection-start="774" selection-end="870" vertical-scroll-proportion="0.5292653" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="110" column="18" selection-start="3088" selection-end="3088" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="110" column="18" selection-start="3088" selection-end="3088" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/DeckController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="56" selection-start="1466" selection-end="1466" vertical-scroll-proportion="0.91531754">
+        <state line="47" column="56" selection-start="1466" selection-end="1466" vertical-scroll-proportion="0.91531754" />
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_3.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="9" selection-start="751" selection-end="751" vertical-scroll-proportion="0.34371108">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONDeckController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="8" selection-start="603" selection-end="673" vertical-scroll-proportion="-11.692307">
+        <state line="21" column="8" selection-start="603" selection-end="673" vertical-scroll-proportion="-0.65384614">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/Card.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="84" selection-start="739" selection-end="739" vertical-scroll-proportion="-1.2291408">
-          <folding />
+        <state line="133" column="70" selection-start="2457" selection-end="2457" vertical-scroll-proportion="-11.769231">
+          <folding>
+            <element signature="e#48#80#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONCardController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="163" column="24" selection-start="5870" selection-end="5870" vertical-scroll-proportion="-25.0">
+        <state line="165" column="0" selection-start="5818" selection-end="5818" vertical-scroll-proportion="-74.03846">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="128" column="57" selection-start="6061" selection-end="6061" vertical-scroll-proportion="0.3329114">
+        <state line="168" column="43" selection-start="7867" selection-end="7877" vertical-scroll-proportion="2.4101267">
           <folding />
         </state>
       </provider>

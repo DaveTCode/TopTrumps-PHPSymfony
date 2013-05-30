@@ -4,10 +4,13 @@ namespace Tyler\TopTrumpsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Exclude;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="card")
+ * @ExclusionPolicy("none")
  */
 class Card
 {
@@ -30,6 +33,7 @@ class Card
 
     /**
      * @ORM\Column(type="blob", nullable=true)
+     * @Exclude
      */
     protected $image;
 
@@ -119,9 +123,24 @@ class Card
     }
 
     /**
+     * Set the image from a URI format string (i.e. the sort that comes back
+     * from a FileReader.readDataURL in HTML5).
+     *
+     * @param string $image
+     * @return Card
+     */
+    public function setImageFromURI($image)
+    {
+        $image = preg_replace('/data:image.*?;base64,/', '', $image, 1);
+        $this->image = base64_decode($image);
+
+        return $this;
+    }
+
+    /**
      * Get image
      *
-     * @return string 
+     * @return Resource
      */
     public function getImage()
     {
