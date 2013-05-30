@@ -19,7 +19,6 @@ class JSONDeckController extends AbstractDbController
     public function createAction()
     {
         $request = $this->getRequest();
-        $this->get('logger')->err(implode($request->request->all()));
         $deck = new Deck();
         $deck->setName($request->request->get('name'));
         $deck->setDescription($request->request->get('description'));

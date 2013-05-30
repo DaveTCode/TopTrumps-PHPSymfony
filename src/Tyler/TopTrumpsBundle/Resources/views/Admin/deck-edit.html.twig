@@ -13,11 +13,25 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
         <script type="text/javascript" src="{{ asset('bundles/tylertoptrumps/js/jquery.watermark.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('bundles/tylertoptrumps/js/jquery.blockUI.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('bundles/tylertoptrumps/js/jquery.form.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/tylertoptrumps/js/jquery.history.min.js') }}"></script>
 
         <script type="text/javascript">
             $(document).ready(function() {
-                $(document).ajaxStop($.unblockUI);
+                /*
+                 * Whilst there is an ajax request outstanding the UI is always blocked.
+                 */
+                $(document).ajaxStart(function() {
+                    if (DeckEdit.ajaxRequestsOutstanding === 0) {
+                        $.blockUI({message: 'Processing...'});
+                    }
+                    DeckEdit.ajaxRequestsOutstanding++;
+                });
+                $(document).ajaxStop(function() {
+                    DeckEdit.ajaxRequestsOutstanding--;
+                    if (DeckEdit.ajaxRequestsOutstanding === 0) {
+                        $.unblockUI();
+                    }
+                });
 
                 $('#card-name-input').watermark('Card name');
                 $('#card-description-input').watermark('Card description');
@@ -40,8 +54,6 @@
 
                 $("#card-image-input").on("change", DeckEdit.loadImageBytes);
 
-                $("#save-button").on("click", DeckEdit.submitCard);
-
                 {% if card != null %}
                 DeckEdit.selectCard({{ card.id }});
                 {% else %}
@@ -50,38 +62,60 @@
             });
 
             var DeckEdit = {
-                deckId: {{ deck.id }},
+                History: window.History,
 
-                cardId: {% if card != null %} {{ card.id }} {% else %} null {% endif %},
+                ajaxRequestsOutstanding: 0,
+
+                deckId: {{ deck.id }},
 
                 cardImageBytes: null,
 
                 selectCard: function(cardId) {
-                    $.blockUI({ message: 'Processing...'});
                     $.get(Routing.generate('json_card_view', {'deckId': DeckEdit.deckId, 'cardId': cardId}))
                      .done(DeckEdit.loadCardData);
                 },
 
                 newCard: function() {
                     $(".card-list-element").removeClass("selected-card-list-element");
+                    DeckEdit.pushCardToHistory(null);
                     DeckEdit.clearCard();
-                    $(".card-stat-select").val($(".card-stat-select option:first").val());
-                    $("#delete-button").off("click").addClass("disabled");
                 },
 
                 clearCard: function() {
-                    DeckEdit.cardId = null;
+                    DeckEdit.clearValidation();
+
                     DeckEdit.cardImageBytes = null;
                     $("#card-name-input").val("");
                     $("#card-description-input").val("");
                     $("#card-image-input").val("");
                     $("#card-image").attr("src", "{{ asset('bundles/tylertoptrumps/images/no-card-image.png') }}");
-                    DeckEdit.clearValidation();
+                    $(".card-stat-select").val($(".card-stat-select option:first").val());
+                    $("#delete-button").off("click").addClass("disabled");
+                    $("#save-button").off("click").on("click", DeckEdit.submitCard);
+                },
+
+                pushCardToHistory: function(cardId) {
+                    var currentUrl = window.location.pathname;
+
+                    if (cardId) {
+                        if (/card$/.test(currentUrl)) {
+                            window.History.pushState(null, null, "card/" + cardId);
+                        } else {
+                            window.History.pushState(null, null, cardId)
+                        }
+                    } else {
+                        if (/card$/.test(currentUrl)) {
+                            window.History.pushState(null, null, "card");
+                        } else {
+                            window.History.pushState(null, null, "../card");
+                        }
+                    }
                 },
 
                 loadCardData: function(card) {
                     DeckEdit.clearCard();
                     DeckEdit.cardId = card.id;
+                    DeckEdit.pushCardToHistory(card.id);
 
                     $("#card-image").attr("src", Routing.generate('json_card_image', { 'deckId': DeckEdit.deckId, 'cardId': card.id }));
                     $("#card-name-input").val(card.name);
@@ -98,21 +132,23 @@
                     $("#card-" + DeckEdit.cardId).addClass("selected-card-list-element");
 
                     $("#delete-button").off("click").on("click", function() {
-                        DeckEdit.deleteCard();
+                        DeckEdit.deleteCard(card.id);
                     }).removeClass("disabled");
+                    $("#save-button").off("click").on("click", function() {
+                        DeckEdit.submitCard(card.id);
+                    });
                 },
 
-                deleteCard: function() {
-                    var url = Routing.generate('json_card_delete', { 'deckId': DeckEdit.deckId, 'cardId': DeckEdit.cardId });
+                deleteCard: function(cardId) {
+                    var url = Routing.generate('json_card_delete', { 'deckId': DeckEdit.deckId, 'cardId': cardId });
 
-                    $.blockUI({ message: 'Processing...' });
                     $.ajax({ "url": url, "method": "DELETE" })
-                     .done(DeckEdit.deleteCardComplete)
+                     .done(function(card) { DeckEdit.deleteCardComplete(cardId, card); })
                      .error(function() { alert("Failed"); });
                 },
 
-                deleteCardComplete: function(card) {
-                    $('#card-' + DeckEdit.cardId).remove();
+                deleteCardComplete: function(cardId, card) {
+                    $('#card-' + cardId).remove();
                     DeckEdit.clearCard();
                 },
 
@@ -143,7 +179,7 @@
                         $("#card-description-input").addClass("invalid");
                         validationPassed = false;
                     }
-                    if (card.image === null || card.image.length < 1) {
+                    if ((card.image === null || card.image.length < 1) && DeckEdit.cardId === null) {
                         $("#card-image").addClass("invalid");
                         validationPassed = false;
                     }
@@ -151,7 +187,7 @@
                     return validationPassed;
                 },
 
-                submitCard: function() {
+                submitCard: function(cardId) {
                     var card = {};
                     card.name = $("#card-name-input").val();
                     card.description = $("#card-description-input").val();
@@ -172,8 +208,8 @@
                          * card.
                          */
                         var url = null;
-                        if (DeckEdit.cardId) {
-                            url = Routing.generate('json_card_update', {'deckId': DeckEdit.deckId, 'cardId': DeckEdit.cardId});
+                        if (cardId) {
+                            url = Routing.generate('json_card_update', {'deckId': DeckEdit.deckId, 'cardId': cardId});
                         } else {
                             url = '{{ path('json_card_create', {'deckId': deck.id}) }}';
                         }
