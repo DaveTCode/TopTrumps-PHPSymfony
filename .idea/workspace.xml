@@ -2,19 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b820fd2-6e23-4709-b999-435d5d67ce31" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/Card.php" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/Card.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONCardController.php" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONCardController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/dat.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/dat.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/card.css" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/card.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TopTrumps-PHPSymfony.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369918114592" ignored="false" />
+    <file path="/Dummy.txt" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369927643416" ignored="false" />
     <file path="/a.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368455913582" ignored="false" />
     <file path="/card.html.twig" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368438348098" ignored="false" />
     <file path="/main.css" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369350997221" ignored="false" />
-    <file path="/deck-edit.html.twig" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369920093477" ignored="false" />
+    <file path="/deck-edit.html.twig" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369929003919" ignored="false" />
     <file path="/AbstractDeckController.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368456062274" ignored="false" />
     <file path="/JSONCardController.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369918405943" ignored="false" />
     <file path="/AbstractDbController.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369839353836" ignored="false" />
@@ -24,7 +22,7 @@
     <file path="/routing.yml" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369841734682" ignored="false" />
     <file path="/config.yml" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368722806876" ignored="false" />
     <file path="/sidebar.css" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369350923628" ignored="false" />
-    <file path="/card.css" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369653940207" ignored="false" />
+    <file path="/card.css" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369928708314" ignored="false" />
     <file path="/test.html.twig" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369841427231" ignored="false" />
     <file path="/Card.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369919916745" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -50,30 +48,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="JSONCardController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONCardController.php">
+      <file leaf-file-name="deck-edit.html.twig" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="165" column="0" selection-start="5818" selection-end="5818" vertical-scroll-proportion="-74.03846">
+            <state line="182" column="2" selection-start="8394" selection-end="8394" vertical-scroll-proportion="0.8708861">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Card.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/Card.php">
+      <file leaf-file-name="card.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/card.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="133" column="70" selection-start="2457" selection-end="2457" vertical-scroll-proportion="-11.769231">
-              <folding>
-                <element signature="e#48#80#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="deck-edit.html.twig" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="168" column="43" selection-start="7867" selection-end="7877" vertical-scroll-proportion="2.4101267">
+            <state line="83" column="27" selection-start="1486" selection-end="1486" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -82,7 +69,7 @@
       <file leaf-file-name="JSONDeckController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONDeckController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="8" selection-start="603" selection-end="673" vertical-scroll-proportion="-0.65384614">
+            <state line="21" column="8" selection-start="603" selection-end="673" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -118,7 +105,6 @@
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/main.css" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/StatValue.php" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/Stat.php" />
-        <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/card.css" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/AbstractDbController.php" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/test.html" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/DeckController.php" />
@@ -126,6 +112,7 @@
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/test.html.twig" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONCardController.php" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/Card.php" />
+        <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/card.css" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig" />
       </list>
     </option>
@@ -185,7 +172,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -352,6 +338,40 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TopTrumps-PHPSymfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TopTrumps-PHPSymfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tyler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TopTrumpsBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Entity" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -384,6 +404,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -392,8 +413,8 @@
     <property name="options.lastSelected" value="JavaScript.Libraries" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/phpunit.xml.dist" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RestClientSettings">
     <option name="LAST_HOST" value="http://127.0.0.1:8011/" />
@@ -451,7 +472,11 @@
       <created>1369910079694</created>
       <updated>1369910079694</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="images are now being correctly sent and stored in the database. Sent as base 64 encoding, stored decoded and treated as actual images on a specific route. Seems like a neat solution to me, only question is whether it takes advantage of caching (or should).&#10;&#10;Javascript code is a little stateful for my liking so might fix that at some point.">
+      <created>1369920905043</created>
+      <updated>1369920905043</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -463,7 +488,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2439222" sideWeight="0.67017543" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24797407" sideWeight="0.67017543" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23906706" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -522,7 +547,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Moving to use HTML5 file readers to load the images and send them as byte strings to the backend. Haven't quite figured out the encoding portion of that yet.&#10; &#10; The byte string definitely ends up in the database though." />
+    <option name="LAST_COMMIT_MESSAGE" value="images are now being correctly sent and stored in the database. Sent as base 64 encoding, stored decoded and treated as actual images on a specific route. Seems like a neat solution to me, only question is whether it takes advantage of caching (or should).&#10;&#10;Javascript code is a little stateful for my liking so might fix that at some point." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -540,6 +565,7 @@
     <MESSAGE value="Started writing correct controller for displaying templates of the deck edit screen.&#10;&#10;Abstracted out the check for deck and card ids.&#10;&#10;Removed some default files from the template project.&#10; &#10; Changing main.css to fluid two column layout" />
     <MESSAGE value="Wrote most of the jquery front end load/submit code. 0 testing so far, this is just off the cuff writing.&#10;&#10;Also committed the project files for PHPStorm since I like it enough to keep using it." />
     <MESSAGE value="Moving to use HTML5 file readers to load the images and send them as byte strings to the backend. Haven't quite figured out the encoding portion of that yet.&#10; &#10; The byte string definitely ends up in the database though." />
+    <MESSAGE value="images are now being correctly sent and stored in the database. Sent as base 64 encoding, stored decoded and treated as actual images on a specific route. Seems like a neat solution to me, only question is whether it takes advantage of caching (or should).&#10;&#10;Javascript code is a little stateful for my liking so might fix that at some point." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -575,11 +601,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/card.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="1" selection-start="815" selection-end="815" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/js/jquery.form.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="23" selection-start="203" selection-end="203" vertical-scroll-proportion="0.125" />
@@ -602,37 +623,40 @@
     </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_3.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="9" selection-start="751" selection-end="751" vertical-scroll-proportion="0.34371108">
-          <folding />
-        </state>
+        <state line="26" column="9" selection-start="751" selection-end="751" vertical-scroll-proportion="0.34371108" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONDeckController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="8" selection-start="603" selection-end="673" vertical-scroll-proportion="-0.65384614">
+        <state line="21" column="8" selection-start="603" selection-end="673" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/card.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="27" selection-start="1486" selection-end="1486" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONCardController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="165" column="0" selection-start="5818" selection-end="5818" vertical-scroll-proportion="0.87297636">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/Card.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="133" column="70" selection-start="2457" selection-end="2457" vertical-scroll-proportion="-11.769231">
-          <folding>
-            <element signature="e#48#80#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONCardController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="165" column="0" selection-start="5818" selection-end="5818" vertical-scroll-proportion="-74.03846">
+        <state line="133" column="70" selection-start="2457" selection-end="2457" vertical-scroll-proportion="0.02117061">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="168" column="43" selection-start="7867" selection-end="7877" vertical-scroll-proportion="2.4101267">
+        <state line="182" column="2" selection-start="8394" selection-end="8394" vertical-scroll-proportion="0.8708861">
           <folding />
         </state>
       </provider>

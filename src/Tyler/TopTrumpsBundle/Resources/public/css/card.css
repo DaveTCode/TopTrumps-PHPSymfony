@@ -79,3 +79,7 @@
 .card-stat-select {
     width: 175px;
 }
+
+.invalid {
+    border: 2px dashed red;
+}
