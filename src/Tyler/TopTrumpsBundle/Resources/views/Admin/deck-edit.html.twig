@@ -28,9 +28,9 @@
                     DeckEdit.selectCard(cardId);
                 });
 
-                $("#new-card-list-element").click(DeckEdit.newCard);
+                $("#new-card-list-element").on("click", DeckEdit.newCard);
 
-                $("#card-image").click(function() {
+                $("#card-image").on("click", function() {
                     /*
                      * An input element has to be visible with focus before the
                      * click event will fire on it.
@@ -38,45 +38,9 @@
                     $("#card-image-input").show().focus().click().hide();
                 });
 
-                $("#card-form").submit(function() {
-                    /*
-                     * The url depends on whether we are creating or updating a
-                     * card.
-                     */
-                    var url = null;
-                    if (DeckEdit.cardId) {
-                        url = Routing.generate('json_card_update', {'deckId': DeckEdit.deckId, 'cardId': DeckEdit.cardId});
-                    } else {
-                        url = '{{ path('json_card_create', {'deckId': deck.id}) }}';
-                    }
+                $("#card-image-input").on("change", DeckEdit.loadImageBytes);
 
-                    var card = {};
-                    card.stat_values = [];
-
-                    $(".card-stat").each(function() {
-                        var statValue = {};
-                        statValue.id = $(this).attr("id").replace("stat-id-", "");
-                        statValue.value = $(this).find("select").val();
-
-                        card.stat_values.push(statValue);
-                    });
-
-                    /*
-                     * Construct the ajax form and submit it.
-                     */
-                    $("#card-form").ajaxSubmit( {
-                        url: url,
-                        data: card,
-                        dataType: 'json',
-                        success: DeckEdit.cardSubmitComplete
-                    });
-
-                    return false;
-                });
-
-                $("#save-button").on("click", function() {
-                    $("#card-form").submit();
-                });
+                $("#save-button").on("click", DeckEdit.submitCard);
 
                 {% if card != null %}
                 DeckEdit.selectCard({{ card.id }});
@@ -89,6 +53,8 @@
                 deckId: {{ deck.id }},
 
                 cardId: {% if card != null %} {{ card.id }} {% else %} null {% endif %},
+
+                cardImageBytes: null,
 
                 selectCard: function(cardId) {
                     $.blockUI({ message: 'Processing...'});
@@ -106,6 +72,7 @@
 
                 clearCard: function() {
                     DeckEdit.cardId = null;
+                    DeckEdit.cardImageBytes = null;
                     $("#card-name-input").val("");
                     $("#card-description-input").val("");
                     $("#card-image-input").val("");
@@ -144,6 +111,48 @@
                     $('#card-' + DeckEdit.cardId).remove();
                 },
 
+                loadImageBytes: function() {
+                    var reader = new FileReader();
+                    var image = $("#card-image-input")[0].files[0];
+                    reader.onload = (function(imageFile) {
+                        return function(event) {
+                            DeckEdit.cardImageBytes = event.target.result;
+                        };
+                    })(image);
+                    reader.readAsBinaryString(image);
+                },
+
+                submitCard: function() {
+                    var card = {};
+                    card.name = $("#card-name-input").val();
+                    card.description = $("#card-description-input").val();
+                    card.image = DeckEdit.cardImageBytes;
+                    card.stat_values = [];
+
+                    $(".card-stat").each(function() {
+                        var statValue = {};
+                        statValue.id = $(this).attr("id").replace("stat-id-", "");
+                        statValue.value = $(this).find("select").val();
+
+                        card.stat_values.push(statValue);
+                    });
+
+                    /*
+                     * The url depends on whether we are creating or updating a
+                     * card.
+                     */
+                    var url = null;
+                    if (DeckEdit.cardId) {
+                        url = Routing.generate('json_card_update', {'deckId': DeckEdit.deckId, 'cardId': DeckEdit.cardId});
+                    } else {
+                        url = '{{ path('json_card_create', {'deckId': deck.id}) }}';
+                    }
+
+                    $.post(url, card)
+                     .done(DeckEdit.cardSubmitComplete)
+                     .error(alert("Failed"));
+                },
+
                 cardSubmitComplete: function(card) {
                     /*
                      * Replace the name of the card if it already exists in the
@@ -179,30 +188,29 @@
             </div>
             <div id="main-content">
                 <div id="card-container">
-                    <form id="card-form" method="post" enctype="multipart/form-data">
-                        <div id="card-image-container">
-                            <img id="card-image" src="{{ asset('bundles/tylertoptrumps/images/no-card-image.png') }}" alt="No Image Selected" height="250" width="250">
-                        </div>
-                        <input type="file" id="card-image-input" name="image" class="" />
-                        <div id="card-name-container">
-                            <input type="text" id="card-name-input" name="name" title="Enter the cards name (max 50 chars)" value="" />
-                        </div>
-                        <div id="card-description-container">
-                            <textarea id="card-description-input" name="description" title="Enter the cards description (max 250 chars)"></textarea>
-                        </div>
-                        <div id="card-stat-container">
-                            {% for cardStat in deck.stats %}
-                                <div class="card-stat" id="stat-id-{{ cardStat.id }}">
-                                    <span class="card-stat-text">{{ cardStat.name }}</span>
-                                    <select class="card-stat-select" name="stat-{{ cardStat.id }}">
-                                        {% for value in range(cardStat.min, cardStat.max) %}
-                                            <option value="{{ value }}">{{ value }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </form>
+                    <div id="card-image-container">
+                        <img id="card-image" src="{{ asset('bundles/tylertoptrumps/images/no-card-image.png') }}" alt="No Image Selected" height="250" width="250">
+                    </div>
+                    <input type="file" id="card-image-input" name="image" class="hidden" />
+                    <p id="card-image-bytes" class="hidden"></p>
+                    <div id="card-name-container">
+                        <input type="text" id="card-name-input" name="name" title="Enter the cards name (max 50 chars)" value="" />
+                    </div>
+                    <div id="card-description-container">
+                        <textarea id="card-description-input" name="description" title="Enter the cards description (max 250 chars)"></textarea>
+                    </div>
+                    <div id="card-stat-container">
+                        {% for cardStat in deck.stats %}
+                            <div class="card-stat" id="stat-id-{{ cardStat.id }}">
+                                <span class="card-stat-text">{{ cardStat.name }}</span>
+                                <select class="card-stat-select" name="stat-{{ cardStat.id }}">
+                                    {% for value in range(cardStat.min, cardStat.max) %}
+                                        <option value="{{ value }}">{{ value }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        {% endfor %}
+                    </div>
                 </div>
                 <div id="button-container">
                     <a href="#" id="delete-button" class="action-button">Delete</a>

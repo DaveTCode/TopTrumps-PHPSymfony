@@ -55,7 +55,7 @@ abstract class AbstractDbController extends Controller
     }
 
     /**
-     * USed to abstract away retrieving a stat from the database or throwing a
+     * Used to abstract away retrieving a stat from the database or throwing a
      * not found exception (404).
      *
      * Also checks that the stat is part of the deck suggested.

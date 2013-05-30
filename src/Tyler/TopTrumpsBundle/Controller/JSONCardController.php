@@ -144,6 +144,8 @@ class JSONCardController extends AbstractDbController
      *
      * @param int $deckId - The card must be part of this deck.
      * @param int $cardId - The card whose image we want.
+     * @return Response - Contains the image with appropriate http headers set
+     * to indicate the image type.
      */
     public function getCardImageAction($deckId, $cardId)
     {
@@ -156,9 +158,9 @@ class JSONCardController extends AbstractDbController
             $response->setContent(stream_get_contents($fp));
             fclose($fp);
         } else {
-            $response->setContent($card->getImage());
+            $response->setContent(stream_get_contents($card->getImage()));
         }
 
-        $response->send();
+        return $response;
     }
 }

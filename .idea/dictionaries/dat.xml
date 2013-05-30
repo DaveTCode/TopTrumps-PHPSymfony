@@ -3,6 +3,8 @@
     <words>
       <w>assetic</w>
       <w>autoload</w>
+      <w>browserplus</w>
+      <w>clientside</w>
       <w>fosjsrouting</w>
       <w>friendsofsymfony</w>
       <w>googleapis</w>
@@ -11,8 +13,12 @@
       <w>monolog</w>
       <w>multipart</w>
       <w>nullable</w>
+      <w>onload</w>
+      <w>plupload</w>
       <w>roboto</w>
+      <w>runtimes</w>
       <w>sensio</w>
+      <w>silverlight</w>
       <w>swiftmailer</w>
       <w>symfony</w>
       <w>tylertoptrumps</w>
