@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b820fd2-6e23-4709-b999-435d5d67ce31" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/js/jquery.history.min.js" />
-      <change type="DELETED" beforePath="C:\Users\David\TopTrumpsWebServer\src\Tyler\TopTrumpsBundle\Resources\public\js\jquery.form.min.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONDeckController.php" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONDeckController.php" />
+      <change type="DELETED" beforePath="C:\Home Projects\TopTrumps-PHPSymfony\src\Tyler\TopTrumpsBundle\Resources\views\Admin\card.html.twig" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/CardController.php" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/CardController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/TopTrumps-PHPSymfony.iml" afterPath="$PROJECT_DIR$/.idea/TopTrumps-PHPSymfony.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/card.css" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/card.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig" afterPath="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TopTrumps-PHPSymfony.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369937607419" ignored="false" />
+    <file path="/Dummy.txt" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1370272852026" ignored="false" />
     <file path="/a.php" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368455913582" ignored="false" />
     <file path="/card.html.twig" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1368438348098" ignored="false" />
     <file path="/main.css" changelist="2b820fd2-6e23-4709-b999-435d5d67ce31" time="1369350997221" ignored="false" />
@@ -52,10 +49,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="deck-edit.html.twig" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="deck-edit.html.twig" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="107" column="73" selection-start="4911" selection-end="4911" vertical-scroll-proportion="0.7671093">
+            <state line="121" column="42" selection-start="5521" selection-end="5521" vertical-scroll-proportion="-9.807693">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CardController.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/CardController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="0" selection-start="104" selection-end="104" vertical-scroll-proportion="0.12702367">
               <folding />
             </state>
           </provider>
@@ -73,7 +79,7 @@
       <file leaf-file-name="JSONCardController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONCardController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="123" column="50" selection-start="4437" selection-end="4437" vertical-scroll-proportion="-30.807692">
+            <state line="123" column="50" selection-start="4437" selection-end="4437" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -102,7 +108,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/StatValue.php" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/Stat.php" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/AbstractDbController.php" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/test.html" />
@@ -118,6 +123,7 @@
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/js/jquery.history.js" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/js/ajaxify.html5.js" />
         <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig" />
+        <option value="$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/CardController.php" />
       </list>
     </option>
   </component>
@@ -125,8 +131,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1186" />
+    <option name="width" value="1296" />
+    <option name="height" value="1010" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -176,6 +182,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -190,7 +197,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="TopTrumpsWebServer" />
+              <option name="myItemId" value="TopTrumps-PHPSymfony" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -200,7 +207,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="TopTrumpsWebServer" />
+              <option name="myItemId" value="TopTrumps-PHPSymfony" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -214,7 +221,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="TopTrumpsWebServer" />
+              <option name="myItemId" value="TopTrumps-PHPSymfony" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -236,7 +243,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="TopTrumpsWebServer" />
+              <option name="myItemId" value="TopTrumps-PHPSymfony" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -270,7 +277,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="TopTrumpsWebServer" />
+              <option name="myItemId" value="TopTrumps-PHPSymfony" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -287,136 +294,11 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TopTrumps-PHPSymfony" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TopTrumpsWebServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tyler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TopTrumpsBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TopTrumps-PHPSymfony" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TopTrumpsWebServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tyler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TopTrumpsBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TopTrumps-PHPSymfony" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TopTrumpsWebServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tyler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TopTrumpsBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TopTrumps-PHPSymfony" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TopTrumpsWebServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tyler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TopTrumpsBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -492,16 +374,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1186" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1296" height="1010" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297769" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32865497" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25080043" sideWeight="0.67022306" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2552674" sideWeight="0.67134506" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23906706" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -583,6 +465,20 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/card.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="13" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONCardController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="123" column="50" selection-start="4437" selection-end="4437" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Entity/Deck.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -615,16 +511,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONDeckController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="603" selection-end="603" vertical-scroll-proportion="0.27783453">
-          <folding />
-        </state>
+        <state line="21" column="0" selection-start="603" selection-end="603" vertical-scroll-proportion="0.27783453" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/css/card.css">
@@ -636,33 +528,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/JSONCardController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="123" column="50" selection-start="4437" selection-end="4437" vertical-scroll-proportion="-30.807692">
+        <state line="123" column="50" selection-start="4437" selection-end="4437" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/js/jquery.blockUI.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="28" selection-start="57" selection-end="57" vertical-scroll-proportion="0.034274194">
-          <folding>
-            <marker date="1368726331821" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1368726331821" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1368726331821" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1368726331821" expanded="false" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
+        <state line="2" column="28" selection-start="57" selection-end="57" vertical-scroll-proportion="0.034274194" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/public/js/jquery.history.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="248" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="248" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Resources/views/Admin/deck-edit.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="73" selection-start="4911" selection-end="4911" vertical-scroll-proportion="0.7671093">
+        <state line="121" column="42" selection-start="5521" selection-end="5521" vertical-scroll-proportion="-9.807693">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tyler/TopTrumpsBundle/Controller/CardController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="104" selection-end="104" vertical-scroll-proportion="0.12702367">
           <folding />
         </state>
       </provider>
