@@ -3,6 +3,8 @@
 namespace Tyler\TopTrumpsBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 /**
  * Class AbstractDbController
@@ -10,6 +12,25 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  */
 abstract class AbstractDbController extends Controller
 {
+    /**
+     * Checks whether any of a set of parameters exist in a request object.
+     *
+     * If any parameters are missing then the server will respond with a 400
+     * response.
+     *
+     * @param Request $request - The HTTP request.
+     * @param array $names - The parameters to look for
+     * @throws \Symfony\Component\HttpKernel\Exception\HttpException
+     */
+    protected function checkRequestParam(Request $request, array $names)
+    {
+        foreach ($names as $name) {
+            if (!$request->request->has($name)) {
+                throw new HttpException(400);
+            }
+        }
+    }
+
     /**
      * Used to abstract away retrieving a card from the database or throwing a
      * not found exception (404).

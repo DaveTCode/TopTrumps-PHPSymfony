@@ -39,10 +39,15 @@ class JSONCardController extends AbstractDbController
         $em = $this->getDoctrine()->getManager();
         $request = $this->getRequest();
 
+        $this->checkRequestParam($request, array('name', 'description'));
+
         $card = $this->checkCardId($deckId, $cardId);
         $card->setName($request->request->get('name'));
         $card->setDescription($request->request->get('description'));
-        $card->setImageFromURI($request->request->get('image'));
+
+        if ($request->request->has('image')) {
+            $card->setImageFromURI($request->request->get('image'));
+        }
 
         /*
          * Iterate over the existing stat values and update the values. Note
@@ -101,6 +106,8 @@ class JSONCardController extends AbstractDbController
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getManager();
         $deck = $this->checkDeckId($deckId);
+
+        $this->checkRequestParam($request, array('name', 'description', 'image'));
 
         $card = new Card();
         $card->setName($request->request->get('name'));

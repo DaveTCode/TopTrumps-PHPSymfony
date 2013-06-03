@@ -19,6 +19,9 @@ class JSONDeckController extends AbstractDbController
     public function createAction()
     {
         $request = $this->getRequest();
+
+        $this->checkRequestParam($request, array('name', 'description'));
+
         $deck = new Deck();
         $deck->setName($request->request->get('name'));
         $deck->setDescription($request->request->get('description'));
@@ -58,6 +61,8 @@ class JSONDeckController extends AbstractDbController
     {
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getManager();
+
+        $this->checkRequestParam($request, array('name', 'description'));
 
         $deck = $this->checkDeckId($deckId);
         $deck->setName($request->request->get('name'));
