@@ -39,12 +39,16 @@ class JSONCardController extends AbstractDbController
         $em = $this->getDoctrine()->getManager();
         $request = $this->getRequest();
 
-        $this->checkRequestParam($request, array('name', 'description'));
-
         $card = $this->checkCardId($deckId, $cardId);
-        $card->setName($request->request->get('name'));
-        $card->setDescription($request->request->get('description'));
-
+        /*
+         * Only modified fields need to be changed on the card
+         */
+        if ($request->request->has('name')) {
+            $card->setName($request->request->get('name'));
+        }
+        if ($request->request->has('description')) {
+            $card->setDescription($request->request->get('description'));
+        }
         if ($request->request->has('image')) {
             $card->setImageFromURI($request->request->get('image'));
         }
@@ -56,6 +60,7 @@ class JSONCardController extends AbstractDbController
          */
         foreach ($card->getStatValues() as $statValue) {
             foreach ($request->request->get('stat_values') as $statValueJson) {
+                /* @var StatValue $statValue */
                 if ($statValueJson["id"] === $statValue->getId()) {
                     /*
                      * Set the current value even if it's the same.

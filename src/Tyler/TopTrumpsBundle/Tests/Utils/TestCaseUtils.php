@@ -73,4 +73,25 @@ class TestCaseUtils
             static::deleteDeck($client, $id);
         }
     }
+
+    /**
+     * Utility function to create a card on a given deck and return the card
+     * id.
+     *
+     * @param Client $client
+     * @param $deckId - The deck to create the card in.
+     * @param array $fields - All fields required to create a card plus any
+     * optional ones.
+     *
+     * @return int - The resulting card id.
+     */
+    public static function addCard(Client $client, $deckId, array $fields)
+    {
+        $client->request('POST',
+                         '/json/deck/'.$deckId.'/card',
+                         $fields,
+                         array());
+
+        return json_decode($client->getResponse()->getContent())->id;
+    }
 }

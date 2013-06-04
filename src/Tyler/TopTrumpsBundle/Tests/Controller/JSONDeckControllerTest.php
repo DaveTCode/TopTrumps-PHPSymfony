@@ -27,7 +27,6 @@ class JSONDeckControllerTest extends WebTestCase
         TestCaseUtils::assertJsonResponse($this, $client->getResponse());
 
         $deck = json_decode($client->getResponse()->getContent());
-        $this->assertEquals(1, $deck->id);
         $this->assertEquals("Test Deck", $deck->name);
         $this->assertEquals("Test Description", $deck->description);
     }
