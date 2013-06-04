@@ -33,8 +33,8 @@ class TestCaseUtils
      * that we have a specific deck in the database for other tests.
      *
      * @param Client $client
-     * @param $name
-     * @param $description
+     * @param string $name
+     * @param string $description
      * @return int
      */
     public static function addDeck(Client $client, $name, $description)
@@ -45,5 +45,32 @@ class TestCaseUtils
             array());
 
         return json_decode($client->getResponse()->getContent())->id;
+    }
+
+    /**
+     * Delete a single deck from the database. No guarantees that the deck
+     * exists and this is not checked by the function.
+     *
+     * @param Client $client
+     * @param int $deckId
+     */
+    public static function deleteDeck(Client $client, $deckId)
+    {
+        $client->request('DELETE', '/json/deck/'.$deckId);
+    }
+
+    /**
+     * Remove all decks from the database. Utility function to clear the deck
+     * table so that we are in a known state.
+     *
+     * @param Client $client
+     */
+    public static function clearDecks(Client $client)
+    {
+        $client->request('GET', '/json/deck');
+        $jsonResponse = json_decode($client->getResponse()->getContent());
+        foreach (array_map(function($deck) { return $deck->id; }, $jsonResponse) as $id) {
+            static::deleteDeck($client, $id);
+        }
     }
 }

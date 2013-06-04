@@ -80,6 +80,40 @@ class JSONDeckControllerTest extends WebTestCase
         TestCaseUtils::assertJsonResponse($this, $client->getResponse(), 404);
     }
 
+    public function testGetMultipleDecks()
+    {
+        $client = static::createClient();
+        TestCaseUtils::clearDecks($client);
+        TestCaseUtils::addDeck($client, "Test 1", "Test 1");
+        TestCaseUtils::addDeck($client, "Test 2", "Test 2");
+        TestCaseUtils::addDeck($client, "Test 3", "Test 3");
+
+        $client->request('GET', '/json/deck');
+        TestCaseUtils::assertJsonResponse($this, $client->getResponse());
+
+        $responseJson = json_decode($client->getResponse()->getContent());
+        $this->assertEquals(3, count($responseJson));
+        foreach ($responseJson as $deck) {
+            switch ($deck->id) {
+                case 1:
+                    $this->assertEquals('Test 1', $deck->name);
+                    $this->assertEquals('Test 1', $deck->description);
+                    break;
+                case 2:
+                    $this->assertEquals('Test 2', $deck->name);
+                    $this->assertEquals('Test 2', $deck->description);
+                    break;
+                case 3:
+                    $this->assertEquals('Test 3', $deck->name);
+                    $this->assertEquals('Test 3', $deck->description);
+                    break;
+                default:
+                    $this->fail("Deck returned that was not added: ".$deck->id);
+                    break;
+            }
+        }
+    }
+
     //
     // Test remove deck options.
     //
