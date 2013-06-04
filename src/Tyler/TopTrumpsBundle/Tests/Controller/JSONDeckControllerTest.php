@@ -24,9 +24,8 @@ class JSONDeckControllerTest extends WebTestCase
                          '/json/deck',
                          array("name" => "Test Deck", "description" => "Test Description"),
                          array());
-        TestCaseUtils::assertJsonResponse($this, $client->getResponse());
+        $deck = TestCaseUtils::assertJsonResponse($this, $client->getResponse());
 
-        $deck = json_decode($client->getResponse()->getContent());
         $this->assertEquals("Test Deck", $deck->name);
         $this->assertEquals("Test Description", $deck->description);
     }
@@ -62,9 +61,8 @@ class JSONDeckControllerTest extends WebTestCase
         $id = TestCaseUtils::addDeck($client, "Test Deck", "Test Description");
 
         $client->request('GET', '/json/deck/'.$id);
-        TestCaseUtils::assertJsonResponse($this, $client->getResponse());
+        $deck = TestCaseUtils::assertJsonResponse($this, $client->getResponse());
 
-        $deck = json_decode($client->getResponse()->getContent());
         $this->assertEquals($id, $deck->id);
         $this->assertEquals("Test Deck", $deck->name);
         $this->assertEquals("Test Description", $deck->description);
@@ -85,10 +83,8 @@ class JSONDeckControllerTest extends WebTestCase
         TestCaseUtils::clearDecks($client);
 
         $client->request('GET', '/json/deck');
-        TestCaseUtils::assertJsonResponse($this, $client->getResponse());
-
-        $responseJson = json_decode($client->getResponse()->getContent());
-        $this->assertEquals(0, count($responseJson));
+        $decks = TestCaseUtils::assertJsonResponse($this, $client->getResponse());
+        $this->assertEquals(0, count($decks));
     }
 
     public function testGetMultipleDecks()
@@ -100,11 +96,10 @@ class JSONDeckControllerTest extends WebTestCase
         TestCaseUtils::addDeck($client, "Test 3", "Test 3");
 
         $client->request('GET', '/json/deck');
-        TestCaseUtils::assertJsonResponse($this, $client->getResponse());
+        $decks = TestCaseUtils::assertJsonResponse($this, $client->getResponse());
 
-        $responseJson = json_decode($client->getResponse()->getContent());
-        $this->assertEquals(3, count($responseJson));
-        foreach ($responseJson as $deck) {
+        $this->assertEquals(3, count($decks));
+        foreach ($decks as $deck) {
             switch ($deck->id) {
                 case 1:
                     $this->assertEquals('Test 1', $deck->name);
@@ -146,12 +141,11 @@ class JSONDeckControllerTest extends WebTestCase
             '/json/deck/'.$id,
             array("name" => "Test Deck"),
             array());
-        TestCaseUtils::assertJsonResponse($this, $client->getResponse());
+        $deck = TestCaseUtils::assertJsonResponse($this, $client->getResponse());
 
-        $jsonResponse = json_decode($client->getResponse()->getContent());
-        $this->assertEquals($id, $jsonResponse->id);
-        $this->assertEquals('Test Deck', $jsonResponse->name);
-        $this->assertEquals('Test description pre update', $jsonResponse->description);
+        $this->assertEquals($id, $deck->id);
+        $this->assertEquals('Test Deck', $deck->name);
+        $this->assertEquals('Test description pre update', $deck->description);
     }
 
     public function testUpdateDeckDescription()
@@ -162,12 +156,11 @@ class JSONDeckControllerTest extends WebTestCase
             '/json/deck/'.$id,
             array("description" => "Test Description"),
             array());
-        TestCaseUtils::assertJsonResponse($this, $client->getResponse());
+        $deck = TestCaseUtils::assertJsonResponse($this, $client->getResponse());
 
-        $jsonResponse = json_decode($client->getResponse()->getContent());
-        $this->assertEquals($id, $jsonResponse->id);
-        $this->assertEquals('Test Deck pre update', $jsonResponse->name);
-        $this->assertEquals('Test Description', $jsonResponse->description);
+        $this->assertEquals($id, $deck->id);
+        $this->assertEquals('Test Deck pre update', $deck->name);
+        $this->assertEquals('Test Description', $deck->description);
     }
 
     //

@@ -15,6 +15,8 @@ class TestCaseUtils
      * @param WebTestCase $testCase - Used to assert.
      * @param Response $response - The response from the client.
      * @param int $statusCode - Defaults to 200. Set otherwise.
+     *
+     * @return mixed - The json decoded response
      */
     public static function assertJsonResponse(WebTestCase $testCase, Response $response, $statusCode = 200)
     {
@@ -26,6 +28,8 @@ class TestCaseUtils
             $response->headers->contains('Content-Type', 'application/json'),
             $response->headers
         );
+
+        return json_decode($response->getContent());
     }
 
     /**
