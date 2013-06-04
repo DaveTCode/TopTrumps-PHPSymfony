@@ -127,6 +127,51 @@ class JSONDeckControllerTest extends WebTestCase
     }
 
     //
+    // Test update deck options
+    //
+    public function testUpdateNonExistentDeck()
+    {
+        $client = static::createClient();
+        $client->request('POST',
+            '/json/deck/0',
+            array("name" => "Test Deck"),
+            array());
+        TestCaseUtils::assertJsonResponse($this, $client->getResponse(), 404);
+    }
+
+    public function testUpdateDeckName()
+    {
+        $client = static::createClient();
+        $id = TestCaseUtils::addDeck($client, 'Test Deck pre update', 'Test description pre update');
+        $client->request('POST',
+            '/json/deck/'.$id,
+            array("name" => "Test Deck"),
+            array());
+        TestCaseUtils::assertJsonResponse($this, $client->getResponse());
+
+        $jsonResponse = json_decode($client->getResponse()->getContent());
+        $this->assertEquals($id, $jsonResponse->id);
+        $this->assertEquals('Test Deck', $jsonResponse->name);
+        $this->assertEquals('Test description pre update', $jsonResponse->description);
+    }
+
+    public function testUpdateDeckDescription()
+    {
+        $client = static::createClient();
+        $id = TestCaseUtils::addDeck($client, 'Test Deck pre update', 'Test description pre update');
+        $client->request('POST',
+            '/json/deck/'.$id,
+            array("description" => "Test Description"),
+            array());
+        TestCaseUtils::assertJsonResponse($this, $client->getResponse());
+
+        $jsonResponse = json_decode($client->getResponse()->getContent());
+        $this->assertEquals($id, $jsonResponse->id);
+        $this->assertEquals('Test Deck pre update', $jsonResponse->name);
+        $this->assertEquals('Test Description', $jsonResponse->description);
+    }
+
+    //
     // Test remove deck options.
     //
 

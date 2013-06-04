@@ -62,11 +62,13 @@ class JSONDeckController extends AbstractDbController
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getManager();
 
-        $this->checkRequestParam($request, array('name', 'description'));
-
         $deck = $this->checkDeckId($deckId);
-        $deck->setName($request->request->get('name'));
-        $deck->setDescription($request->request->get('description'));
+        if ($request->request->has('name')) {
+            $deck->setName($request->request->get('name'));
+        }
+        if ($request->request->has('description')) {
+            $deck->setDescription($request->request->get('description'));
+        }
 
         $em->flush();
 
