@@ -242,28 +242,48 @@ class JSONCardControllerTest extends WebTestCase
                                                "image" => static::$imageBase64));
         $client->request('GET', '/json/deck/'.$this->deckId2.'/card/'.$cardId);
         TestCaseUtils::assertJsonResponse($this, $client->getResponse(), 404);
+        $this->assertTrue(true);
     }
 
     //
     // Get card image tests
     //
-    public function getCardImage()
+    public function testGetCardImage()
     {
-
+        $client = static::createClient();
+        $cardId = TestCaseUtils::addCard($client,
+                                         $this->deckId,
+                                         array("name" => "Test Card",
+                                               "description" => "Test Description",
+                                               "image" => static::$imageBase64));
+        $client->request('GET', '/json/deck/'.$this->deckId.'/card/'.$cardId.'/image');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        $this->assertTrue($client->getResponse()->headers->contains('Content-Type', 'image/png'));
     }
 
-    public function getCardImageNonExistentCard()
+    public function testGetCardImageNonExistentCard()
     {
-
+        $client = static::createClient();
+        $client->request('GET', '/json/deck/'.$this->deckId.'/card/0/image');
+        $this->assertEquals(404, $client->getResponse()->getStatusCode());
     }
 
-    public function getCardImageNonExistentDeck()
+    public function testGetCardImageNonExistentDeck()
     {
-
+        $client = static::createClient();
+        $client->request('GET', '/json/deck/0/card/0/image');
+        $this->assertEquals(404, $client->getResponse()->getStatusCode());
     }
 
-    public function getCardImageWrongDeck()
+    public function testGetCardImageWrongDeck()
     {
-        
+        $client = static::createClient();
+        $cardId = TestCaseUtils::addCard($client,
+                                         $this->deckId,
+                                         array("name" => "Test Card",
+                                               "description" => "Test Description",
+                                               "image" => static::$imageBase64));
+        $client->request('GET', '/json/deck/'.$this->deckId2.'/card/'.$cardId.'/image');
+        $this->assertEquals(404, $client->getResponse()->getStatusCode());
     }
 }

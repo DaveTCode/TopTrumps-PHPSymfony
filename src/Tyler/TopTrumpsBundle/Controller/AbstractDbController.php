@@ -26,7 +26,7 @@ abstract class AbstractDbController extends Controller
     {
         foreach ($names as $name) {
             if (!$request->request->has($name)) {
-                throw new HttpException(400);
+                throw new HttpException(400, "Missing parameter '".$name."' in request.");
             }
         }
     }
