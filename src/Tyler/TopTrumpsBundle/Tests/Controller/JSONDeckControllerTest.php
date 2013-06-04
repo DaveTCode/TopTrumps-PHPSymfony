@@ -80,6 +80,18 @@ class JSONDeckControllerTest extends WebTestCase
         TestCaseUtils::assertJsonResponse($this, $client->getResponse(), 404);
     }
 
+    public function testGetMultipleDecksNoneExist()
+    {
+        $client = static::createClient();
+        TestCaseUtils::clearDecks($client);
+
+        $client->request('GET', '/json/deck');
+        TestCaseUtils::assertJsonResponse($this, $client->getResponse());
+
+        $responseJson = json_decode($client->getResponse()->getContent());
+        $this->assertEquals(0, count($responseJson));
+    }
+
     public function testGetMultipleDecks()
     {
         $client = static::createClient();
