@@ -66,7 +66,7 @@
 
                 ajaxRequestsOutstanding: 0,
 
-                deckId: {{ deck.id }},
+                deckId: {{ deck.id|e('js') }},
 
                 cardImageBytes: null,
 
@@ -248,7 +248,7 @@
             <div id="sidebar">
                 <ul id="card-list">
                     {% for card in deck.cards %}
-                        <li id="card-{{ card.id }}" class="card-list-element">{{ card.name }}</li>
+                        <li id="card-{{ card.id|e }}" class="card-list-element">{{ card.name|e }}</li>
                     {% endfor %}
                     <li id="new-card-list-element">New card</li>
                 </ul>
@@ -268,11 +268,11 @@
                     </div>
                     <div id="card-stat-container">
                         {% for cardStat in deck.stats %}
-                            <div class="card-stat" id="stat-id-{{ cardStat.id }}">
-                                <span class="card-stat-text">{{ cardStat.name }}</span>
-                                <select class="card-stat-select" name="stat-{{ cardStat.id }}">
+                            <div class="card-stat" id="stat-id-{{ cardStat.id|e }}">
+                                <span class="card-stat-text">{{ cardStat.name|e }}</span>
+                                <select class="card-stat-select" name="stat-{{ cardStat.id|e }}">
                                     {% for value in range(cardStat.min, cardStat.max) %}
-                                        <option value="{{ value }}">{{ value }}</option>
+                                        <option value="{{ value|e }}">{{ value|e }}</option>
                                     {% endfor %}
                                 </select>
                             </div>
