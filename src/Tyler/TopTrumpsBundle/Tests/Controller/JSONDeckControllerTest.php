@@ -183,4 +183,14 @@ class JSONDeckControllerTest extends WebTestCase
 
         TestCaseUtils::assertJsonResponse($this, $client->getResponse(), 404);
     }
+
+    public function testRemoveDeckWithCard()
+    {
+        $client = static::createClient();
+        $id = TestCaseUtils::addDeck($client, "Test", "Test");
+        TestCaseUtils::addCard($client, $id, array("name" => "Test", "description" => "Test", "image" => "base64"));
+        $client->request('DELETE', '/json/deck/'.$id);
+
+        TestCaseUtils::assertJsonResponse($this, $client->getResponse());
+    }
 }

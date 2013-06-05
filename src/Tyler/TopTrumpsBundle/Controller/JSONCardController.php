@@ -4,6 +4,7 @@ namespace Tyler\TopTrumpsBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Tyler\TopTrumpsBundle\Entity\Card;
 use Tyler\TopTrumpsBundle\Entity\StatValue;
 
@@ -105,6 +106,8 @@ class JSONCardController extends AbstractDbController
      * @param int $deckId - Forces the card to be part of this deck.
      * @return Response - The card object is returned including the newly
      * created card id.
+     * @throws HttpException - Can throw a 400 exception if stat values are
+     * not valid.
      */
     public function createAction($deckId)
     {
@@ -120,9 +123,14 @@ class JSONCardController extends AbstractDbController
         $card->setDeck($deck);
         $card->setImageFromURI($request->request->get('image'));
 
-        if ($request->request->get('stat_values')) {
-            foreach ($request->request->get('stat_values') as $statValueArray) {
-                $stat = $this->checkStatId($deckId, $statValueArray["id"]);
+        if ($request->request->has('stat_values')) {
+            foreach ($request->request->get('stat_values') as $statValueJson) {
+                if (!property_exists($statValueJson, 'id') || !is_numeric($statValueJson->id) ||
+                    !property_exists($statValueJson, 'value') || !is_numeric($statValueJson->value)) {
+                    throw new HttpException(400, 'Invalid stat value '.json_encode($statValueJson));
+                }
+
+                $stat = $this->checkStatId($deckId, $statValueJson->id);
                 $statValue = new StatValue();
                 $statValue->setCard($card);
                 $statValue->setStat($stat);
@@ -133,7 +141,7 @@ class JSONCardController extends AbstractDbController
                  *
                  * TODO : Enforce in database.
                  */
-                $value = $statValueArray["value"];
+                $value = $statValueJson->value;
                 $statValue->setValue(min(max($stat->getMin(), $value), $stat->getMax()));
                 $em->persist($statValue);
 

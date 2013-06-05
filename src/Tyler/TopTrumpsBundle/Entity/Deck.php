@@ -4,10 +4,13 @@ namespace Tyler\TopTrumpsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Exclude; // Required even though phpstorm doesn't think so.
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="deck")
+ * @ExclusionPolicy("none")
  */
 class Deck
 {
@@ -30,6 +33,7 @@ class Deck
 
     /**
      * @ORM\Column(type="blob", nullable=true)
+     * @Exclude
      */
     protected $image;
 
@@ -115,6 +119,21 @@ class Deck
     {
         $this->image = $image;
     
+        return $this;
+    }
+
+    /**
+     * Set the image from a URI format string (i.e. the sort that comes back
+     * from a FileReader.readDataURL in HTML5).
+     *
+     * @param string $image
+     * @return Deck
+     */
+    public function setImageFromURI($image)
+    {
+        $image = preg_replace('/data:image.*?;base64,/', '', $image, 1);
+        $this->image = base64_decode($image);
+
         return $this;
     }
 

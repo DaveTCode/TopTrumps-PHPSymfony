@@ -5,7 +5,7 @@ namespace Tyler\TopTrumpsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation\ExclusionPolicy;
-use JMS\Serializer\Annotation\Exclude;
+use JMS\Serializer\Annotation\Exclude; // Required even though phpstorm doesn't think so.
 
 /**
  * @ORM\Entity
