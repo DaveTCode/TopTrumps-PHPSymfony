@@ -117,20 +117,51 @@ class JSONDeckController extends AbstractDbController
         }
 
         if ($request->request->has('stats')) {
+            /*
+             * Any new stats will not have an id key on the json object. These
+             * should be added to the stat array for the deck.
+             */
+            foreach ($request->request->get('stats') as $statJson) {
+                if (!array_key_exists('id', $statJson)) {
+                    if (!array_key_exists('name', $statJson) ||
+                        !array_key_exists('min', $statJson) || !is_numeric($statJson['min']) ||
+                        !array_key_exists('max', $statJson) || !is_numeric($statJson['max'])) {
+                        throw new HttpException(400, 'Invalid stat: '.json_encode($statJson));
+                    }
+
+                    $stat = new Stat();
+                    $stat->setDeck($deck);
+                    $stat->setName($statJson['name']);
+                    $stat->setMin($statJson['min']);
+                    $stat->setMax($statJson['max']);
+
+                    $em->persist($stat);
+                    $deck->addStat($stat);
+                }
+            }
+
+            /*
+             * Update any existing stats regardless of whether the values have
+             * been changed.
+             */
             foreach ($deck->getStats() as $stat) {
                 /* @var Stat $stat */
                 foreach ($request->request->get('stats') as $statJson) {
-                    if ($statJson['id'] === $stat->getId()) {
-                        if (array_key_exists('name', $statJson)) {
-                            $stat->setName($statJson['name']);
-                        }
+                    if (array_key_exists('id', $statJson)) {
+                        if ($statJson['id'] === $stat->getId()) {
+                            $statJson['processed'] = true;
 
-                        if (array_key_exists('min', $statJson) && is_numeric($statJson['min'])) {
-                            $stat->setMin($statJson['min']);
-                        }
+                            if (array_key_exists('name', $statJson)) {
+                                $stat->setName($statJson['name']);
+                            }
 
-                        if (array_key_exists('max', $statJson) && is_numeric($statJson['max'])) {
-                            $stat->setMax($statJson['max']);
+                            if (array_key_exists('min', $statJson) && is_numeric($statJson['min'])) {
+                                $stat->setMin($statJson['min']);
+                            }
+
+                            if (array_key_exists('max', $statJson) && is_numeric($statJson['max'])) {
+                                $stat->setMax($statJson['max']);
+                            }
                         }
                     }
                 }

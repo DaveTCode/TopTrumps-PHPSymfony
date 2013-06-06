@@ -8,7 +8,7 @@ use Tyler\TopTrumpsBundle\Tests\Utils\TestCaseUtils;
 /**
  * Class JSONDeckControllerTest
  *
- * Test the JSONDeckController, mocks up a database to use for this.
+ * Test the deck retrieval functions in the JSON deck controller.
  *
  * @package Tyler\TopTrumpsBundle\Tests\Controller
  */
@@ -80,5 +80,63 @@ class JSONGetDeckControllerTest extends WebTestCase
                     break;
             }
         }
+    }
+
+    public function testGetDeckWithStats()
+    {
+        $client = static::createClient();
+
+        TestCaseUtils::clearDecks($client);
+        $id = TestCaseUtils::addDeck($client,
+                                     "Test Deck",
+                                     "Test Description",
+                                     array(array("name" => "Test Stat 1", "min" => 1, "max" => 2),
+                                           array("name" => "Test Stat 2", "min" => 2, "max" => 10),
+                                           array("name" => "Test Stat 3", "min" => 3, "max" => 20)));
+
+        $client->request('GET', '/json/deck/'.$id);
+        $deck = TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json');
+
+        $this->assertEquals($id, $deck->id);
+        $this->assertEquals("Test Deck", $deck->name);
+        $this->assertEquals("Test Description", $deck->description);
+        $this->assertEquals(3, count($deck->stats));
+
+        foreach ($deck->stats as $stat) {
+            switch ($stat->min) {
+                case 1:
+                    $this->assertEquals("Test Stat 1", $stat->name);
+                    $this->assertEquals(2, $stat->max);
+                    break;
+                case 2:
+                    $this->assertEquals("Test Stat 2", $stat->name);
+                    $this->assertEquals(10, $stat->max);
+                    break;
+                case 3:
+                    $this->assertEquals("Test Stat 3", $stat->name);
+                    $this->assertEquals(20, $stat->max);
+                    break;
+                default:
+                    $this->fail("Deck returned missing stat: ".$stat->id);
+            }
+        }
+    }
+
+    public function testGetDeckImage()
+    {
+        $client = static::createClient();
+        $id = TestCaseUtils::addDeckWithImage($client, "Test Deck", "Test Description", static::$imageBase64);
+
+        $client->request('GET', '/json/deck/'.$id.'/image');
+        TestCaseUtils::assertContentType($this, $client->getResponse(), 'image/png');
+    }
+
+    public function testGetDeckImageWhenNoneSet()
+    {
+        $client = static::createClient();
+        $id = TestCaseUtils::addDeck($client, "Test Deck", "Test Description");
+
+        $client->request('GET', '/json/deck/'.$id.'/image');
+        TestCaseUtils::assertContentType($this, $client->getResponse(), 'image/png');
     }
 }

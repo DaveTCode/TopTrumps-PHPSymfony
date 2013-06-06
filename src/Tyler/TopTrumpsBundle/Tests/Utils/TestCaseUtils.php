@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class TestCaseUtils
 {
+    public static $imageBase64 = "data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7";
+
     /**
      * Verify that the response passed in has JSON format content and matches
      * whatever status code requested.
@@ -43,13 +45,35 @@ class TestCaseUtils
      * @param Client $client
      * @param string $name
      * @param string $description
+     * @param array $stats
      * @return int
      */
-    public static function addDeck(Client $client, $name, $description)
+    public static function addDeck(Client $client, $name, $description, array $stats = array())
     {
         $client->request('POST',
             '/json/deck',
-            array("name" => $name, "description" => $description),
+            array("name" => $name, "description" => $description, "stats" => $stats),
+            array());
+
+        return json_decode($client->getResponse()->getContent())->id;
+    }
+
+    /**
+     * Utility function to add a deck with an image.
+     *
+     * @param Client $client
+     * @param string $name
+     * @param string $description
+     * @param string $image - base64 encoded image.
+     * @param array $stats
+     *
+     * @return int
+     */
+    public static function addDeckWithImage(Client $client, $name, $description, $image, array $stats = array())
+    {
+        $client->request('POST',
+            '/json/deck',
+            array("name" => $name, "description" => $description, "image" => $image, "stats" => $stats),
             array());
 
         return json_decode($client->getResponse()->getContent())->id;

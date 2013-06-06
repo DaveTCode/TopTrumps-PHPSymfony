@@ -20,22 +20,29 @@ json_deck_view:
     path:  /json/deck/{deckId}
     defaults: {_controller: TylerTopTrumpsBundle:JSONDeck:get, _format: json }
     requirements:
-        id: \d+
+        deckId: \d+
     methods: [GET]
 
 json_deck_update:
     path:  /json/deck/{deckId}
     defaults: {_controller: TylerTopTrumpsBundle:JSONDeck:update, _format: json }
     requirements:
-        id: \d+
+        deckId: \d+
     methods: [POST]
 
 json_deck_delete:
     path:  /json/deck/{deckId}
     defaults: {_controller: TylerTopTrumpsBundle:JSONDeck:remove, _format: json }
     requirements:
-        id: \d+
+        deckId: \d+
     methods: [DELETE]
+
+json_deck_image:
+    path:  /json/deck/{deckId}/image
+    defaults: {_controller: TylerTopTrumpsBundle:JSONDeck:getDeckImage }
+    requirements:
+        deckId: \d+
+    methods: [GET]
 
 json_card_view:
     path:  /json/deck/{deckId}/card/{cardId}

@@ -44,6 +44,7 @@ class Deck
 
     /**
      * @ORM\OneToMany(targetEntity="Card", mappedBy="deck")
+     * @Exclude
      */
     protected $cards;
 

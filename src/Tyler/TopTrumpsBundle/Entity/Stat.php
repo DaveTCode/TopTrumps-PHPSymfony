@@ -4,10 +4,13 @@ namespace Tyler\TopTrumpsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Exclude; // Required even though phpstorm doesn't think so.
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="stat")
+ * @ExclusionPolicy("none")
  */
 class Stat
 {
@@ -36,11 +39,13 @@ class Stat
     /**
      * @ORM\ManyToOne(targetEntity="Deck", inversedBy="stats")
      * @ORM\JoinColumn(name="deck_id", referencedColumnName="id", onDelete="CASCADE")
+     * @Exclude
      */
     protected $deck;
 
     /**
      * @ORM\OneToMany(targetEntity="StatValue", mappedBy="stat")
+     * @Exclude
      */
     protected $statValues;
 
