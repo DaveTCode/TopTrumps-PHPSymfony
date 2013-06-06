@@ -62,11 +62,12 @@ class JSONCardController extends AbstractDbController
         foreach ($card->getStatValues() as $statValue) {
             foreach ($request->request->get('stat_values') as $statValueJson) {
                 /* @var StatValue $statValue */
-                if ($statValueJson["id"] === $statValue->getId()) {
+                if ($statValueJson['id'] === $statValue->getId()) {
+                    if (array_key_exists($statValueJson, 'value') && is_numeric($statValueJson['value']))
                     /*
                      * Set the current value even if it's the same.
                      */
-                    $statValue->setValue($statValueJson["value"]);
+                    $statValue->setValue($statValueJson['value']);
                 }
             }
         }

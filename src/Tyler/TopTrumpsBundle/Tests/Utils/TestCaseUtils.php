@@ -14,18 +14,22 @@ class TestCaseUtils
      *
      * @param WebTestCase $testCase - Used to assert.
      * @param Response $response - The response from the client.
+     * @param string contentType - The mime-type to check for.
      * @param int $statusCode - Defaults to 200. Set otherwise.
      *
      * @return mixed - The json decoded response
      */
-    public static function assertJsonResponse(WebTestCase $testCase, Response $response, $statusCode = 200)
+    public static function assertContentType(WebTestCase $testCase,
+                                             Response $response,
+                                             $contentType,
+                                             $statusCode = 200)
     {
         $testCase->assertEquals(
             $statusCode, $response->getStatusCode(),
             $response->getContent()
         );
         $testCase->assertTrue(
-            $response->headers->contains('Content-Type', 'application/json'),
+            $response->headers->contains('Content-Type', $contentType),
             $response->headers
         );
 

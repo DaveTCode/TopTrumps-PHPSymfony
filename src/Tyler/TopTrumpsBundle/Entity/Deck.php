@@ -140,7 +140,7 @@ class Deck
     /**
      * Get image
      *
-     * @return string 
+     * @return Resource
      */
     public function getImage()
     {

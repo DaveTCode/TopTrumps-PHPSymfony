@@ -37,7 +37,7 @@ class JSONCardControllerTest extends WebTestCase
                          '/json/deck/'.$this->deckId.'/card',
                          array("name" => "Test card", "description" => "Test description", "image" => static::$imageBase64),
                          array());
-        $card = TestCaseUtils::assertJsonResponse($this, $client->getResponse());
+        $card = TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json');
 
         $this->assertEquals("Test card", $card->name);
         $this->assertEquals("Test description", $card->description);
@@ -50,7 +50,7 @@ class JSONCardControllerTest extends WebTestCase
             '/json/deck/'.$this->deckId.'/card',
             array("description" => "Test description", "image" => static::$imageBase64),
             array());
-        TestCaseUtils::assertJsonResponse($this, $client->getResponse(), 400);
+        TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json', 400);
     }
 
     public function testAddCardMissingDescription()
@@ -60,7 +60,7 @@ class JSONCardControllerTest extends WebTestCase
             '/json/deck/'.$this->deckId.'/card',
             array("name" => "Test card", "image" => static::$imageBase64),
             array());
-        TestCaseUtils::assertJsonResponse($this, $client->getResponse(), 400);
+        TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json', 400);
     }
 
     public function testAddCardMissingImage()
@@ -70,7 +70,7 @@ class JSONCardControllerTest extends WebTestCase
             '/json/deck/'.$this->deckId.'/card',
             array("name" => "Test card", "description" => "Test Description"),
             array());
-        TestCaseUtils::assertJsonResponse($this, $client->getResponse(), 400);
+        TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json', 400);
     }
 
     //
@@ -87,7 +87,7 @@ class JSONCardControllerTest extends WebTestCase
         $client->request('POST', '/json/deck/'.$this->deckId.'/card/'.$cardId,
                          array('name' => 'New name'),
                          array());
-        $card = TestCaseUtils::assertJsonResponse($this, $client->getResponse());
+        $card = TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json');
 
         $this->assertEquals("New name", $card->name);
         $this->assertEquals("Test description", $card->description);
@@ -104,7 +104,7 @@ class JSONCardControllerTest extends WebTestCase
         $client->request('POST', '/json/deck/'.$this->deckId.'/card/'.$cardId,
             array('description' => 'New description'),
             array());
-        $card = TestCaseUtils::assertJsonResponse($this, $client->getResponse());
+        $card = TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json');
 
         $this->assertEquals("Test Card", $card->name);
         $this->assertEquals("New description", $card->description);
@@ -121,7 +121,7 @@ class JSONCardControllerTest extends WebTestCase
         $client->request('POST', '/json/deck/'.$this->deckId.'/card/'.$cardId,
                          array('image' => static::$imageBase64backup),
                          array());
-        $card = TestCaseUtils::assertJsonResponse($this, $client->getResponse());
+        $card = TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json');
 
         $this->assertEquals("Test Card", $card->name);
         $this->assertEquals("Test description", $card->description);
@@ -133,7 +133,7 @@ class JSONCardControllerTest extends WebTestCase
         $client->request('POST', '/json/deck/'.$this->deckId.'/card/0',
                          array('image' => static::$imageBase64backup),
                          array());
-        TestCaseUtils::assertJsonResponse($this, $client->getResponse(), 404);
+        TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json', 404);
     }
 
     public function testUpdateCardOnNonExistentDeck()
@@ -142,7 +142,7 @@ class JSONCardControllerTest extends WebTestCase
         $client->request('POST', '/json/deck/0/card/0',
                          array('image' => static::$imageBase64backup),
                          array());
-        TestCaseUtils::assertJsonResponse($this, $client->getResponse(), 404);
+        TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json', 404);
     }
 
     public function testUpdateCardOnWrongDeck()
@@ -156,7 +156,7 @@ class JSONCardControllerTest extends WebTestCase
         $client->request('POST', '/json/deck/'.$this->deckId2.'/card/'.$cardId,
                          array('image' => static::$imageBase64backup),
                          array());
-        TestCaseUtils::assertJsonResponse($this, $client->getResponse(), 404);
+        TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json', 404);
     }
 
     //
@@ -171,21 +171,21 @@ class JSONCardControllerTest extends WebTestCase
                                                "description" => "Test description",
                                                "image" => static::$imageBase64));
         $client->request('DELETE', '/json/deck/'.$this->deckId.'/card/'.$cardId);
-        TestCaseUtils::assertJsonResponse($this, $client->getResponse());
+        TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json');
     }
 
     public function testDeleteNonExistentCard()
     {
         $client = static::createClient();
         $client->request('DELETE', '/json/deck/'.$this->deckId.'/card/0');
-        TestCaseUtils::assertJsonResponse($this, $client->getResponse(), 404);
+        TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json', 404);
     }
 
     public function testDeleteCardInNonExistentDeck()
     {
         $client = static::createClient();
         $client->request('DELETE', '/json/deck/0/card/0');
-        TestCaseUtils::assertJsonResponse($this, $client->getResponse(), 404);
+        TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json', 404);
     }
 
     public function testDeleteCardOnWrongDeck()
@@ -197,7 +197,7 @@ class JSONCardControllerTest extends WebTestCase
                                                "description" => "Test description",
                                                "image" => static::$imageBase64));
         $client->request('DELETE', '/json/deck/'.$this->deckId2.'/card/'.$cardId);
-        TestCaseUtils::assertJsonResponse($this, $client->getResponse(), 404);
+        TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json', 404);
     }
 
     //
@@ -212,7 +212,7 @@ class JSONCardControllerTest extends WebTestCase
                                                "description" => "Test Description",
                                                "image" => static::$imageBase64));
         $client->request('GET', '/json/deck/'.$this->deckId.'/card/'.$cardId);
-        $card = TestCaseUtils::assertJsonResponse($this, $client->getResponse());
+        $card = TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json');
 
         $this->assertEquals("Test Card", $card->name);
         $this->assertEquals("Test Description", $card->description);
@@ -222,14 +222,14 @@ class JSONCardControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $client->request('GET', '/json/deck/'.$this->deckId.'/card/0');
-        TestCaseUtils::assertJsonResponse($this, $client->getResponse(), 404);
+        TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json', 404);
     }
 
     public function testGetCardInNonExistentDeck()
     {
         $client = static::createClient();
         $client->request('GET', '/json/deck/0/card/1');
-        TestCaseUtils::assertJsonResponse($this, $client->getResponse(), 404);
+        TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json', 404);
     }
 
     public function testGetCardOnWrongDeck()
@@ -241,7 +241,7 @@ class JSONCardControllerTest extends WebTestCase
                                                "description" => "Test Description",
                                                "image" => static::$imageBase64));
         $client->request('GET', '/json/deck/'.$this->deckId2.'/card/'.$cardId);
-        TestCaseUtils::assertJsonResponse($this, $client->getResponse(), 404);
+        TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json', 404);
         $this->assertTrue(true);
     }
 
@@ -257,8 +257,7 @@ class JSONCardControllerTest extends WebTestCase
                                                "description" => "Test Description",
                                                "image" => static::$imageBase64));
         $client->request('GET', '/json/deck/'.$this->deckId.'/card/'.$cardId.'/image');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $this->assertTrue($client->getResponse()->headers->contains('Content-Type', 'image/png'));
+        TestCaseUtils::assertContentType($this, $client->getResponse(), 'image/png');
     }
 
     public function testGetCardImageNonExistentCard()
