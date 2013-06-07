@@ -100,3 +100,8 @@ template_card_edit_display:
         deckId: \d+
         cardId: \d+
     methods: [GET]
+
+template_all_deck_view:
+    path: /admin
+    defaults: {_controller: TylerTopTrumpsBundle:Deck:viewDecksDisplay }
+    methods: [GET]

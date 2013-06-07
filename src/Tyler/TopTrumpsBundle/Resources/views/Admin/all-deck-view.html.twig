@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block stylesheets %}
+            <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" type="text/css" href="{{ asset('bundles/tylertoptrumps/css/main.css') }}">
+        {% endblock %}
+
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <script type="text/javascript" src="{{ asset('bundles/tylertoptrumps/js/jquery.watermark.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/tylertoptrumps/js/jquery.blockUI.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/tylertoptrumps/js/jquery.history.min.js') }}"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+            });
+        </script>
+
+        <title>View all decks</title>
+    </head>
+    <body>
+        <div id="header">
+            <h1>View all decks</h1>
+        </div>
+        <div id="content">
+            <div id="main-content">
+                {% for deck in decks %}
+                    <div>{{ deck.name }}</div>
+                {% endfor %}
+            </div>
+        </div>
+        <div id="footer" class="clear">&nbsp;</div>
+        <div id="loading" class="hidden">
+            <img src="{{ asset('bundles/tylertoptrumps/images/loading.gif') }}" alt="Loading...">
+        </div>
+    </body>
+</html>
