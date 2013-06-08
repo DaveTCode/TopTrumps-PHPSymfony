@@ -4,6 +4,7 @@
         {% block stylesheets %}
             <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" type="text/css" href="{{ asset('bundles/tylertoptrumps/css/main.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('bundles/tylertoptrumps/css/all-deck-view.css') }}">
         {% endblock %}
 
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
@@ -15,6 +16,14 @@
 
         <script type="text/javascript">
             $(document).ready(function() {
+                $(".deck-card").each(function() {
+                    var deckId = $(this).attr('id').replace('deck-card-', '');
+                    var textOverlayJquery = $(this).find('.deck-card-text-overlay');
+                    $(this).find('.deck-card-image')
+                            .attr('src', Routing.generate('json_deck_image', { 'deckId': deckId }))
+                            .hover(function() { textOverlayJquery.show(); },
+                                   function() { textOverlayJquery.hide(); });
+                });
             });
         </script>
 
@@ -25,11 +34,30 @@
             <h1>View all decks</h1>
         </div>
         <div id="content">
-            <div id="main-content">
-                {% for deck in decks %}
-                    <div>{{ deck.name }}</div>
-                {% endfor %}
-            </div>
+            {% for deck in decks %}
+                <div id="deck-card-{{ deck.id }}" class="deck-card">
+                    <div class="deck-card-image-container">
+                        <img class="deck-card-image" alt="No image for this card" src="{{ asset('bundles/tylertoptrumps/images/no-deck-image.png') }}" />
+                    </div>
+                    <div class="deck-card-text-overlay">
+                        <div class="deck-card-name">
+                            {{ deck.name|e }}
+                        </div>
+                        <div class="deck-card-description">
+                            {{ deck.description|e }}
+                        </div>
+                        <div class="deck-card-stat-container">
+                            {% for stat in deck.stats %}
+                                <div id="deck-stat-{{ stat.id }}" class="deck-stat">
+                                    <span class="deck-stat-name">{{ stat.name|e }}: </span>
+                                    <span class="deck-stat-min">{{ stat.min }}</span> to
+                                    <span class="deck-stat-max">{{ stat.max }}</span>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
         <div id="footer" class="clear">&nbsp;</div>
         <div id="loading" class="hidden">

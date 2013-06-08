@@ -270,6 +270,7 @@
                         {% for cardStat in deck.stats %}
                             <div class="card-stat" id="stat-id-{{ cardStat.id|e }}">
                                 <span class="card-stat-text">{{ cardStat.name|e }}</span>
+                                <input type="number" class="card-stat-select" name="stat-{{ cardStat.id|e }}" min="{{ cardStat.min }}" max="{{ cardStat.max }}">
                                 <select class="card-stat-select" name="stat-{{ cardStat.id|e }}">
                                     {% for value in range(cardStat.min, cardStat.max) %}
                                         <option value="{{ value|e }}">{{ value|e }}</option>

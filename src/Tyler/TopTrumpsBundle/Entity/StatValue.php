@@ -35,7 +35,6 @@ class StatValue
     /**
      * @ORM\ManyToOne(targetEntity="Stat", inversedBy="statValues")
      * @ORM\JoinColumn(name="stat_id", referencedColumnName="id", onDelete="CASCADE")
-     * @Exclude
      */
     protected $stat;
 
