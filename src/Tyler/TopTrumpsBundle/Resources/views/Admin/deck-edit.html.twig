@@ -11,7 +11,6 @@
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
         <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-        <script type="text/javascript" src="{{ asset('bundles/tylertoptrumps/js/jquery.watermark.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('bundles/tylertoptrumps/js/jquery.blockUI.js') }}"></script>
         <script type="text/javascript" src="{{ asset('bundles/tylertoptrumps/js/jquery.history.min.js') }}"></script>
 
@@ -32,9 +31,6 @@
                         $.unblockUI();
                     }
                 });
-
-                $('#card-name-input').watermark('Card name');
-                $('#card-description-input').watermark('Card description');
 
                 $('#card-list').on('click', '.card-list-element', function() {
                     var cardId = $(this).attr('id').replace('card-', '');
@@ -89,7 +85,7 @@
                     $("#card-description-input").val("");
                     $("#card-image-input").val("");
                     $("#card-image").attr("src", "{{ asset('bundles/tylertoptrumps/images/no-card-image.png') }}");
-                    $(".card-stat-select").val($(".card-stat-select option:first").val());
+                    $(".card-stat-input").val($(".card-stat-input option:first").val());
                     $("#delete-button").off("click").addClass("disabled");
                     $("#save-button").off("click").on("click", DeckEdit.submitCard);
                 },
@@ -122,10 +118,10 @@
                     $("#card-description-input").val(card.description);
                     card.stat_values = card.stat_values ? card.stat_values : [];
 
-                    $(".card-stat-select").val($(".card-stat-select option:first").val());
+                    $(".card-stat-input").val($(".card-stat-input option:first").val());
                     for (var ii = 0; ii < card.stat_values.length; ii++) {
                         var statValue = card.stat_values[ii];
-                        $("#stat-id-" + statValue.stat.id).find("select").val(statValue.value);
+                        $("#stat-id-" + statValue.stat.id).find(".card-stat-input").val(statValue.value);
                     }
 
                     $(".card-list-element").removeClass("selected-card-list-element");
@@ -261,21 +257,16 @@
                     <input type="file" id="card-image-input" name="image" class="hidden" accept="image/png,image/jpg,image/jpeg,image/gif"/>
                     <p id="card-image-bytes" class="hidden"></p>
                     <div id="card-name-container">
-                        <input type="text" id="card-name-input" name="name" title="Enter the cards name (max 50 chars)" value="" />
+                        <input type="text" id="card-name-input" name="name" title="Enter the cards name (max 50 chars)" value="" placeholder="Name" />
                     </div>
                     <div id="card-description-container">
-                        <textarea id="card-description-input" name="description" title="Enter the cards description (max 250 chars)"></textarea>
+                        <textarea id="card-description-input" name="description" title="Enter the cards description (max 250 chars)" placeholder="Description" ></textarea>
                     </div>
                     <div id="card-stat-container">
                         {% for cardStat in deck.stats %}
                             <div class="card-stat" id="stat-id-{{ cardStat.id|e }}">
                                 <span class="card-stat-text">{{ cardStat.name|e }}</span>
-                                <input type="number" class="card-stat-select" name="stat-{{ cardStat.id|e }}" min="{{ cardStat.min }}" max="{{ cardStat.max }}">
-                                <select class="card-stat-select" name="stat-{{ cardStat.id|e }}">
-                                    {% for value in range(cardStat.min, cardStat.max) %}
-                                        <option value="{{ value|e }}">{{ value|e }}</option>
-                                    {% endfor %}
-                                </select>
+                                <input type="number" class="card-stat-input" name="stat-{{ cardStat.id|e }}" min="{{ cardStat.min }}" max="{{ cardStat.max }}">
                             </div>
                         {% endfor %}
                     </div>
