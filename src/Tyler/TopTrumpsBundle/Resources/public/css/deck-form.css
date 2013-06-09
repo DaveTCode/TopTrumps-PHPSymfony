@@ -1,0 +1,23 @@
+#deck-name-input {
+    width: 100%
+}
+
+#deck-description-input {
+    width: 99%;
+}
+
+.stat-name-input {
+    width: 60%;
+}
+
+.stat-min-input {
+    width: 10%;
+}
+
+.stat-max-input {
+    width: 10%;
+}
+
+.stat-delete-button {
+    width: 20%;
+}

@@ -48,7 +48,7 @@
                     $("#card-image-input").show().focus().click().hide();
                 });
 
-                $("#card-image-input").on("change", DeckEdit.loadImageBytes);
+                $("#card-image-input").on("change", function() { TopTrumpsCommon.loadImageBytes("#card-image-input", "#card-image"); });
 
                 {% if card != null %}
                 DeckEdit.selectCard({{ card.id }});
@@ -148,18 +148,6 @@
                     DeckEdit.clearCard();
                 },
 
-                loadImageBytes: function() {
-                    var reader = new FileReader();
-                    var image = $("#card-image-input")[0].files[0];
-                    reader.onload = (function(imageFile) {
-                        return function(event) {
-                            DeckEdit.cardImageBytes = event.target.result;
-                            $("#card-image").attr("src", event.target.result);
-                        };
-                    })(image);
-                    reader.readAsDataURL(image);
-                },
-
                 clearValidation: function() {
                     $(".invalid").removeClass("invalid");
                 },
@@ -255,7 +243,6 @@
                         <img id="card-image" src="{{ asset('bundles/tylertoptrumps/images/no-card-image.png') }}" alt="No Image Selected" height="250" width="250">
                     </div>
                     <input type="file" id="card-image-input" name="image" class="hidden" accept="image/png,image/jpg,image/jpeg,image/gif"/>
-                    <p id="card-image-bytes" class="hidden"></p>
                     <div id="card-name-container">
                         <input type="text" id="card-name-input" name="name" title="Enter the cards name (max 50 chars)" value="" placeholder="Name" />
                     </div>

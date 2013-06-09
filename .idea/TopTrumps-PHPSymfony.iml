@@ -152,6 +152,7 @@
         </SOURCES>
       </library>
     </orderEntry>
+    <orderEntry type="library" name="jquery-ui" level="application" />
   </component>
 </module>
 

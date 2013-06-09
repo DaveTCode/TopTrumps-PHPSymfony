@@ -5,26 +5,118 @@
             <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" type="text/css" href="{{ asset('bundles/tylertoptrumps/css/main.css') }}">
             <link rel="stylesheet" type="text/css" href="{{ asset('bundles/tylertoptrumps/css/all-deck-view.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('bundles/tylertoptrumps/css/deck-form.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('bundles/tylertoptrumps/css/jquery-ui-1.10.3.custom.css') }}">
         {% endblock %}
 
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
         <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-        <script type="text/javascript" src="{{ asset('bundles/tylertoptrumps/js/jquery.watermark.min.js') }}"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
         <script type="text/javascript" src="{{ asset('bundles/tylertoptrumps/js/jquery.blockUI.js') }}"></script>
         <script type="text/javascript" src="{{ asset('bundles/tylertoptrumps/js/jquery.history.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/tylertoptrumps/js/admin-common.js') }}"></script>
+
 
         <script type="text/javascript">
             $(document).ready(function() {
-                $(".deck-card").each(function() {
-                    var deckId = $(this).attr('id').replace('deck-card-', '');
-                    var textOverlayJquery = $(this).find('.deck-card-text-overlay');
-                    $(this).find('.deck-card-image')
+                $(".deck").each(function() {
+                    var deckId = $(this).attr('id').replace('deck-', '');
+                    var $textOverlay = $(this).find('.deck-text-overlay');
+                    $(this).find('.deck-image')
                             .attr('src', Routing.generate('json_deck_image', { 'deckId': deckId }))
-                            .hover(function() { textOverlayJquery.show(); },
-                                   function() { textOverlayJquery.hide(); });
+                            .hover(function() { $textOverlay.show(); },
+                                   function() { $textOverlay.hide(); });
+                    $textOverlay.hover(function() { $textOverlay.show(); });
                 });
+
+                $("#deck-form-area").dialog({
+                    autoOpen: false,
+                    height: 600,
+                    minHeight: 600,
+                    width: 420,
+                    minWidth: 420,
+                    maxWidth: 420,
+                    modal: true,
+                    buttons: {
+                        "Cancel": function() {
+                            $(this).dialog("close");
+                        },
+                        "Create Deck": function() {
+                            AllDeckView.submitDeckForm();
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+
+                $(".stat-delete-button").button({
+                    text: false,
+                    icons: {
+                        primary: "ui-icon-circle-minus"
+                    }
+                });
+
+                $("#new-stat-button").button({
+                    text: false,
+                    icons: {
+                        primary: "ui-icon-circle-plus"
+                    }
+                });
+
+                $("#filter-button").button();
+                $("#new-button").button().click(function() { $("#deck-form-area").dialog("open"); });
+
+                $("#deck-image").on("click", function() {
+                    /*
+                     * An input element has to be visible with focus before the
+                     * click event will fire on it.
+                     */
+                    $("#deck-image-input").show().focus().click().hide();
+                });
+
+                $("#deck-image-input").on("change", function() { TopTrumpsCommon.loadImageBytes("#deck-image-input", "#deck-image"); });
             });
+
+            AllDeckView = {
+                submitDeckForm: function() {
+                    var deck = {};
+                    deck.id = $("#deck-id").text();
+                    deck.name = $("#deck-name-input").val();
+                    deck.description = $("#deck-description-input").val();
+                    deck.image = $("#deck-image").attr("src");
+                    deck.stats = [];
+
+                    $("#deck-form-stat-area").find(".deck-form-single-stat-area").each(function() {
+                        var stat = {};
+                        stat.name = $(this).find(".stat-name-input").val();
+                        stat.min = $(this).find(".stat-min-input").val();
+                        stat.max = $(this).find(".stat-max-input").val();
+
+                        deck.stats.push(stat);
+                    });
+
+                    if (AllDeckView.validateDeckForm(deck)) {
+                        var url;
+                        if (deck.id) {
+                            url = Routing.generate('json_deck_update', {'deckId': deck.id});
+                        } else {
+                            url = '{{ path('json_deck_create') }}';
+                        }
+
+                        $.post(url, deck)
+                                .done(AllDeckView.deckSubmitComplete)
+                                .error(function() { alert("Failed."); });
+                    }
+                },
+
+                validateDeckForm: function(deck) {
+                    return true;
+                },
+
+                deckSubmitComplete: function(deck) {
+                    alert("Success");
+                }
+            }
         </script>
 
         <title>View all decks</title>
@@ -33,20 +125,29 @@
         <div id="header">
             <h1>View all decks</h1>
         </div>
+        <div id="adjustment-bar">
+            <div id="new-button-area">
+                <a href="#" id="new-button">New</a>
+            </div>
+            <div id="search-form">
+                <input id="filter" type="text" placeholder="Filter" />
+                <button id="filter-button">Search</button>
+            </div>
+        </div>
         <div id="content">
             {% for deck in decks %}
-                <div id="deck-card-{{ deck.id }}" class="deck-card">
-                    <div class="deck-card-image-container">
-                        <img class="deck-card-image" alt="No image for this card" src="{{ asset('bundles/tylertoptrumps/images/no-deck-image.png') }}" />
+                <div id="deck-{{ deck.id }}" class="deck">
+                    <div class="deck-image-container">
+                        <img class="deck-image" alt="No image for this deck" src="{{ asset('bundles/tylertoptrumps/images/no-deck-image.png') }}" />
                     </div>
-                    <div class="deck-card-text-overlay">
-                        <div class="deck-card-name">
+                    <div class="deck-text-overlay">
+                        <div class="deck-name">
                             {{ deck.name|e }}
                         </div>
-                        <div class="deck-card-description">
+                        <div class="deck-description">
                             {{ deck.description|e }}
                         </div>
-                        <div class="deck-card-stat-container">
+                        <div class="deck-stat-container">
                             {% for stat in deck.stats %}
                                 <div id="deck-stat-{{ stat.id }}" class="deck-stat">
                                     <span class="deck-stat-name">{{ stat.name|e }}: </span>
@@ -62,6 +163,27 @@
         <div id="footer" class="clear">&nbsp;</div>
         <div id="loading" class="hidden">
             <img src="{{ asset('bundles/tylertoptrumps/images/loading.gif') }}" alt="Loading...">
+        </div>
+        <div id="deck-form-area" class="hidden">
+            <form id="deck-form" method="post">
+                <img id="deck-image" src="{{ asset('bundles/tylertoptrumps/images/no-deck-image.png') }}" alt="No image" height="250" width="150">
+                <input type="file" id="deck-image-input" class="hidden" accept="image/png,image/jpg,image/jpeg,image/gif"/>
+                <p id="deck-image-bytes" class="hidden"></p>
+                <input type="text" placeholder="Name" name="name" id="deck-name-input" />
+                <textarea name="description" id="deck-description-input" placeholder="Description"></textarea>
+                <div id="deck-form-stat-area">
+                    <fieldset>
+                        <legend>Stats</legend>
+                        <div class="deck-form-single-stat-input-area">
+                            <input class="stat-name-input" type="text" placeholder="Stat name" />
+                            <input class="stat-min-input" type="number" value="1"/>
+                            <input class="stat-max-input" type="number" value="1"/>
+                            <button class="stat-delete-button">Delete</button>
+                        </div>
+                        <button id="new-stat-button">New Stat</button>
+                    </fieldset>
+                </div>
+            </form>
         </div>
     </body>
 </html>
