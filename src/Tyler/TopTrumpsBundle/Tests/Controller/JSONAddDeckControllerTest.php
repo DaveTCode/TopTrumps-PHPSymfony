@@ -2,6 +2,7 @@
 
 namespace Tyler\TopTrumpsBundle\Tests\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Tyler\TopTrumpsBundle\Tests\Utils\TestCaseUtils;
 
@@ -16,17 +17,21 @@ class JSONAddDeckControllerTest extends WebTestCase
 {
     private static $imageBase64 = "data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7";
 
-    //
-    // Add deck tests
-    //
+    /* @var Client $client */
+    private $client = null;
+
+    public function setUp()
+    {
+        $this->client = static::createClient();
+    }
+
     public function testAddDeck()
     {
-        $client = static::createClient();
-        $client->request('POST',
+        $this->client->request('POST',
             '/json/deck',
             array("name" => "Test Deck", "description" => "Test Description"),
             array());
-        $deck = TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json');
+        $deck = TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'application/json');
 
         $this->assertEquals("Test Deck", $deck->name);
         $this->assertEquals("Test Description", $deck->description);
@@ -34,32 +39,29 @@ class JSONAddDeckControllerTest extends WebTestCase
 
     public function testAddDeckMissingName()
     {
-        $client = static::createClient();
-        $client->request('POST',
+        $this->client->request('POST',
             '/json/deck',
             array("description" => "Test Description"),
             array());
-        TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json', 400);
+        TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'application/json', 400);
     }
 
     public function testAddDeckMissingDescription()
     {
-        $client = static::createClient();
-        $client->request('POST',
+        $this->client->request('POST',
             '/json/deck',
             array("name" => "Test Deck"),
             array());
-        TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json', 400);
+        TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'application/json', 400);
     }
 
     public function testAddDeckWithImage()
     {
-        $client = static::createClient();
-        $client->request('POST',
+        $this->client->request('POST',
             '/json/deck',
             array("name" => "Test Deck", "description" => "Test Description", "image" => static::$imageBase64),
             array());
-        $deck = TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json');
+        $deck = TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'application/json');
 
         $this->assertEquals("Test Deck", $deck->name);
         $this->assertEquals("Test Description", $deck->description);
@@ -67,15 +69,14 @@ class JSONAddDeckControllerTest extends WebTestCase
 
     public function testAddDeckWithStat()
     {
-        $client = static::createClient();
-        $client->request('POST',
+        $this->client->request('POST',
             '/json/deck',
             array("name" => "Test Deck",
                   "description" => "Test Description",
                   "image" => static::$imageBase64,
                   "stats" => array(array("name" => "Test Stat 1", "min" => 1, "max" => 10))),
             array());
-        $deck = TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json');
+        $deck = TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'application/json');
 
         $this->assertEquals("Test Deck", $deck->name);
         $this->assertEquals("Test Description", $deck->description);
@@ -87,47 +88,43 @@ class JSONAddDeckControllerTest extends WebTestCase
 
     public function testAddDeckWithStatMissingName()
     {
-        $client = static::createClient();
-        $client->request('POST',
+        $this->client->request('POST',
             '/json/deck',
             array("name" => "Test Deck",
                 "description" => "Test Description",
                 "image" => static::$imageBase64,
                 "stats" => array(array("min" => 1, "max" => 10))),
             array());
-        TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json', 400);
+        TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'application/json', 400);
     }
 
     public function testAddDeckWithStatMissingMin()
     {
-        $client = static::createClient();
-        $client->request('POST',
+        $this->client->request('POST',
             '/json/deck',
             array("name" => "Test Deck",
                   "description" => "Test Description",
                   "image" => static::$imageBase64,
                   "stats" => array(array("name" => "Test stat 1", "max" => 10))),
             array());
-        TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json', 400);
+        TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'application/json', 400);
     }
 
     public function testAddDeckWithStatMissingMax()
     {
-        $client = static::createClient();
-        $client->request('POST',
+        $this->client->request('POST',
             '/json/deck',
             array("name" => "Test Deck",
                   "description" => "Test Description",
                   "image" => static::$imageBase64,
                   "stats" => array(array("name" => "Test stat 1", "min" => 10))),
             array());
-        TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json', 400);
+        TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'application/json', 400);
     }
 
     public function testAddDeckWithStats()
     {
-        $client = static::createClient();
-        $client->request('POST',
+        $this->client->request('POST',
             '/json/deck',
             array("name" => "Test Deck",
                 "description" => "Test Description",
@@ -136,7 +133,7 @@ class JSONAddDeckControllerTest extends WebTestCase
                                  array("name" => "Test Stat 2", "min" => 2, "max" => 100),
                                  array("name" => "Test Stat 3", "min" => 3, "max" => 70))),
             array());
-        $deck = TestCaseUtils::assertContentType($this, $client->getResponse(), 'application/json');
+        $deck = TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'application/json');
 
         $this->assertEquals("Test Deck", $deck->name);
         $this->assertEquals("Test Description", $deck->description);
