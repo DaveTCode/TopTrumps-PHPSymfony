@@ -17,7 +17,12 @@ class JSONDeckController extends AbstractDbController
      */
     public function allAction()
     {
-        $decks = $this->getDoctrine()->getRepository('Tyler\TopTrumpsBundle\Entity\Deck')->findAll();
+        $query = \RequestUtilityFunctions::createDeckQueryFromRequest(
+            $this->getDoctrine()->getManager(),
+            $this->getRequest(),
+            $this->container);
+
+        $decks = $query->getResult();
         $serializer = $this->container->get('serializer');
 
         return new Response($serializer->serialize($decks, 'json'), 200);

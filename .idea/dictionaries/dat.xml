@@ -5,6 +5,7 @@
       <w>autoload</w>
       <w>browserplus</w>
       <w>clientside</w>
+      <w>dbal</w>
       <w>fosjsrouting</w>
       <w>friendsofsymfony</w>
       <w>googleapis</w>
