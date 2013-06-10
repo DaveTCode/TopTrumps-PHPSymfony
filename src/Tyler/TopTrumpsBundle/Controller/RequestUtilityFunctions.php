@@ -1,6 +1,8 @@
 <?php
 
-use \Doctrine\Common\Persistence\ObjectManager;
+namespace Tyler\TopTrumpsBundle\Controller;
+
+use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\HttpFoundation\Request;

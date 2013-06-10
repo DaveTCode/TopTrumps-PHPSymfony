@@ -17,7 +17,7 @@ class JSONDeckController extends AbstractDbController
      */
     public function allAction()
     {
-        $query = \RequestUtilityFunctions::createDeckQueryFromRequest(
+        $query = RequestUtilityFunctions::createDeckQueryFromRequest(
             $this->getDoctrine()->getManager(),
             $this->getRequest(),
             $this->container);

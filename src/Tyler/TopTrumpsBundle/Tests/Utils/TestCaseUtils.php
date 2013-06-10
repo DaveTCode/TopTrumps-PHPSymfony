@@ -99,11 +99,15 @@ class TestCaseUtils
      */
     public static function clearDecks(Client $client)
     {
-        $client->request('GET', '/json/deck');
-        $jsonResponse = json_decode($client->getResponse()->getContent());
-        foreach (array_map(function($deck) { return $deck->id; }, $jsonResponse) as $id) {
-            static::deleteDeck($client, $id);
-        }
+        do {
+            $deckDeleted = false;
+            $client->request('GET', '/json/deck');
+            $jsonResponse = json_decode($client->getResponse()->getContent());
+            foreach (array_map(function($deck) { return $deck->id; }, $jsonResponse) as $id) {
+                $deckDeleted = true;
+                static::deleteDeck($client, $id);
+            }
+        } while ($deckDeleted);
     }
 
     /**

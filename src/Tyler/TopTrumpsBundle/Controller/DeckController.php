@@ -59,7 +59,7 @@ class DeckController extends AbstractDbController
      */
     public function viewDecksDisplayAction()
     {
-        $query = \RequestUtilityFunctions::createDeckQueryFromRequest(
+        $query = RequestUtilityFunctions::createDeckQueryFromRequest(
             $this->getDoctrine()->getManager(),
             $this->getRequest(),
             $this->container);

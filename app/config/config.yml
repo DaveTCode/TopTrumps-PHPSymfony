@@ -67,9 +67,3 @@ swiftmailer:
 # FOS JS routes exposed to javascript dynamic routing.
 fos_js_routing:
     routes_to_expose: [json_.*]
-
-# Custom configuration for the top trumps application
-tyler_top_trumps:
-    max_deck_page_size: 100
-    min_deck_page_size: 10
-    default_deck_page_size: 30
