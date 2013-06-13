@@ -65,6 +65,9 @@ class JSONAddDeckControllerTest extends WebTestCase
 
         $this->assertEquals("Test Deck", $deck->name);
         $this->assertEquals("Test Description", $deck->description);
+
+        $this->client->request('GET', '/json/deck/'.$deck->id.'/image');
+        TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'image/png');
     }
 
     public function testAddDeckWithStat()

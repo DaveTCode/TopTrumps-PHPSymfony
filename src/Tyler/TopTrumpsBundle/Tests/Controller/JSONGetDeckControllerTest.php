@@ -139,79 +139,154 @@ class JSONGetDeckControllerTest extends WebTestCase
         TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'image/png');
     }
 
-    public function testGetOnePageOfDecks()
+    public function testGetPage()
     {
+        /*
+         * Set up with 100 decks
+         */
         TestCaseUtils::clearDecks($this->client);
-        foreach (range(0, 100) as $i) {
+        foreach (range(0, 99) as $i) {
             TestCaseUtils::addDeck($this->client, "Test ".$i, "Test ".$i);
         }
 
+        /*
+         * Page 0
+         */
         $this->client->request('GET', '/json/deck?page=0&pageSize=10');
         $decks = TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'application/json');
-
         $this->assertEquals(10, count($decks));
-    }
 
-    public function testGetOnePageOfDecksWithTooSmallPageSize()
-    {
-        TestCaseUtils::clearDecks($this->client);
-        foreach (range(0, 100) as $i) {
-            TestCaseUtils::addDeck($this->client, "Test ".$i, "Test ".$i);
-        }
-
+        /*
+         * Page 0 - page size too small
+         */
         $this->client->request('GET', '/json/deck?page=0&pageSize=1');
         $decks = TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'application/json');
-
         $this->assertEquals($this->client->getContainer()->getParameter('default_deck_page_size'), count($decks));
-    }
 
-    public function testGetOnePageOfDecksWithTooLargePageSize()
-    {
-        TestCaseUtils::clearDecks($this->client);
-        foreach (range(0, 100) as $i) {
-            TestCaseUtils::addDeck($this->client, "Test ".$i, "Test ".$i);
-        }
-
+        /*
+         * Page 0 - page size too large
+         */
         $this->client->request('GET', '/json/deck?page=0&pageSize=2000000');
         $decks = TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'application/json');
-
         $this->assertEquals($this->client->getContainer()->getParameter('default_deck_page_size'), count($decks));
-    }
 
-    public function testGetSecondPage()
-    {
-        TestCaseUtils::clearDecks($this->client);
-        foreach (range(0, 20) as $i) {
-            TestCaseUtils::addDeck($this->client, "Test ".$i, "Test ".$i);
-        }
-
+        /*
+         * Page 1 - page size fixed (adds sorting)
+         */
         $this->client->request('GET', '/json/deck?page=1&pageSize=10&sortBy=name');
         $decks = TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'application/json');
-
         $this->assertEquals(10, count($decks));
-        $this->assertEquals($decks[0]->name, "Test 18");
-    }
+        $this->assertEquals("Test 18", $decks[0]->name);
 
-    public function testGetBadPageNumber()
-    {
-        TestCaseUtils::clearDecks($this->client);
-        TestCaseUtils::addDeck($this->client, "Test 1", "Test 1");
+        /*
+         * Page number too high
+         */
+        $this->client->request('GET', '/json/deck?page=100&pageSize=10');
+        $decks = TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'application/json');
+        $this->assertEquals(0, count($decks));
+
+        /*
+         * Bad page number
+         */
         $this->client->request('GET', '/json/deck?page=a');
         $decks = TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'application/json');
-
-        $this->assertEquals(1, count($decks));
-        $this->assertEquals($decks[0]->name, "Test 1");
+        $this->assertEquals($this->client->getContainer()->getParameter('default_deck_page_size'), count($decks));
+        $this->assertEquals("Test 0", $decks[0]->name);
     }
 
-    public function testGetBadFilter()
+    public function testOrderBy()
     {
         TestCaseUtils::clearDecks($this->client);
         TestCaseUtils::addDeck($this->client, "Test 2", "Test 2");
         TestCaseUtils::addDeck($this->client, "Test 1", "Test 1");
+
+        /*
+         * Name order by param
+         */
+        $this->client->request('GET', '/json/deck?orderBy=name');
+        $decks = TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'application/json');
+
+        $this->assertEquals(2, count($decks));
+        $this->assertEquals($decks[0]->name, "Test 1");
+
+        /*
+         * Bad order by param
+         */
         $this->client->request('GET', '/json/deck?orderBy=bad');
         $decks = TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'application/json');
 
-        $this->assertEquals(1, count($decks));
+        $this->assertEquals(2, count($decks));
         $this->assertEquals($decks[0]->name, "Test 1");
+
+        /*
+         * Ascending
+         */
+        $this->client->request('GET', '/json/deck?orderByDirection=ASC');
+        $decks = TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'application/json');
+
+        $this->assertEquals(2, count($decks));
+        $this->assertEquals($decks[0]->name, "Test 1");
+
+        /*
+         * Descending
+         */
+        $this->client->request('GET', '/json/deck?orderByDirection=DESC');
+        $decks = TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'application/json');
+
+        $this->assertEquals(2, count($decks));
+        $this->assertEquals($decks[0]->name, "Test 2");
+
+        /*
+         * Order by direction bad
+         */
+        $this->client->request('GET', '/json/deck?orderByDirection=BAD');
+        $decks = TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'application/json');
+
+        $this->assertEquals(2, count($decks));
+        $this->assertEquals($decks[0]->name, "Test 1");
+    }
+
+    public function testFilter()
+    {
+        TestCaseUtils::clearDecks($this->client);
+        TestCaseUtils::addDeck($this->client, "Test 2", "Description");
+        TestCaseUtils::addDeck($this->client, "Test 1", "Test 1");
+        TestCaseUtils::addDeck($this->client, "Test 2", "Test é");
+        TestCaseUtils::addDeck($this->client, "Test 1", "Test ┼");
+
+        /*
+         * Check name filter with a space and multiple results
+         */
+        $this->client->request('GET', '/json/deck?filter=Test%201');
+        $decks = TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'application/json');
+        $this->assertEquals(2, count($decks));
+
+        /*
+         * Check description filter
+         */
+        $this->client->request('GET', '/json/deck?filter=Description');
+        $decks = TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'application/json');
+        $this->assertEquals(1, count($decks));
+
+        /*
+         * é test
+         */
+        $this->client->request('GET', '/json/deck?filter=é');
+        $decks = TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'application/json');
+        $this->assertEquals(1, count($decks));
+
+        /*
+         * ┼ test
+         */
+        $this->client->request('GET', '/json/deck?filter=┼');
+        $decks = TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'application/json');
+        $this->assertEquals(1, count($decks));
+
+        /*
+         * No results
+         */
+        $this->client->request('GET', '/json/deck?filter=noresultsplease');
+        $decks = TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'application/json');
+        $this->assertEquals(0, count($decks));
     }
 }

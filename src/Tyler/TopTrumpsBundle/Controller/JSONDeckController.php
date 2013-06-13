@@ -123,6 +123,43 @@ class JSONDeckController extends AbstractDbController
 
         if ($request->request->has('stats')) {
             /*
+             * Update any existing stats regardless of whether the values have
+             * been changed.
+             */
+            foreach ($deck->getStats() as $stat) {
+                $found = false;
+
+                /* @var Stat $stat */
+                foreach ($request->request->get('stats') as $statJson) {
+                    if (array_key_exists('id', $statJson)) {
+                        if ($statJson['id'] === $stat->getId()) {
+                            $found = true;
+
+                            if (array_key_exists('name', $statJson)) {
+                                $stat->setName($statJson['name']);
+                            }
+
+                            if (array_key_exists('min', $statJson) && is_numeric($statJson['min'])) {
+                                $stat->setMin($statJson['min']);
+                            }
+
+                            if (array_key_exists('max', $statJson) && is_numeric($statJson['max'])) {
+                                $stat->setMax($statJson['max']);
+                            }
+                        }
+                    }
+                }
+
+                /*
+                 * Any stat which exists on the deck but wasn't in the input 
+                 * http request is removed from the deck.
+                 */
+                if (!$found) {
+                    $deck->removeStat($stat);
+                }
+            }
+
+            /*
              * Any new stats will not have an id key on the json object. These
              * should be added to the stat array for the deck.
              */
@@ -142,33 +179,6 @@ class JSONDeckController extends AbstractDbController
 
                     $em->persist($stat);
                     $deck->addStat($stat);
-                }
-            }
-
-            /*
-             * Update any existing stats regardless of whether the values have
-             * been changed.
-             */
-            foreach ($deck->getStats() as $stat) {
-                /* @var Stat $stat */
-                foreach ($request->request->get('stats') as $statJson) {
-                    if (array_key_exists('id', $statJson)) {
-                        if ($statJson['id'] === $stat->getId()) {
-                            $statJson['processed'] = true;
-
-                            if (array_key_exists('name', $statJson)) {
-                                $stat->setName($statJson['name']);
-                            }
-
-                            if (array_key_exists('min', $statJson) && is_numeric($statJson['min'])) {
-                                $stat->setMin($statJson['min']);
-                            }
-
-                            if (array_key_exists('max', $statJson) && is_numeric($statJson['max'])) {
-                                $stat->setMax($statJson['max']);
-                            }
-                        }
-                    }
                 }
             }
         }
