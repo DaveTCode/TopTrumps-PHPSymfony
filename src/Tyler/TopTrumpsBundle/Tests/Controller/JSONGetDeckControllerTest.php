@@ -191,4 +191,27 @@ class JSONGetDeckControllerTest extends WebTestCase
         $this->assertEquals(10, count($decks));
         $this->assertEquals($decks[0]->name, "Test 18");
     }
+
+    public function testGetBadPageNumber()
+    {
+        TestCaseUtils::clearDecks($this->client);
+        TestCaseUtils::addDeck($this->client, "Test 1", "Test 1");
+        $this->client->request('GET', '/json/deck?page=a');
+        $decks = TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'application/json');
+
+        $this->assertEquals(1, count($decks));
+        $this->assertEquals($decks[0]->name, "Test 1");
+    }
+
+    public function testGetBadFilter()
+    {
+        TestCaseUtils::clearDecks($this->client);
+        TestCaseUtils::addDeck($this->client, "Test 2", "Test 2");
+        TestCaseUtils::addDeck($this->client, "Test 1", "Test 1");
+        $this->client->request('GET', '/json/deck?orderBy=bad');
+        $decks = TestCaseUtils::assertContentType($this, $this->client->getResponse(), 'application/json');
+
+        $this->assertEquals(1, count($decks));
+        $this->assertEquals($decks[0]->name, "Test 1");
+    }
 }
