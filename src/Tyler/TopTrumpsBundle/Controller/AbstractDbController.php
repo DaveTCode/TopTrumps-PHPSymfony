@@ -8,6 +8,7 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 
 /**
  * Class AbstractDbController
+ *
  * @package Tyler\TopTrumpsBundle\Controller
  */
 abstract class AbstractDbController extends Controller
@@ -19,7 +20,7 @@ abstract class AbstractDbController extends Controller
      * response.
      *
      * @param Request $request - The HTTP request.
-     * @param array $names - The parameters to look for
+     * @param array   $names - The parameters to look for
      * @throws \Symfony\Component\HttpKernel\Exception\HttpException
      */
     protected function checkRequestParam(Request $request, array $names)
@@ -60,7 +61,7 @@ abstract class AbstractDbController extends Controller
      * Used to abstract away retrieving a deck from the database or throwing a
      * not found exception (404).
      *
-     * @param $deckId - The deck id to find
+     * @param int $deckId - The deck id to find
      * @return \Tyler\TopTrumpsBundle\Entity\Deck
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */

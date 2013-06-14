@@ -13,9 +13,9 @@ class JSONCardController extends AbstractDbController
     /**
      * Action to retrieve the card information for a given card/deck combo.
      *
-     * @param $deckId - The card must be part of this deck or a 404 response
+     * @param int $deckId - The card must be part of this deck or a 404 response
      * is issued.
-     * @param $cardId - The card to retrieve.
+     * @param int $cardId - The card to retrieve.
      * @return Response - The full json blob describing this card.
      */
     public function getAction($deckId, $cardId)
@@ -63,11 +63,9 @@ class JSONCardController extends AbstractDbController
             foreach ($request->request->get('stat_values') as $statValueJson) {
                 /* @var StatValue $statValue */
                 if ($statValueJson['id'] === $statValue->getId()) {
-                    if (array_key_exists($statValueJson, 'value') && is_numeric($statValueJson['value']))
-                    /*
-                     * Set the current value even if it's the same.
-                     */
-                    $statValue->setValue($statValueJson['value']);
+                    if (array_key_exists($statValueJson, 'value') && is_numeric($statValueJson['value'])) {
+                        $statValue->setValue($statValueJson['value']);
+                    }
                 }
             }
         }
@@ -83,9 +81,9 @@ class JSONCardController extends AbstractDbController
      * Action to remove a card from a deck. This will cascade down and remove
      * all dependent data as well.
      *
-     * @param $deckId - The card must be part of this deck or a 404 will be
+     * @param int $deckId - The card must be part of this deck or a 404 will be
      * returned.
-     * @param $cardId - The card to remove.
+     * @param int $cardId - The card to remove.
      * @return Response - The card that was removed.
      */
     public function removeAction($deckId, $cardId)
