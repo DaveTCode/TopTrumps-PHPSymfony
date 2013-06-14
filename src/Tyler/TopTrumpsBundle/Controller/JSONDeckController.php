@@ -195,6 +195,18 @@ class JSONDeckController extends AbstractDbController
 
                     $em->persist($stat);
                     $deck->addStat($stat);
+
+                    /*
+                     * Any existing cards must be updated to include the new
+                     * stat. To do this we fix them all to the minimum stat 
+                     * value.
+                     */
+                    foreach ($deck->getCards() as $card) {
+                        $statValue = new StatValue();
+                        $statValue->setStat($stat);
+                        $statValue->setCard($card);
+                        $statValue->setValue($stat->getMin());
+                    }
                 }
             }
         }
