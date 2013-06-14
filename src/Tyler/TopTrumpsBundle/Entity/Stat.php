@@ -96,6 +96,12 @@ class Stat
     public function setMin($min)
     {
         $this->min = $min;
+
+        foreach ($this->getStatValues() as $statValue) {
+            if ($statValue->getValue() < $min) {
+                $statValue->setValue($min);
+            }
+        }
     
         return $this;
     }
@@ -119,6 +125,12 @@ class Stat
     public function setMax($max)
     {
         $this->max = $max;
+
+        foreach ($this->getStatValues() as $statValue) {
+            if ($statValue->getValue() > $max) {
+                $statValue->setValue($max);
+            }
+        }
     
         return $this;
     }

@@ -126,12 +126,12 @@ class JSONCardController extends AbstractDbController
 
         if ($request->request->has('stat_values')) {
             foreach ($request->request->get('stat_values') as $statValueJson) {
-                if (!property_exists($statValueJson, 'id') || !is_numeric($statValueJson->id) ||
-                    !property_exists($statValueJson, 'value') || !is_numeric($statValueJson->value)) {
+                if (!array_key_exists('id', $statValueJson) || !is_numeric($statValueJson["id"]) ||
+                    !array_key_exists('value', $statValueJson) || !is_numeric($statValueJson["value"])) {
                     throw new HttpException(400, 'Invalid stat value '.json_encode($statValueJson));
                 }
 
-                $stat = $this->checkStatId($deckId, $statValueJson->id);
+                $stat = $this->checkStatId($deckId, $statValueJson["id"]);
                 $statValue = new StatValue();
                 $statValue->setCard($card);
                 $statValue->setStat($stat);
@@ -139,11 +139,8 @@ class JSONCardController extends AbstractDbController
                 /*
                  * Note that the value is capped when it is entered into the stat value
                  * although that will be enforced by the database at some point.
-                 *
-                 * TODO : Enforce in database.
                  */
-                $value = $statValueJson->value;
-                $statValue->setValue(min(max($stat->getMin(), $value), $stat->getMax()));
+                $statValue->setValue($statValueJson["value"]);
                 $em->persist($statValue);
 
                 $card->addStatValue($statValue);

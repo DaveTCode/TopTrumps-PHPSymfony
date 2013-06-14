@@ -49,14 +49,14 @@ class StatValue
     }
 
     /**
-     * Set value
+     * Set value bounding by the min max of the stat.
      *
      * @param integer $value
      * @return StatValue
      */
     public function setValue($value)
     {
-        $this->value = $value;
+        $this->value = min(max($this->getStat()->getMin(), $value), $this->getStat()->getMax());
     
         return $this;
     }
