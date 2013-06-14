@@ -64,6 +64,10 @@ class JSONDeckController extends AbstractDbController
                     throw new HttpException(400, 'Invalid stat: '.json_encode($statJson));
                 }
 
+                if ($statJson['max'] < $statJson['min']) {
+                    throw new HttpException(400, 'Invalid stat - min is greater than max');
+                }
+
                 $stat = new Stat();
                 $stat->setDeck($deck);
                 $stat->setName($statJson['name']);
@@ -144,7 +148,19 @@ class JSONDeckController extends AbstractDbController
                             }
 
                             if (array_key_exists('max', $statJson) && is_numeric($statJson['max'])) {
+                                if ($statJson['max'] < $statJson['min']) {
+                                    throw new HttpException(400, 'Invalid stat - min is greater than max');
+                                }
+
                                 $stat->setMax($statJson['max']);
+                            }
+
+                            /*
+                             * Any stat value based on this stat may now have 
+                             * its value outside of the min max range.
+                             */
+                            foreach ($stat->getStatValues() as $statValue) {
+                                $statValue->setValue(min(max($stat->getMin(), $statValue->getValue()), $stat->getMax()));
                             }
                         }
                     }
