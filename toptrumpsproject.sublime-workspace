@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"asser",
+				"assertEquals"
+			],
+			[
+				"json_",
+				"json_encode"
+			],
+			[
 				"card-",
 				"card-name-input"
 			],
@@ -295,6 +303,46 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "src/Tyler/TopTrumpsBundle/Tests/Controller/JSONGetDeckControllerTest.php",
+			"settings":
+			{
+				"buffer_size": 11563,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/Tyler/TopTrumpsBundle/Tests/Controller/JSONUpdateDeckControllerTest.php",
+			"settings":
+			{
+				"buffer_size": 10353,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/Tyler/TopTrumpsBundle/Controller/JSONDeckController.php",
+			"settings":
+			{
+				"buffer_size": 7640,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/Tyler/TopTrumpsBundle/Tests/Controller/JSONAddDeckControllerTest.php",
+			"settings":
+			{
+				"buffer_size": 6536,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/Tyler/TopTrumpsBundle/Tests/Utils/TestCaseUtils.php",
+			"settings":
+			{
+				"buffer_size": 4565,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -320,6 +368,9 @@
 	},
 	"file_history":
 	[
+		"/C/Users/David/TopTrumpsWebServer/src/Tyler/TopTrumpsBundle/Tests/Controller/JSONCardControllerTest.php",
+		"/C/Users/David/TopTrumpsWebServer/src/Tyler/TopTrumpsBundle/Controller/RequestUtilityFunctions.php",
+		"/C/Users/David/TopTrumpsWebServer/src/Tyler/TopTrumpsBundle/Controller/DeckController.php",
 		"/C/Users/David/TopTrumpsWebServer/src/Tyler/TopTrumpsBundle/Entity/Stat.php",
 		"/C/Users/David/TopTrumpsWebServer/src/Tyler/TopTrumpsBundle/Resources/views/Admin/card.html.twig",
 		"/C/Users/David/TopTrumpsWebServer/src/Tyler/TopTrumpsBundle/Resources/views/Default/index.html.twig",
@@ -400,6 +451,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"imageBase",
 			"LEFT",
 			"Creature()",
 			", ",
@@ -445,8 +497,149 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "src/Tyler/TopTrumpsBundle/Tests/Controller/JSONGetDeckControllerTest.php",
+					"settings":
+					{
+						"buffer_size": 11563,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7870,
+								7870
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1883.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/Tyler/TopTrumpsBundle/Tests/Controller/JSONUpdateDeckControllerTest.php",
+					"settings":
+					{
+						"buffer_size": 10353,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8488,
+								8488
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1958.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/Tyler/TopTrumpsBundle/Controller/JSONDeckController.php",
+					"settings":
+					{
+						"buffer_size": 7640,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4530,
+								4488
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1755.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/Tyler/TopTrumpsBundle/Tests/Controller/JSONAddDeckControllerTest.php",
+					"settings":
+					{
+						"buffer_size": 6536,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2963,
+								2888
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 585.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/Tyler/TopTrumpsBundle/Tests/Utils/TestCaseUtils.php",
+					"settings":
+					{
+						"buffer_size": 4565,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 270.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -506,6 +699,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 253.0,
+	"side_bar_width": 306.0,
 	"status_bar_visible": true
 }

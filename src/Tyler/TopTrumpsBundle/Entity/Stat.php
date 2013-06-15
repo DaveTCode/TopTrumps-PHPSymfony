@@ -117,7 +117,8 @@ class Stat
     }
 
     /**
-     * Set max
+     * Set max and propagate values to all stat values using this stat forcing 
+     * their value to be between min and max.
      *
      * @param integer $max
      * @return Stat
