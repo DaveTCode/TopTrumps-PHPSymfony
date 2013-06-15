@@ -9,12 +9,19 @@
 .deck-image {
     width: 180px;
     height: 250px;
+    cursor: hand; cursor: pointer;
 }
 
 .deck-text-overlay {
     position: absolute;
-    top: 0;
+    top: 10px;
+    left: 10px;
     display: none;
+    color: white;
+    font-size: 1.2em;
+    background-color: black;
+    width: 160px;
+    cursor: hand; cursor: pointer;
 }
 
 #new-button-area {
@@ -36,4 +43,14 @@
     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) inset, 0 1px 0 rgba(255, 255, 255, 1);
     -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) inset, 0 1px 0 rgba(255, 255, 255, 1);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) inset, 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.deck-form-single-stat-input-area input {
+    margin-right: 5px;
+}
+
+#deck-form-image {
+    margin: auto;
+    display: block;
+    cursor: pointer; cursor: hand;
 }

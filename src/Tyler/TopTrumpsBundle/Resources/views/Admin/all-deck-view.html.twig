@@ -17,17 +17,34 @@
         <script type="text/javascript" src="{{ asset('bundles/tylertoptrumps/js/jquery.history.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('bundles/tylertoptrumps/js/admin-common.js') }}"></script>
 
-
         <script type="text/javascript">
             $(document).ready(function() {
                 $(".deck").each(function() {
                     var deckId = $(this).attr('id').replace('deck-', '');
+                    var $deckImage = $(this).find('.deck-image');
                     var $textOverlay = $(this).find('.deck-text-overlay');
-                    $(this).find('.deck-image')
-                            .attr('src', Routing.generate('json_deck_image', { 'deckId': deckId }))
-                            .hover(function() { $textOverlay.show(); },
-                                   function() { $textOverlay.hide(); });
-                    $textOverlay.hover(function() { $textOverlay.show(); });
+
+                    $deckImage.attr('src', Routing.generate('json_deck_image', { 'deckId': deckId }))
+                              .click(function() {
+                                         $.get(Routing.generate('json_deck_view', {'deckId': deckId}), 
+                                               AllDeckView.loadDeckIntoForm);
+                                     })
+                              .hover(function() { 
+                                         $textOverlay.show(); 
+                                         $deckImage.addClass("grayscale");
+                                     },
+                                     function() { 
+                                         $textOverlay.hide(); 
+                                         $deckImage.removeClass("grayscale"); 
+                                     });
+                    $textOverlay.hover(function() { 
+                                           $textOverlay.show();
+                                           $deckImage.addClass("grayscale");
+                                       }, 
+                                       function() {
+                                           $textOverlay.hide();
+                                           $deckImage.removeClass("grayscale");
+                                       });
                 });
 
                 $("#deck-form-area").dialog({
@@ -37,57 +54,120 @@
                     width: 420,
                     minWidth: 420,
                     maxWidth: 420,
-                    modal: true,
-                    buttons: {
-                        "Cancel": function() {
-                            $(this).dialog("close");
-                        },
-                        "Create Deck": function() {
-                            AllDeckView.submitDeckForm();
-                            $(this).dialog("close");
-                        }
-                    }
+                    modal: true
                 });
 
-                $(".stat-delete-button").button({
-                    text: false,
-                    icons: {
-                        primary: "ui-icon-circle-minus"
-                    }
+                $("#deck-form-stat-area").on("click", ".stat-delete-button", function() {
+                    $(this).parent(".deck-form-single-stat-input-area").remove();
+
+                    return false;
                 });
 
-                $("#new-stat-button").button({
-                    text: false,
-                    icons: {
-                        primary: "ui-icon-circle-plus"
-                    }
+                $("#new-stat-button").click(function() { AllDeckView.createStatInputArea(); return false; });
+
+                
+                $("#new-button").click(function() { 
+                    $("#deck-form-area").dialog("option", {
+                                                    'buttons': {
+                                                        "Cancel": function() {
+                                                            $(this).dialog("close");
+                                                        },
+                                                        "Create Deck": function() {
+                                                            AllDeckView.submitDeckForm();
+                                                        }
+                                                    }
+                                                })
+                                        .dialog("open"); 
                 });
 
-                $("#filter-button").button();
-                $("#new-button").button().click(function() { $("#deck-form-area").dialog("open"); });
+                /*
+                 * An input element has to be visible with focus before the
+                 * click event will fire on it.
+                 */
+                $("#deck-form-image").click(function() { $("#deck-image-input").show().focus().click().hide(); });
 
-                $("#deck-image").on("click", function() {
-                    /*
-                     * An input element has to be visible with focus before the
-                     * click event will fire on it.
-                     */
-                    $("#deck-image-input").show().focus().click().hide();
+                $("#deck-image-input").on("change", function() { 
+                    TopTrumpsCommon.loadImageBytes("#deck-image-input", "#deck-form-image"); 
                 });
 
-                $("#deck-image-input").on("change", function() { TopTrumpsCommon.loadImageBytes("#deck-image-input", "#deck-image"); });
+                $("#deck-form-stat-area").on("change", ".stat-min-input", function() {
+                    var $maxElement = $(this).siblings(".stat-max-input");
+                    $maxElement.attr('min', $(this).val());
+                    $maxElement.val(Math.max($(this).val(), $maxElement.val()));
+
+                });
+
+                $("#deck-form-stat-area").on("change", ".stat-max-input", function() {
+                    var $minElement = $(this).siblings(".stat-min-input");
+                    $minElement.attr('max', $(this).val());
+                    $minElement.val(Math.min($(this).val(), $minElement.val()));
+                });
+
+                AllDeckView.setupJQueryUIButtons();
+                AllDeckView.createStatInputArea();
             });
 
             AllDeckView = {
+                setupJQueryUIButtons: function() {
+                    $("#filter-button").button();
+                    $("#new-button").button();
+
+                    $(".stat-delete-button").button({
+                        text: false,
+                        icons: {
+                            primary: "ui-icon-circle-minus"
+                        }
+                    });
+
+                    $("#new-stat-button").button({
+                        text: false,
+                        icons: {
+                            primary: "ui-icon-circle-plus"
+                        }
+                    });
+                },
+
+                createStatInputArea: function(stat) {
+                    var statHtml = '<div class="deck-form-single-stat-input-area">';
+                    statHtml += '<input class="stat-id-input hidden" type="text" value="' + (stat ? stat.id : '') + '"/>';
+                    statHtml += '<input class="stat-name-input" type="text" placeholder="Stat name" value="' + (stat ? stat.name : '') + '" />';
+                    statHtml += '<input class="stat-min-input" type="number" value="' + (stat ? stat.min : '1') + '"/>';
+                    statHtml += '<input class="stat-max-input" type="number" value="' + (stat ? stat.max : '1') + '"/>';
+                    statHtml += '<button class="stat-delete-button">Delete</button>';
+                    statHtml += '</div>';
+
+                    $("#new-stat-button").before(statHtml);
+                    AllDeckView.setupJQueryUIButtons();
+                },
+
+                clearForm: function() {
+                    $("#deck-form")[0].reset();
+                    $(".deck-form-single-stat-input-area").remove();
+                    $("#deck-id-input").val("");
+                    $("#deck-form-image").attr("src", "{{ asset('bundles/tylertoptrumps/images/no-deck-image.png') }}");
+
+                    $("#deck-form-area").find(".invalid").each(function() {
+                        $(this).removeClass("invalid");
+                    });
+                },
+
                 submitDeckForm: function() {
                     var deck = {};
-                    deck.id = $("#deck-id").text();
+                    var $deckId = $("#deck-id-input").val();
+                    if ($deckId !== "") {
+                        deck.id = $deckId;
+                    }
                     deck.name = $("#deck-name-input").val();
                     deck.description = $("#deck-description-input").val();
-                    deck.image = $("#deck-image").attr("src");
+                    deck.image = $("#deck-form-image").attr("src");
                     deck.stats = [];
 
-                    $("#deck-form-stat-area").find(".deck-form-single-stat-area").each(function() {
+                    $("#deck-form-stat-area").find(".deck-form-single-stat-input-area").each(function() {
                         var stat = {};
+                        var $statId = $(this).find(".stat-id-input").val();
+                        if ($statId !== "") {
+                            stat.id = $statId;
+                        }
                         stat.name = $(this).find(".stat-name-input").val();
                         stat.min = $(this).find(".stat-min-input").val();
                         stat.max = $(this).find(".stat-max-input").val();
@@ -104,17 +184,76 @@
                         }
 
                         $.post(url, deck)
-                                .done(AllDeckView.deckSubmitComplete)
-                                .error(function() { alert("Failed."); });
+                         .done(AllDeckView.deckSubmitComplete)
+                         .error(function() { alert("Failed."); });
                     }
                 },
 
+                loadDeckIntoForm: function(deck) {
+                    AllDeckView.clearForm();
+                    $("#deck-id-input").val(deck.id);
+                    $("#deck-name-input").val(deck.name);
+                    $("#deck-description-input").val(deck.description);
+                    $("#deck-form-image").attr('src', Routing.generate('json_deck_image', { 'deckId': deck.id }));
+
+                    if (deck.stats) {
+                        for (var ii = 0; ii < deck.stats.length; ii++) {
+                            AllDeckView.createStatInputArea(deck.stats[ii]);
+                        }
+                    }
+
+                    $("#deck-form-area").dialog('option', {
+                                                    "buttons": {
+                                                        "Remove": function() {
+                                                            AllDeckView.removeDeck(deck.id);
+                                                        },
+                                                        "Cancel": function() {
+                                                            $(this).dialog("close");
+                                                        },
+                                                        "Update Deck": function() {
+                                                            AllDeckView.submitDeckForm();
+                                                        }
+                                                    }
+                                                })
+                                        .dialog("open");
+                },
+
                 validateDeckForm: function(deck) {
-                    return true;
+                    var valid = true;
+
+                    if (deck.name === null || deck.name.length === 0) {
+                        $("#deck-name-input").addClass("invalid");
+                        valid = false;
+                    }
+
+                    if (deck.description === null || deck.description.length === 0) {
+                        $("#deck-description-input").addClass("invalid");
+                        valid = false;
+                    }
+
+                    $(".stat-name-input").each(function() {
+                        if ($(this).val() === null || $(this).val().length === 0) {
+                            $(this).addClass("invalid");
+                            valid = false;
+                        }
+                    })
+
+                    return valid;
                 },
 
                 deckSubmitComplete: function(deck) {
-                    alert("Success");
+                    AllDeckView.clearForm();
+                    $("#deck-form-area").dialog("close");
+                },
+
+                removeDeck: function(deckId) {
+                    $.ajax({ "url": Routing.generate('json_deck_delete', { 'deckId': deckId }), "method": "DELETE"})
+                     .done(AllDeckView.deckRemoveComplete)
+                     .error(function() { alert("Failed"); });
+                },
+
+                deckRemoveComplete: function() {
+                    location.reload();
                 }
             }
         </script>
@@ -166,20 +305,14 @@
         </div>
         <div id="deck-form-area" class="hidden">
             <form id="deck-form" method="post">
-                <img id="deck-image" src="{{ asset('bundles/tylertoptrumps/images/no-deck-image.png') }}" alt="No image" height="250" width="150">
+                <input type="text" id="deck-id-input" class="hidden" />
+                <img id="deck-form-image" src="{{ asset('bundles/tylertoptrumps/images/no-deck-image.png') }}" alt="No image" height="250" width="180">
                 <input type="file" id="deck-image-input" class="hidden" accept="image/png,image/jpg,image/jpeg,image/gif"/>
-                <p id="deck-image-bytes" class="hidden"></p>
                 <input type="text" placeholder="Name" name="name" id="deck-name-input" />
                 <textarea name="description" id="deck-description-input" placeholder="Description"></textarea>
                 <div id="deck-form-stat-area">
                     <fieldset>
                         <legend>Stats</legend>
-                        <div class="deck-form-single-stat-input-area">
-                            <input class="stat-name-input" type="text" placeholder="Stat name" />
-                            <input class="stat-min-input" type="number" value="1"/>
-                            <input class="stat-max-input" type="number" value="1"/>
-                            <button class="stat-delete-button">Delete</button>
-                        </div>
                         <button id="new-stat-button">New Stat</button>
                     </fieldset>
                 </div>
