@@ -247,9 +247,11 @@
                 },
 
                 removeDeck: function(deckId) {
-                    $.ajax({ "url": Routing.generate('json_deck_delete', { 'deckId': deckId }), "method": "DELETE"})
-                     .done(AllDeckView.deckRemoveComplete)
-                     .error(function() { alert("Failed"); });
+                    if (confirm("Are you sure you want to remove the deck")) {
+                        $.ajax({ "url": Routing.generate('json_deck_delete', { 'deckId': deckId }), "method": "DELETE"})
+                         .done(AllDeckView.deckRemoveComplete)
+                         .error(function() { alert("Failed"); });
+                    }
                 },
 
                 deckRemoveComplete: function() {
