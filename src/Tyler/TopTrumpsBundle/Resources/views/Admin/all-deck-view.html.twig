@@ -19,32 +19,37 @@
 
         <script type="text/javascript">
             $(document).ready(function() {
+                $(document).ajaxStart(function() {
+                    if (AllDeckView.ajaxRequestsOutstanding === 0) {
+                        $.blockUI({message: 'Processing...'});
+                    }
+                    AllDeckView.ajaxRequestsOutstanding++;
+                });
+                $(document).ajaxStop(function() {
+                    AllDeckView.ajaxRequestsOutstanding--;
+                    if (AllDeckView.ajaxRequestsOutstanding === 0) {
+                        $.unblockUI();
+                    }
+                });
+
                 $(".deck").each(function() {
+                    var $deck = $(this);
                     var deckId = $(this).attr('id').replace('deck-', '');
                     var $deckImage = $(this).find('.deck-image');
                     var $textOverlay = $(this).find('.deck-text-overlay');
+                    var $cardViewOverlay = $(this).find('.deck-card-view-overlay');
 
                     $deckImage.attr('src', Routing.generate('json_deck_image', { 'deckId': deckId }))
                               .click(function() {
                                          $.get(Routing.generate('json_deck_view', {'deckId': deckId}), 
                                                AllDeckView.loadDeckIntoForm);
                                      })
-                              .hover(function() { 
-                                         $textOverlay.show(); 
-                                         $deckImage.addClass("grayscale");
-                                     },
-                                     function() { 
-                                         $textOverlay.hide(); 
-                                         $deckImage.removeClass("grayscale"); 
-                                     });
-                    $textOverlay.hover(function() { 
-                                           $textOverlay.show();
-                                           $deckImage.addClass("grayscale");
-                                       }, 
-                                       function() {
-                                           $textOverlay.hide();
-                                           $deckImage.removeClass("grayscale");
-                                       });
+                              .hover(function() { AllDeckView.hoverOverDeck($deck); }, 
+                                     function() { AllDeckView.exitHoverOverDeck($deck); });
+                    $textOverlay.hover(function() { AllDeckView.hoverOverDeck($deck); }, 
+                                       function() { AllDeckView.exitHoverOverDeck($deck); });
+                    $cardViewOverlay.hover(function() { AllDeckView.hoverOverDeck($deck); }, 
+                                           function() { AllDeckView.exitHoverOverDeck($deck); });
                 });
 
                 $("#deck-form-area").dialog({
@@ -108,6 +113,28 @@
             });
 
             AllDeckView = {
+                ajaxRequestsOutstanding: 0,
+
+                hoverOverDeck: function($deck) {
+                    var $deckImage = $deck.find('.deck-image');
+                    var $textOverlay = $deck.find('.deck-text-overlay');
+                    var $cardViewOverlay = $deck.find('.deck-card-view-overlay');
+
+                    $textOverlay.show(); 
+                    $cardViewOverlay.show();
+                    $deckImage.addClass("grayscale");
+                },
+
+                exitHoverOverDeck: function($deck) {
+                    var $deckImage = $deck.find('.deck-image');
+                    var $textOverlay = $deck.find('.deck-text-overlay');
+                    var $cardViewOverlay = $deck.find('.deck-card-view-overlay');
+
+                    $textOverlay.hide(); 
+                    $cardViewOverlay.hide();
+                    $deckImage.removeClass("grayscale");
+                },
+
                 setupJQueryUIButtons: function() {
                     $("#filter-button").button();
                     $("#new-button").button();
@@ -297,6 +324,9 @@
                                 </div>
                             {% endfor %}
                         </div>
+                    </div>
+                    <div class="deck-card-view-overlay">
+                        <a href="{{ path('template_card_create_display', {'deckId': deck.id}) }}">Edit Cards</a>
                     </div>
                 </div>
             {% endfor %}
